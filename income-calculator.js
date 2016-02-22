@@ -9,16 +9,29 @@ var IncomeCalculator = function() {
 
   // Budget expenditure by category, in billions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
-  //
-  // Total budget expenditure
-  this.CONSOLIDATED_EXPENDITURE = 1351;
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
     'Basic education': 203.5,
+    'Post-school education & training': 62.2,
+    'Health': 157.3,
+    'Social Protection': 155.3,
+    'Employment, labour affairs & social security funds': 64.1,
+    'Industrial developmenbt, trade & innovation': 69.7,
+    'Economic infrastructure & network regulation': 72.3,
+    'Defense & state security': 49.4,
+    'Law courts & prisons': 39.1,
+    'Police services': 82.7,
+    'Housing developments & social infrastructure': 179.2,
+    'Rural development & ladn reform': 10.7,
+    'Arts, sport, recreation & culture': 9.6,
+    'General publc services': 64.4,
     'Debt-service costs': 126.4,
-    // etc.
+    'Unallocated reserves': 5.0,
   };
+
+  // Total budget expenditure
+  this.CONSOLIDATED_EXPENDITURE = _.reduce(_.values(this.EXPENDITURE), function(t, n) { return t + n; }, 0);
 
   // fraction of budget line items that are funded through
   // personal tax and VAT
@@ -48,11 +61,14 @@ var IncomeCalculator = function() {
     // income after tax and VAT
     info.disposableIncome = income - info.personalTax;
 
-    // times spent working for yourself
+    // fraction of day spent working for yourself
     info.personal_fraction = info.disposableIncome / info.income;
+    // times spent working for yourself
     info.personal_minutes = info.personal_fraction * self.WORKDAY_MINS;
     // times spent working for the man
     info.taxman_minutes = self.WORKDAY_MINS - info.personal_minutes;
+    // fraction of day spent working for the man
+    info.taxman_fraction = 1 - info.personal_fraction;
 
     info.breakdown = this.doBreakdown(info);
 
@@ -92,7 +108,7 @@ var IncomeCalculator = function() {
     return _.map(this.EXPENDITURE, function(amount, category) {
       // scale amount to that contributed by personal taxpayers
       var taxpayer_amount = self.TAXPAYER_RATIO * amount;
-      var fraction = amount / self.CONSOLIDATED_EXPENDITURE;
+      var fraction = amount / self.CONSOLIDATED_EXPENDITURE * info.taxman_fraction;
 
       return {
         name: category,
@@ -103,7 +119,7 @@ var IncomeCalculator = function() {
         // fraction of time spent on this amount
         fraction: fraction,
         // minutes per day spent on this amount
-        minutes: info.taxman_minutes * fraction,
+        minutes: self.WORKDAY_MINS * fraction,
       };
     });
   };
