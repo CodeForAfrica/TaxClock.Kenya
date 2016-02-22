@@ -1,0 +1,24 @@
+<html>
+<head>
+  <script src="jquery-1.12.0.min.js"></script>
+  <script src="income-calculator.js"></script>
+
+  <script>
+  $(function() {
+    $('.income').on('change keyup', function() {
+      var income = parseFloat($(this).val());
+      var calc = new IncomeCalculator();
+      var output = calc.calculateIncomeBreakdown(income);
+
+      $('#output').text(JSON.stringify(output));
+    });
+  })
+  </script>
+</head>
+
+<body>
+  Your annual income before tax R<input class="income" type="text" name="income">
+  <br>
+  <pre id="output"></pre>
+</body>
+</html>
