@@ -1,7 +1,7 @@
 if (document.location.hostname == "localhost") {
     var baseurl = "";
 } else {
-    var baseurl = "https://static.code4sa.org/tax-clock-lib/";
+    var baseurl = "https://static.code4sa.org/taxclock/";
 }
 
 document.write('<script type="text/javascript" src="' + baseurl + 'pym.js"></script>')
