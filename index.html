@@ -11,79 +11,89 @@
 
   <script>
 
-  function GetHours(mins) {
-    var hours = Math.floor( mins / 60);
-    return hours;         
-  }
+    function GetHours(mins) {
+      var hours = Math.floor( mins / 60);
+      return hours;         
+    }
 
-  function GetMinutes(mins) {      
-    var minutes = Math.floor(mins % 60);
-    return minutes;
-  }
+    function GetMinutes(mins) {      
+      var minutes = Math.floor(mins % 60);
+      return minutes;
+    }
 
-  function GetSeconds(mins) {      
-    var seconds = Math.floor((mins * 60) % 60);
-    return seconds;
-  }
+    function GetSeconds(mins) {      
+      var seconds = Math.floor((mins * 60) % 60);
+      return seconds;
+    }
 
-  $(function() {
-    $('.income').on('change keyup', function() {
-      var income = parseFloat($(this).val());
-      var calc = new IncomeCalculator();
-      var output = calc.calculateIncomeBreakdown(income);
-      
-      /* Clear output */
-      $('#output').html('');
+    $(function() {
+      $('.income').on('change keyup', function() {
+        var income = parseFloat($(this).val());
+        var calc = new IncomeCalculator();
+        var output = calc.calculateIncomeBreakdown(income);
 
-      if (income > 0){
-        var startTime = '9:00 am';
-        $(output.breakdown).each(function(){
-          var breakdown = this;
-          $(breakdown).each(function(){
-            var name = this.name;
-            var finishtime = this.finish_time_s;
-            var taxamount = this.taxpayer_amount;
+        /* Clear output */
+        $('#output').html('');
 
-            var mins = this.minutes;
-            var hours = GetHours(mins);
-            var minutes = GetMinutes(mins);
-            var seconds = GetSeconds(mins);
+        if (income > 0){
+          var startTime = '9:00 am';
+          $(output.breakdown).each(function(){
+            var breakdown = this;
+            $(breakdown).each(function(){
 
-            /* if minutes > 0 and seconds > 30, round up a 1 minute */
-            if (minutes > 0 && seconds > 30) {
-              minutes = minutes + 1;
-              seconds = 0;
-            }
-            else if (minutes > 0) {
-              seconds = 0;
-            }
+              var name = this.name;
+              var finishtime = this.finish_time_s;
+              var taxamount = this.taxpayer_amount;
 
-            var hoursString = "";
-            var minutesString = "";
-            var secondsString = "";
+              var mins = this.minutes;
+              var hours = GetHours(mins);
+              var minutes = GetMinutes(mins);
+              var seconds = GetSeconds(mins);
 
-            if (hours > 0) {
-              var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
-            }
+              /* if minutes > 0 and seconds > 30, round up a 1 minute */
+              if (minutes > 0 && seconds > 30) {
+                minutes = minutes + 1;
+                seconds = 0;
+              }
+              else if (minutes > 0) {
+                seconds = 0;
+              }
 
-            if (minutes > 0) {
-              var minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
-            }
+              var hoursString = "";
+              var minutesString = "";
+              var secondsString = "";
 
-            if (seconds > 0) {
-              var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
-            }
+              if (hours > 0) {
+                var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+              }
 
-            var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';            
+              if (minutes > 0) {
+                var minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
+              }
 
-            $('#output').append('<div class="item"><div class="item-starttime">' + startTime + '</div><div class="item-name">' + name + '</div>' + durationDiv);
-            startTime = finishtime;
+              if (seconds > 0) {
+                var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+              }
+
+              var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';
+
+              if (name != 'Working for yourself') {
+                var fontSize = (Math.floor((mins) + 14)) + 'px';
+              }
+              else {
+                var fontsize = "inherit";
+              }          
+
+              $('#output').append('<div class="item container-fluid"><div class="row"><div class="item-starttime-container col-xs-3 col-md-3"><span class="item-starttime"><strong>' + startTime + '</strong> - <br>' + finishtime + '</span></div><div class="item-details col-xs-9 col-md-9" style="font-size: ' + fontSize +';"><div class="item-name">' + name + '</div>' + durationDiv + "</div></div></div></div>");
+
+              startTime = finishtime;
+
+            });
           });
-        });
-      }
+        }
 
-    });
-  })
+      });
+    })
   </script>
 
   <!-- Main Stylesheet -->
@@ -92,22 +102,24 @@
 </head>
 
 <body>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div id="income-input">
-          Your annual income before tax: 
-          <div class="input-group">
-            <span class="input-group-addon">R</span>
-            <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+
+  <div class="calculator">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div id="input">
+            Your annual income before tax:
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">R</span>
+              <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+            </div>
           </div>
-        </div>
-        <div id="output">
+          <div id="output"></div>
         </div>
       </div>
     </div>
   </div>
+
 </body>
 
 </html>

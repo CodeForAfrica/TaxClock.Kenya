@@ -2,6 +2,14 @@
 
 // Bootstrap variable overrides
 
+//== Typography
+
+@import url(https://fonts.googleapis.com/css?family=Rubik:500,700,900);
+$font-family-sans-serif: "Rubik", Helvetica, Arial, sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+
+$line-height-base: 1 !default;
+
 //=====
 
 // Import Bootstrap SASS
@@ -9,3 +17,51 @@
 
 //=====
 
+// Custom styling
+
+//== Scaffolding
+
+strong {
+  font-weight: 900;
+}
+
+//== Input
+#input {
+  margin-bottom: 10px;
+}
+
+//== Output
+
+.item {
+  border-bottom: solid 1px #ccc;
+  padding: 5px;
+  .item-starttime-container {
+    text-align: center;
+  }
+  .item-starttime {
+    display: inline-block;
+    padding: 5px;
+    background-color: #ccc;
+    line-height: 100%;
+    font-size: 14px;
+    line-height: 140%;
+  }
+  .item-details {
+    display: inline-block;
+  }
+  .item-name {
+  }
+  .item-duration {
+    font-weight: bold;
+    font-size: 70%;
+  }
+  &:first-child {
+    background-color: #eee;
+    .item-details {
+      font-size: 38px;
+    }
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}
