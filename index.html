@@ -10,13 +10,78 @@
   <script src="income-calculator.js"></script>
 
   <script>
+
+  function GetHours(mins) {
+    var hours = Math.floor( mins / 60);
+    return hours;         
+  }
+
+  function GetMinutes(mins) {      
+    var minutes = Math.floor(mins % 60);
+    return minutes;
+  }
+
+  function GetSeconds(mins) {      
+    var seconds = Math.floor((mins * 60) % 60);
+    return seconds;
+  }
+
   $(function() {
     $('.income').on('change keyup', function() {
       var income = parseFloat($(this).val());
       var calc = new IncomeCalculator();
       var output = calc.calculateIncomeBreakdown(income);
+      
+      /* Clear output */
+      $('#output').html('');
 
-      $('#output').text(JSON.stringify(output, null, 2));
+      if (income > 0){
+        var startTime = '9:00 am';
+        $(output.breakdown).each(function(){
+          var breakdown = this;
+          $(breakdown).each(function(){
+            var name = this.name;
+            var finishtime = this.finish_time_s;
+            var taxamount = this.taxpayer_amount;
+
+            var mins = this.minutes;
+            var hours = GetHours(mins);
+            var minutes = GetMinutes(mins);
+            var seconds = GetSeconds(mins);
+
+            /* if minutes > 0 and seconds > 30, round up a 1 minute */
+            if (minutes > 0 && seconds > 30) {
+              minutes = minutes + 1;
+              seconds = 0;
+            }
+            else if (minutes > 0) {
+              seconds = 0;
+            }
+
+            var hoursString = "";
+            var minutesString = "";
+            var secondsString = "";
+
+            if (hours > 0) {
+              var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+            }
+
+            if (minutes > 0) {
+              var minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
+            }
+
+            if (seconds > 0) {
+              var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+            }
+
+            var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';            
+
+            $('#output').append('<div class="item"><div class="item-starttime">' + startTime + '</div><div class="item-name">' + name + '</div>' + durationDiv);
+            startTime = finishtime;
+          });
+        });
+      }
+
     });
   })
   </script>
@@ -27,8 +92,22 @@
 </head>
 
 <body>
-  Your annual income before tax R<input class="income" type="text" name="income">
-  <br>
-  <pre id="output"></pre>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div id="income-input">
+          Your annual income before tax: 
+          <div class="input-group">
+            <span class="input-group-addon">R</span>
+            <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+          </div>
+        </div>
+        <div id="output">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
