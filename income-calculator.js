@@ -26,27 +26,27 @@ var IncomeCalculator = function() {
   this.PERSONAL_INCOME_TAX_REVENUE = 350;
   this.VAT_REVENUE = 260.6;
 
-  // Budget expenditure by category, in billions
+  // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Basic education': 203.5,
-    'Post-school education & training': 62.2,
-    'Health': 157.3,
-    'Social protection': 155.3,
-    'Employment, labour affairs & social security funds': 64.1,
-    'Industrial development, trade & innovation': 69.7,
-    'Economic infrastructure & network regulation': 72.3,
-    'Defense & state security': 49.4,
-    'Law courts & prisons': 39.1,
-    'Police services': 82.7,
-    'Housing developments & social infrastructure': 179.2,
-    'Rural development & land reform': 10.7,
-    'Arts, sport, recreation & culture': 9.6,
-    'General publc services': 64.4,
-    'Debt-service costs': 126.4,
-    'Unallocated reserves': 5.0,
+    'Basic education': 228803,
+    'Post-school education & training': 68715,
+    'Health': 168393,
+    'Social protection': 167479,
+    'Employment, labour affairs & social security funds': 73127,
+    'Industrial development, trade & innovation': 31844,
+    'Economic infrastructure & network regulation': 87105,
+    'Defense & state security': 52344,
+    'Law courts & prisons': 41667,
+    'Police services': 87508,
+    'Human settlements & municipal infrastructure': 182631,
+    'Agriculture, rural development & land reform': 26417,
+    'Science, technology, innovation and the environment': 19886,
+    'General publc services': 73652,
+    'Debt-service costs': 147720,
+    'Unallocated reserves': 6000,
   };
 
   // Total budget expenditure
