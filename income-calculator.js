@@ -49,6 +49,12 @@ var IncomeCalculator = function() {
     'Unallocated reserves': 5.0,
   };
 
+  // override ordering
+  this.ORDERING = {
+    'Working for yourself': 9999,
+    'Debt-service costs': -1,
+  };
+
   // Total budget expenditure
   this.CONSOLIDATED_EXPENDITURE = _.reduce(_.values(this.EXPENDITURE), function(t, n) { return t + n; }, 0);
 
@@ -95,7 +101,9 @@ var IncomeCalculator = function() {
     info.breakdown.push(this.workingForSelf(info));
     
     // sort
-    info.breakdown = _.sortBy(info.breakdown, function(b) { return -b.fraction; });
+    info.breakdown = _.sortBy(info.breakdown, function(b) {
+      return self.ORDERING[b.name] || -b.fraction;
+    });
 
     // add times of day
     this.addTimesOfDay(info.breakdown);
