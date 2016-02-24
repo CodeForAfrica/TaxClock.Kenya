@@ -3,6 +3,25 @@ var IncomeCalculator = function() {
 
   this.VAT = 0.14;
 
+  function TaxBand(marginalRate, baseAmount, threshold, limit) {
+    this.marginalRate = marginalRate;
+    this.baseAmount = baseAmount;
+    this.threshold = threshold;
+    this.limit = (arguments.length > 3) ? this.limit = limit : this.limit = Number.POSITIVE_INFINITY;
+  }
+
+  // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
+  this.TAX_TABLE = [
+    new TaxBand(0.18, 0, 0, 181900),
+    new TaxBand(0.26, 32742, 181901, 284100),
+    new TaxBand(0.31, 59314, 284101, 393200),
+    new TaxBand(0.36, 93135, 393201, 550100),
+    new TaxBand(0.39, 149619, 550101, 701300),
+    new TaxBand(0.41, 208587, 701301)
+  ];
+
+  this.PRIMARY_REBATE = 13257;
+
   // Budget revenue streams from individuals (billions)
   this.PERSONAL_INCOME_TAX_REVENUE = 350;
   this.VAT_REVENUE = 260.6;
@@ -85,9 +104,19 @@ var IncomeCalculator = function() {
   };
 
   this.incomeTax = function(info) {
-    // TODO
-    // return info.income * 0.3;  // 30%
-    return 69586;
+    var gross_income_tax = 0;
+    var band = _.find(this.TAX_TABLE, function(b) {
+      return (info.income >= b.threshold) && (info.income <= b.limit);
+    });
+
+    if (band) {
+      gross_income_tax = band.baseAmount + (band.marginalRate * (info.income - band.threshold));
+      gross_income_tax = gross_income_tax - this.PRIMARY_REBATE;
+    }
+
+    if (gross_income_tax < 0) gross_income_tax = 0;
+
+    return gross_income_tax;
   };
 
   this.vatTax = function(info) {
