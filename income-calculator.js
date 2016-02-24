@@ -12,15 +12,15 @@ var IncomeCalculator = function() {
 
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.18, 0, 0, 181900),
-    new TaxBand(0.26, 32742, 181901, 284100),
-    new TaxBand(0.31, 59314, 284101, 393200),
-    new TaxBand(0.36, 93135, 393201, 550100),
-    new TaxBand(0.39, 149619, 550101, 701300),
-    new TaxBand(0.41, 208587, 701301)
+    new TaxBand(0.18, 0, 0, 188000),
+    new TaxBand(0.26, 33840, 188001, 293600),
+    new TaxBand(0.31, 61296, 293601, 406400),
+    new TaxBand(0.36, 96264, 406401, 550100),
+    new TaxBand(0.39, 147996, 550101, 701300),
+    new TaxBand(0.41, 206964, 701301)
   ];
 
-  this.PRIMARY_REBATE = 13257;
+  this.PRIMARY_REBATE = 13500;
 
   // Budget revenue streams from individuals (billions)
   this.PERSONAL_INCOME_TAX_REVENUE = 350;
