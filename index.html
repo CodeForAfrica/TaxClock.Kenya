@@ -11,6 +11,15 @@
 
   <script>
 
+    function Slugify(str) {
+      var $slug = '';
+      var trimmed = $.trim(str);
+      $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+      replace(/-+/g, '-').
+      replace(/^-|-$/g, '');
+      return $slug.toLowerCase();
+    }
+
     function GetHours(mins) {
       var hours = Math.floor( mins / 60);
       return hours;         
@@ -33,15 +42,17 @@
         var output = calc.calculateIncomeBreakdown(income);
 
         /* Clear output */
-        $('#output').html('');
+        $('#output').html('<div class="item" id="instruction">Enter your annual income above</div>');
 
         if (income > 0){
+          $('#output').html('');
           var startTime = '9:00 am';
           $(output.breakdown).each(function(){
             var breakdown = this;
             $(breakdown).each(function(){
 
               var name = this.name;
+              var slug = Slugify(this.name);
               var finishtime = this.finish_time_s;
               var taxamount = this.taxpayer_amount;
 
@@ -75,21 +86,23 @@
                 var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
               }
 
-              var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';
+              var startHour = startTime.substr(0, startTime.indexOf(':'));
+              console.log(startHour);
 
-              if (name != 'Working for yourself') {
-                var fontSize = (Math.floor((mins) + 14)) + 'px';
-              }
-              else {
-                var fontsize = "inherit";
-              }          
+              var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';       
 
-              $('#output').append('<div class="item container-fluid"><div class="row"><div class="item-starttime-container col-xs-3 col-md-3"><span class="item-starttime"><strong>' + startTime + '</strong> - <br>' + finishtime + '</span></div><div class="item-details col-xs-9 col-md-9" style="font-size: ' + fontSize +';"><div class="item-name">' + name + '</div>' + durationDiv + "</div></div></div></div>");
+              var rowHeight = Math.floor(mins * 16);
+              if (rowHeight > 450){ rowHeight = 450; }
+
+              $('#output').append('<div class="item hour-' + startHour +'" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
               startTime = finishtime;
 
             });
           });
+
+          $('#output').prepend('<div class="item" id="start"><i class="fa fa-sun-o"></i> <strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><i class="fa fa-moon-o"></i> <strong>5pm</strong> - End of the workday</div>');
+
         }
 
       });
@@ -99,22 +112,43 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="clock.css">
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>2016</h1>
+      <h2>Tax Clock</h2>
+      <h3><span class="h3-inner">How much of your day do you spend working for the government?</span></h3>
+    </div>
+  </div>
 
   <div class="calculator">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <div id="input">
-            Your annual income before tax:
-            <div class="input-group input-group-lg">
-              <span class="input-group-addon">R</span>
-              <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+          <div id="input-wrapper">
+            <div id="input">
+              <h4><i class="fa fa-money fa-lg"></i> What is your annual income (before tax)?</h4>
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">R</span>
+                <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+              </div>
             </div>
           </div>
-          <div id="output"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div id="output-wrapper">
+            <div id="output">
+              <div class="item" id="instruction">Enter your annual income above</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -2,13 +2,45 @@
 
 // Bootstrap variable overrides
 
+//== Colors
+
+$teal: #088;
+$beige: #f0ead6;
+$gold: #EEC900;
+$gold-dark: darken($gold, 20%);
+$red: #ad0000;
+$yellow: #fcdc23;
+$orange: #f7941d;
+$blue: #0054a6;
+
+$black: #000;
+$white: #fff;
+
+$gray-base: #000 !default;
+$gray-darker: lighten($gray-base, 13.5%) !default;
+$gray-dark: lighten($gray-base, 20%) !default;
+$gray: lighten($gray-base, 33.5%) !default;
+$gray-light: lighten($gray-base, 46.7%) !default;
+$gray-lighter: lighten($gray-base, 93.5%) !default;
+
+
+//== Scaffolding
+$body-bg: $beige !default;
+$text-color: $black !default;
+
 //== Typography
 
-@import url(https://fonts.googleapis.com/css?family=Rubik:500,700,900);
-$font-family-sans-serif: "Rubik", Helvetica, Arial, sans-serif !default;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+$font-family-sans-serif: "Montserrat", Helvetica, Arial, sans-serif !default;
+
 $font-family-base: $font-family-sans-serif !default;
 
+$font-size-base: 16px !default;
 $line-height-base: 1 !default;
+
+//== Jumbotron 
+$jumbotron-bg: $teal !default;
+$jumbotron-padding: 40px !default;
 
 //=====
 
@@ -25,43 +57,145 @@ strong {
   font-weight: 900;
 }
 
+//== Body
+body {
+  background-image: url("bg-linedpaper.png");
+}
+
+//== Jumbotron
+.jumbotron {
+  background-image: url('bg-diagonal.png');
+  text-align: center;
+  border-bottom: solid 5px rgba(0,0,0,0.1);
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  .container {
+    background-image: url('gold-clock.png');
+    background-repeat: no-repeat;
+    background-position: 50% 65%;
+    padding-top: $jumbotron-padding;
+    padding-bottom: $jumbotron-padding;
+  }
+  h1 {
+    color: $gold;
+    font-size: 80px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  h2 {
+    color: $gold;
+    font-size: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+  h3 {
+    margin-top: 15px;
+    color: $white;;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 160%;
+    .h3-inner {
+      display: inline-block;
+      background-color: rgba(0,0,0,0.5);
+      padding: 2px 5px;
+    }
+  }
+}
+
 //== Input
+
+#input-wrapper {
+  margin: 20px 0;
+  padding: 5px;
+  background-image: url("bg-linedpaper.png");
+  background-color: $white;
+  background-color: rgba(255,255,255,0.9);
+}
+
 #input {
-  margin-bottom: 10px;
+  border: solid 3px $teal;
+  padding: 15px;
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 0;
+    i {
+      color: $gold-dark;
+    }
+  }
 }
 
 //== Output
 
-.item {
-  border-bottom: solid 1px #ccc;
+#output-wrapper {
+  background-image: url("bg-linedpaper.png");
+  background-color: $white;
+  background-color: rgba(255,255,255,0.9);
   padding: 5px;
-  .item-starttime-container {
-    text-align: center;
+  margin-bottom: 15px;
+}
+#output {
+  border: solid 2px $gray-light;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.item {
+  position: relative;
+  background-image: url("bg-linedpaper.png");
+  background-color: $white;
+  border-bottom: solid 1px $gray-light;
+  padding: 10px;
+  .item-starttime-wrapper {
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    width: 75px;
   }
   .item-starttime {
-    display: inline-block;
-    padding: 5px;
-    background-color: #ccc;
-    line-height: 100%;
-    font-size: 14px;
-    line-height: 140%;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 2px 4px;
+    background-color: $teal;
+    color: $white;
+    width: 70px;
+    text-align: center;
   }
   .item-details {
-    display: inline-block;
+    margin-left: 75px;
   }
   .item-name {
+    display: inline;
+    font-size: 20px;
+    margin-right: 10px;
   }
   .item-duration {
+    display: inline-block;
+    color: $gold-dark;
     font-weight: bold;
-    font-size: 70%;
-  }
-  &:first-child {
-    background-color: #eee;
-    .item-details {
-      font-size: 38px;
-    }
+    font-size: 14px;
   }
   &:last-child {
     border-bottom: 0;
+  }
+  &#start, &#end, &#instruction {
+    color: $gray-dark;
+    color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.1);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 80%;
+    letter-spacing: 2px;
+  }
+  &#start {
+    background-color: $yellow;
+  }
+  &#end {
+    background-color: $blue;
+    color: $white;
+    color: rgba(255,255,255,0.7);
   }
 }
