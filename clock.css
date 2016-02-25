@@ -5927,3 +5927,6 @@ body {
     background-color: #0054a6;
     color: #fff;
     color: rgba(255, 255, 255, 0.7); }
+
+.item-small .item-name {
+  font-size: 14px; }

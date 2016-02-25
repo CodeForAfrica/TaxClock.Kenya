@@ -91,10 +91,14 @@
 
               var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';       
 
-              var rowHeight = Math.floor(mins * 16);
+              var rowHeight = Math.floor(mins * 14);
               if (rowHeight > 450){ rowHeight = 450; }
 
-              $('#output').append('<div class="item hour-' + startHour +'" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
+              'Add a class for small items (under 5 minutes)'
+              var smallClass = "";
+              if (minutes < 5){ smallClass= " item-small"; }
+
+              $('#output').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
               startTime = finishtime;
 
