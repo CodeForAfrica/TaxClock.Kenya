@@ -33,6 +33,10 @@ $text-color: $black !default;
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 $font-family-sans-serif: "Montserrat", Helvetica, Arial, sans-serif !default;
 
+//@import url(https://fonts.googleapis.com/css?family=Lora:700,700italic,400italic,400);
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,400italic,700);
+$font-family-serif: "Bitter", serif !default;
+
 $font-family-base: $font-family-sans-serif !default;
 
 $font-size-base: 16px !default;
@@ -78,7 +82,7 @@ body {
     padding-bottom: $jumbotron-padding;
   }
   h1 {
-    color: $gold;
+    color: $white;
     font-size: 80px;
     font-weight: bold;
     text-transform: uppercase;
@@ -132,15 +136,50 @@ body {
 //== Output
 
 #output-wrapper {
+  display: none;
   background-image: url("bg-linedpaper.png");
   background-color: $white;
   background-color: rgba(255,255,255,0.9);
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 15px;
+  h4 {
+    font-family: $font-family-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: $teal;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 }
-#output {
-  border: solid 2px $gray-light;
+
+#clock {
+  margin: 10px 0;
+}
+
+#output-clock{
+  text-align: center;
+  #clock-now {
+    font-size: 52px;
+    text-transform: uppercase;
+  }
+}
+
+#output-dayplanner {
+  border: solid 2px $gray-dark;
   background-color: rgba(255,255,255,0.5);
+}
+
+.explanation {
+  background-color: $white;
+  background-color: rgba(255,255,255,0.6);
+  font-family: $font-family-serif;
+  color: $gold-dark;
+  padding: 13px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  border: solid 2px $gold;
+  text-align: justify;
 }
 
 .item {

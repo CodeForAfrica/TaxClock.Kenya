@@ -36,16 +36,17 @@
     }
 
     $(function() {
+
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
         var output = calc.calculateIncomeBreakdown(income);
 
         /* Clear output */
-        $('#output').html('<div class="item" id="instruction">Enter your annual income above</div>');
+        $('#output-wrapper').hide();
 
         if (income > 0){
-          $('#output').html('');
+          $('#output-dayplanner').html('');
           var startTime = '9:00 am';
           $(output.breakdown).each(function(){
             var breakdown = this;
@@ -87,7 +88,6 @@
               }
 
               var startHour = startTime.substr(0, startTime.indexOf(':'));
-              console.log(startHour);
 
               var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';       
 
@@ -98,15 +98,43 @@
               var smallClass = "";
               if (minutes < 5){ smallClass= " item-small"; }
 
-              $('#output').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
+              $('#output-dayplanner').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
               startTime = finishtime;
 
             });
           });
 
-          $('#output').prepend('<div class="item" id="start"><i class="fa fa-sun-o"></i> <strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><i class="fa fa-moon-o"></i> <strong>5pm</strong> - End of the workday</div>');
+          $('#output-dayplanner').prepend('<div class="item" id="start"><i class="fa fa-sun-o"></i> <strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><i class="fa fa-moon-o"></i> <strong>5pm</strong> - End of the workday</div>');
 
+          /* function to format time */
+          function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+          }
+
+          /* update clock */
+          $(function(){
+            setInterval(function(){
+
+              var d=formatAMPM(new Date());
+              var timeString=d.toString();
+              $('#clock-now').html(timeString);
+
+              timeHour = timeString.substr(0, timeString.indexOf(':'));
+              timeMinutes = timeString.substr(2, timeString.indexOf(' ')-2);
+
+            },1000);
+          });           
+
+          /* Show the output */
+          $('#output-wrapper').show();
         }
 
       });
@@ -149,8 +177,22 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div id="output-wrapper">
-            <div id="output">
-              <div class="item" id="instruction">Enter your annual income above</div>
+            <div class="explanation">
+              <i>Imagine</i> you spent the beginning of your workday <strong>earning the money you'll pay towards tax</strong>, with the first few minutes going towards <i>government debts</i>, and the rest towards <i>government programmes from biggest to smallest</i>.
+            </div>
+            <div id="clock">
+              <div id="output-clock">
+                <h4>Right now</h4>
+                <div id="clock-now"></div>
+                <h4>Your working on:</h4>
+                <div id="clock-item">?</div>
+                <h4>Next up:</h4>
+                <div id="clock-next">? (? mins)</div>
+              </div>
+            </div>
+            <div id="dayplanner">
+              <h4>Your work schedule today would look like this:</h4>
+              <div id="output-dayplanner"></div>
             </div>
           </div>
         </div>

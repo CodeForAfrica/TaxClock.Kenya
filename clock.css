@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,400italic,700);
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5830,7 +5831,7 @@ body {
     padding-top: 40px;
     padding-bottom: 40px; }
   .jumbotron h1 {
-    color: #EEC900;
+    color: #fff;
     font-size: 80px;
     font-weight: bold;
     text-transform: uppercase;
@@ -5871,15 +5872,44 @@ body {
       color: #887300; }
 
 #output-wrapper {
+  display: none;
   background-image: url("bg-linedpaper.png");
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 15px; }
+  #output-wrapper h4 {
+    font-family: "Bitter", serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #088;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
 
-#output {
-  border: solid 2px #777777;
+#clock {
+  margin: 10px 0; }
+
+#output-clock {
+  text-align: center; }
+  #output-clock #clock-now {
+    font-size: 52px;
+    text-transform: uppercase; }
+
+#output-dayplanner {
+  border: solid 2px #333333;
   background-color: rgba(255, 255, 255, 0.5); }
+
+.explanation {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-family: "Bitter", serif;
+  color: #887300;
+  padding: 13px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  border: solid 2px #EEC900;
+  text-align: justify; }
 
 .item {
   position: relative;
