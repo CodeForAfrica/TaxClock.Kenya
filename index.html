@@ -35,19 +35,44 @@
       return seconds;
     }
 
+    function workingOn(now, items) {
+      // of the items in items, what is being worked on now?
+      var current = 0, next;
+
+      // sort by end time
+      items = _.sortBy(items, function(x) { return x.valueOf(); });
+
+      for (var i = 0; i < items.length; i++) {
+        if (now.isBefore(items[i].finish_time)) {
+          current = i;
+          break;
+        }
+      }
+
+      if (current < items.length) {
+        next = items[current+1];
+      }
+      current = items[current];
+
+      return [current, next];
+    }
+
     $(function() {
+      var firstLoop = true;
+      var output;
 
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
-        var output = calc.calculateIncomeBreakdown(income);
+        output = calc.calculateIncomeBreakdown(income);
 
         /* Clear output */
         $('#output-wrapper').hide();
 
         if (income > 0){
           $('#output-dayplanner').html('');
-          var startTime = '9:00 am';
+          var startTime = calc.START_OF_DAY.format('h:mm a');
+
           $(output.breakdown).each(function(){
             var breakdown = this;
             $(breakdown).each(function(){
@@ -101,37 +126,31 @@
               $('#output-dayplanner').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
               startTime = finishtime;
-
             });
           });
 
           $('#output-dayplanner').prepend('<div class="item" id="start"><i class="fa fa-sun-o"></i> <strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><i class="fa fa-moon-o"></i> <strong>5pm</strong> - End of the workday</div>');
 
-          /* function to format time */
-          function formatAMPM(date) {
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            minutes = minutes < 10 ? '0'+minutes : minutes;
-            var strTime = hours + ':' + minutes + ' ' + ampm;
-            return strTime;
-          }
-
           /* update clock */
-          $(function(){
-            setInterval(function(){
+          function tick() {
+            var now = moment();
+            $('#clock-now').text(now.format('h:mm a'));
 
-              var d=formatAMPM(new Date());
-              var timeString=d.toString();
-              $('#clock-now').html(timeString);
+            // current and next work items
+            var pair = workingOn(now, output.breakdown);
 
-              timeHour = timeString.substr(0, timeString.indexOf(':'));
-              timeMinutes = timeString.substr(2, timeString.indexOf(' ')-2);
+            $('#clock-item').text(pair[0].name);
+            $('#clock-next').text(pair[1] ? pair[1].name : 'End of the workday');
+          };
 
-            },1000);
-          });           
+          // update it now
+          tick();
+
+          if (firstLoop) {
+            // update it every 1 second
+            setInterval(tick, 1000);
+            firstLoop = false;
+          }
 
           /* Show the output */
           $('#output-wrapper').show();
@@ -178,13 +197,13 @@
         <div class="col-md-6 col-md-offset-3">
           <div id="output-wrapper">
             <div class="explanation">
-              <i>Imagine</i> you spent the beginning of your workday <strong>earning the money you'll pay towards tax</strong>, with the first few minutes going towards <i>government debts</i>, and the rest towards <i>government programmes from biggest to smallest</i>.
+              <i>Imagine</i> you spend the beginning of your workday <strong>earning the money you'll pay towards tax</strong>, with the first few minutes going towards <i>government debts</i>, and the rest towards <i>government programmes from biggest to smallest</i>.
             </div>
             <div id="clock">
               <div id="output-clock">
                 <h4>Right now</h4>
                 <div id="clock-now"></div>
-                <h4>Your working on:</h4>
+                <h4>You're working on:</h4>
                 <div id="clock-item">?</div>
                 <h4>Next up:</h4>
                 <div id="clock-next">? (? mins)</div>
