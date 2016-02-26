@@ -106,11 +106,23 @@
                 var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
               }
 
+              if (hours == 1) {
+                var hoursString = '<span class="item-hours">' + hours + ' hours </span>';
+              }
+
               if (minutes > 0) {
                 var minutesString = '<span class="item-minutes">' + minutes + ' minutes </span>';
               }
 
+              if (minutes == 1) {
+                var minutesString = '<span class="item-minutes">' + minutes + ' minute </span>';
+              }
+
               if (seconds > 0) {
+                var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
+              }
+
+              if (seconds == 1) {
                 var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
               }
 
