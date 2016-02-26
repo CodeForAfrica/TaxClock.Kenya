@@ -57,188 +57,252 @@ $jumbotron-padding: 40px !default;
 
 //== Scaffolding
 
-strong {
-  font-weight: 900;
+html, body {
+	height: 100%;
 }
 
-//== Body
+strong {
+	font-weight: 900;
+}
+
 body {
-  background-image: url("bg-linedpaper.png");
+	background-image: url("bg-linedpaper.png");
 }
 
 //== Jumbotron
 .jumbotron {
-  background-image: url('bg-diagonal.png');
-  text-align: center;
-  border-bottom: solid 5px rgba(0,0,0,0.1);
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  .container {
-    background-image: url('gold-clock.png');
-    background-repeat: no-repeat;
-    background-position: 50% 65%;
-    padding-top: $jumbotron-padding;
-    padding-bottom: $jumbotron-padding;
-  }
-  h1 {
-    color: $white;
-    font-size: 80px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-  }
-  h2 {
-    color: $gold;
-    font-size: 34px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 0;
-  }
-  h3 {
-    margin-top: 15px;
-    color: $white;;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 160%;
-    .h3-inner {
-      display: inline-block;
-      background-color: rgba(0,0,0,0.5);
-      padding: 2px 5px;
-    }
-  }
+	background-image: url('bg-diagonal.png');
+	text-align: center;
+	border-bottom: solid 5px rgba(0,0,0,0.1);
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	.container {
+		background-image: url('gold-clock.png');
+		background-repeat: no-repeat;
+		background-position: 50% 65%;
+		padding-top: $jumbotron-padding;
+		padding-bottom: $jumbotron-padding;
+	}
+	h1 {
+		color: $white;
+		font-size: 80px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin: 0;
+	}
+	h2 {
+		color: $gold;
+		font-size: 34px;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-top: 0;
+	}
+	h3 {
+		margin-top: 15px;
+		color: $white;;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 160%;
+		.h3-inner {
+			display: inline-block;
+			background-color: rgba(0,0,0,0.5);
+			padding: 2px 5px;
+		}
+	}
 }
 
 //== Input
 
 #input-wrapper {
-  margin: 20px 0;
-  padding: 5px;
-  background-image: url("bg-linedpaper.png");
-  background-color: $white;
-  background-color: rgba(255,255,255,0.9);
+	margin: 20px 0;
+	padding: 10px;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	background-color: rgba(255,255,255,0.9);
 }
 
 #input {
-  border: solid 3px $teal;
-  padding: 15px;
-  h4 {
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-top: 0;
-    i {
-      color: $gold-dark;
-    }
-  }
+	border: solid 3px $teal;
+	padding: 15px;
+	h4 {
+		text-align: left;
+		font-size: 18px;
+		letter-spacing: 1px;
+		margin-top: 0;
+		line-height: 1.4;
+		i {
+			color: $gold-dark;
+		}
+	}
+	.icon {
+		text-align: center;
+	}
 }
 
 //== Output
 
 #output-wrapper {
-  display: none;
-  background-image: url("bg-linedpaper.png");
-  background-color: $white;
-  background-color: rgba(255,255,255,0.9);
-  padding: 10px;
-  margin-bottom: 15px;
-  h4 {
-    font-family: $font-family-serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: $teal;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+	display: none;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	background-color: rgba(255,255,255,0.9);
+	padding: 10px;
+	margin-bottom: 20px;
+	h4 {
+		font-family: $font-family-serif;
+		font-size: 15px;
+		font-weight: bold;
+		color: $teal;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
 }
 
 #clock {
-  margin: 10px 0;
+	margin: 15px 0;
+	border: solid 1px $teal;
+	padding: 15px;
 }
 
 #output-clock{
-  text-align: center;
-  #clock-now {
-    font-size: 52px;
-    text-transform: uppercase;
-  }
+	text-align: center;
+	#right-now {
+		color: $gold-dark;
+		font-size: 17px;
+		margin-top: 0;
+	}
+	#clock-now {
+		font-size: 48px;
+		text-transform: uppercase;
+	}
+	#working-on {
+		margin-bottom: 3px;
+	}
+	#clock-item {
+		font-size: 24px;
+		margin-bottom: 15px;
+	}
+	#clock-next-wrapper {
+		h4, #clock-next {
+			display: inline-block;
+			font-size: 12px;
+		}
+		h4 {
+			color: $gray-light;
+		}
+		#clock-next {
+			padding: 5px;
+			background-color: $gray-light;
+			color: $white;
+		}
+	}
+}
+
+#dayplanner {
+	h4 {
+		margin-top: 15px;
+		margin-bottom: 10px;
+	}
 }
 
 #output-dayplanner {
-  border: solid 2px $gray-dark;
-  background-color: rgba(255,255,255,0.5);
+	border: solid 2px $gray-dark;
+	background-color: rgba(255,255,255,0.5);
 }
 
 .explanation {
-  background-color: $white;
-  background-color: rgba(255,255,255,0.6);
-  font-family: $font-family-serif;
-  color: $gold-dark;
-  padding: 13px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-  border: solid 2px $gold;
-  text-align: justify;
+	background-color: $white;
+	background-color: rgba(255,255,255,0.6);
+	font-family: $font-family-serif;
+	color: $gold-dark;
+	padding: 13px;
+	line-height: 1.4;
+	margin-bottom: 10px;
+	border: solid 2px $gold;
+	text-align: justify;
+	.icon {
+		text-align: center;
+	}
 }
 
 .item {
-  position: relative;
-  background-image: url("bg-linedpaper.png");
-  background-color: $white;
-  border-bottom: solid 1px $gray-light;
-  padding: 10px;
-  .item-starttime-wrapper {
-    position: absolute;
-    left: 7px;
-    top: 12px;
-    width: 75px;
-  }
-  .item-starttime {
-    font-weight: bold;
-    font-size: 12px;
-    padding: 2px 4px;
-    background-color: $teal;
-    color: $white;
-    width: 70px;
-    text-align: center;
-  }
-  .item-details {
-    margin-left: 75px;
-  }
-  .item-name {
-    display: inline;
-    font-size: 20px;
-    margin-right: 10px;
-  }
-  .item-duration {
-    display: inline-block;
-    color: $gold-dark;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  &:last-child {
-    border-bottom: 0;
-  }
-  &#start, &#end, &#instruction {
-    color: $gray-dark;
-    color: rgba(0,0,0,0.7);
-    background-color: rgba(0,0,0,0.1);
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 80%;
-    letter-spacing: 2px;
-  }
-  &#start {
-    background-color: $yellow;
-  }
-  &#end {
-    background-color: $blue;
-    color: $white;
-    color: rgba(255,255,255,0.7);
-  }
+	position: relative;
+	background-image: url("bg-linedpaper.png");
+	background-color: $white;
+	border-bottom: solid 1px $gray-light;
+	padding: 10px;
+	.item-starttime-wrapper {
+		position: absolute;
+		left: 7px;
+		top: 12px;
+		width: 75px;
+	}
+	.item-starttime {
+		font-weight: bold;
+		font-size: 12px;
+		padding: 2px 4px;
+		background-color: $teal;
+		color: $white;
+		width: 70px;
+		text-align: center;
+	}
+	.item-details {
+		margin-left: 75px;
+	}
+	.item-name {
+		display: inline;
+		font-size: 20px;
+		margin-right: 10px;
+	}
+	.item-duration {
+		display: inline-block;
+		color: $gold-dark;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	&:last-child {
+		border-bottom: 0;
+	}
+	&#start, &#end, &#instruction {
+		color: $gray-dark;
+		color: rgba(0,0,0,0.7);
+		background-color: rgba(0,0,0,0.1);
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 80%;
+		letter-spacing: 2px;
+	}
+	&#start {
+		background-color: $yellow;
+	}
+	&#end {
+		background-color: $blue;
+		color: $white;
+		color: rgba(255,255,255,0.7);
+	}
 }
 
 .item-small .item-name{
-  font-size: 14px;
+	font-size: 14px;
+}
+
+//== Footer
+
+.footer {
+	background-color: $white;
+	color: $gray;
+	font-size: 12px;
+	padding: 15px;
+	line-height: 1.2;
+	.credits {
+		img {
+		max-height: 40px;
+		padding: 5px;
+		margin: 5px;
+		background-color: $white;
+		border-radius: 5px;
+		}
+	}
 }

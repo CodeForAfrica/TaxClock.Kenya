@@ -184,10 +184,19 @@
         <div class="col-md-6 col-md-offset-3">
           <div id="input-wrapper">
             <div id="input">
-              <h4><i class="fa fa-money fa-lg"></i> What is your annual income (before tax)?</h4>
-              <div class="input-group input-group-lg">
-                <span class="input-group-addon">R</span>
-                <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-4 col-xs-8 col-xs-offset-2 col-sm-offset-0 icon">
+                    <img src="icon-income.png" class="img-responsive">
+                  </div>
+                  <div class="col-sm-8 col-xs-12">
+                  <h4>What is your <strong>annual income</strong> (before tax)?</h4>
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon">R</span>
+                      <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -197,16 +206,27 @@
         <div class="col-md-6 col-md-offset-3">
           <div id="output-wrapper">
             <div class="explanation">
-              <i>Imagine</i> you spend the beginning of your workday <strong>earning the money you'll pay towards tax</strong>, with the first few minutes going towards <i>government debts</i>, and the rest towards <i>government programmes from biggest to smallest</i>.
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-4 col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-push-8 icon">
+                    <img src="icon-diary.png" class="img-responsive">
+                  </div>
+                  <div class="col-sm-8 col-xs-12  col-sm-pull-4">
+                    <i>Imagine</i> you spend the beginning of your workday <strong>earning the money you'll pay towards tax</strong>, with the first few minutes going towards <i>government debts</i>, and the rest towards <i>government programmes from biggest to smallest</i>.
+                  </div>
+                </div>
+              </div>
             </div>
             <div id="clock">
               <div id="output-clock">
-                <h4>Right now</h4>
+                <h4 id="right-now">Right now</h4>
                 <div id="clock-now"></div>
-                <h4>You're working on:</h4>
+                <h4 id="working-on">You're working on:</h4>
                 <div id="clock-item">?</div>
-                <h4>Next up:</h4>
-                <div id="clock-next">? (? mins)</div>
+                <div id="clock-next-wrapper">
+                  <h4>Next up:</h4>
+                  <div id="clock-next"></div>
+                </div>
               </div>
             </div>
             <div id="dayplanner">
@@ -218,6 +238,14 @@
       </div>
     </div>
   </div>
+
+<div class="footer">
+  <div class="container">
+    <div class="credits">A project by <a href="http://academy.code4sa.org" target="_blank"><img src="logo_academy.png"></a></div>
+    <div class="registrations">Code for South Africa is a non-profit organisation registered with the South African Department of Social Development.</div>
+    <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
+  </div>
+</div>
 
 </body>
 

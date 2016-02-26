@@ -5811,6 +5811,9 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+html, body {
+  height: 100%; }
+
 strong {
   font-weight: 900; }
 
@@ -5855,7 +5858,7 @@ body {
 
 #input-wrapper {
   margin: 20px 0;
-  padding: 5px;
+  padding: 10px;
   background-image: url("bg-linedpaper.png");
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9); }
@@ -5864,12 +5867,15 @@ body {
   border: solid 3px #088;
   padding: 15px; }
   #input h4 {
+    text-align: left;
     font-size: 18px;
-    font-weight: bold;
     letter-spacing: 1px;
-    margin-top: 0; }
+    margin-top: 0;
+    line-height: 1.4; }
     #input h4 i {
       color: #887300; }
+  #input .icon {
+    text-align: center; }
 
 #output-wrapper {
   display: none;
@@ -5877,10 +5883,10 @@ body {
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
-  margin-bottom: 15px; }
+  margin-bottom: 20px; }
   #output-wrapper h4 {
     font-family: "Bitter", serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     color: #088;
     text-align: center;
@@ -5888,13 +5894,37 @@ body {
     letter-spacing: 1px; }
 
 #clock {
-  margin: 10px 0; }
+  margin: 15px 0;
+  border: solid 1px #088;
+  padding: 15px; }
 
 #output-clock {
   text-align: center; }
+  #output-clock #right-now {
+    color: #887300;
+    font-size: 17px;
+    margin-top: 0; }
   #output-clock #clock-now {
-    font-size: 52px;
+    font-size: 48px;
     text-transform: uppercase; }
+  #output-clock #working-on {
+    margin-bottom: 3px; }
+  #output-clock #clock-item {
+    font-size: 24px;
+    margin-bottom: 15px; }
+  #output-clock #clock-next-wrapper h4, #output-clock #clock-next-wrapper #clock-next {
+    display: inline-block;
+    font-size: 12px; }
+  #output-clock #clock-next-wrapper h4 {
+    color: #777777; }
+  #output-clock #clock-next-wrapper #clock-next {
+    padding: 5px;
+    background-color: #777777;
+    color: #fff; }
+
+#dayplanner h4 {
+  margin-top: 15px;
+  margin-bottom: 10px; }
 
 #output-dayplanner {
   border: solid 2px #333333;
@@ -5910,6 +5940,8 @@ body {
   margin-bottom: 10px;
   border: solid 2px #EEC900;
   text-align: justify; }
+  .explanation .icon {
+    text-align: center; }
 
 .item {
   position: relative;
@@ -5960,3 +5992,16 @@ body {
 
 .item-small .item-name {
   font-size: 14px; }
+
+.footer {
+  background-color: #fff;
+  color: #555555;
+  font-size: 12px;
+  padding: 15px;
+  line-height: 1.2; }
+  .footer .credits img {
+    max-height: 40px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 5px; }
