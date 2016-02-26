@@ -112,6 +112,8 @@
                 var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
               }
 
+              var startHour = startTime.substr(0, startTime.indexOf(':'));
+
               var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';       
 
               var rowHeight = Math.floor(mins * 14);
@@ -121,7 +123,7 @@
               var smallClass = "";
               if (minutes < 5){ smallClass= " item-small"; }
 
-              $('#output-dayplanner').append('<div class="item hour-' + calc.START_OF_DAY.hour() + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
+              $('#output-dayplanner').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
               startTime = finishtime;
             });
