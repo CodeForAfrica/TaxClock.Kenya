@@ -10,6 +10,7 @@
   <script src="underscore-min.js"></script>
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
+  <script src="pym.js"></script>
 
   <script>
 
@@ -67,6 +68,7 @@
     $(function() {
       var firstLoop = true;
       var output;
+      var pymChild = new pym.Child();
 
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
@@ -179,6 +181,9 @@
 
           /* Show the output */
           $('#output-wrapper').show();
+
+          // tell pym to resize
+          pymChild.sendHeight();
         }
 
       });
