@@ -67,6 +67,7 @@ var IncomeCalculator = function() {
 
   this.WORKDAY_HOURS = 8;
   this.WORKDAY_MINS = this.WORKDAY_HOURS * 60;
+  this.END_OF_DAY = this.START_OF_DAY.clone().add(this.WORKDAY_MINS, 'minutes');
 
   this.calculateIncomeBreakdown = function(income) {
     var info = {};

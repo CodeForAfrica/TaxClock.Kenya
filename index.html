@@ -37,7 +37,7 @@
       return seconds;
     }
 
-    function workingOn(now, items) {
+    function workingOn(now, items, endOfDay) {
       // of the items in items, what is being worked on now?
       var current = 0, next;
 
@@ -55,6 +55,11 @@
         next = items[current+1];
       }
       current = items[current];
+
+      if (now.isAfter(endOfDay)) {
+        next = current;
+        current = null;
+      }
 
       return [current, next];
     }
@@ -151,9 +156,15 @@
             $('#clock-now').text(now.format('h:mm a'));
 
             // current and next work items
-            var pair = workingOn(now, output.breakdown);
+            var pair = workingOn(now, output.breakdown, calc.END_OF_DAY);
 
-            $('#clock-item').text(pair[0].name);
+            if (pair[0]) {
+              $('#working-on').show();
+              $('#clock-item').show().text(pair[0].name);
+            } else {
+              $('#clock-item, #working-on').hide();
+            }
+
             $('#clock-next').text(pair[1] ? pair[1].name : 'End of the workday');
           };
 
