@@ -5993,6 +5993,13 @@ body {
 .item-small .item-name {
   font-size: 14px; }
 
+.footnotes {
+  color: #333333;
+  margin-bottom: 15px; }
+  .footnotes h6 {
+    font-size: 11px;
+    margin-top: 0; }
+
 .footer {
   background-color: #fff;
   color: #555555;

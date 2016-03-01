@@ -295,6 +295,16 @@ body {
 	font-size: 14px;
 }
 
+//== Footnotes
+.footnotes {
+	color: $gray-dark;
+	margin-bottom: 15px;
+	h6 {
+		font-size: 11px;
+		margin-top: 0;
+	}
+}
+
 //== Footer
 
 .footer {
