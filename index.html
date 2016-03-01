@@ -38,7 +38,7 @@
       return seconds;
     }
 
-    function workingOn(now, items, endOfDay) {
+    function workingOn(now, items, calc) {
       // of the items in items, what is being worked on now?
       var current = 0, next;
 
@@ -57,7 +57,7 @@
       }
       current = items[current];
 
-      if (now.isAfter(endOfDay)) {
+      if (now.isBefore(calc.START_OF_DAY) || now.isAfter(calc.END_OF_DAY)) {
         next = current;
         current = null;
       }
@@ -158,7 +158,7 @@
             $('#clock-now').text(now.format('h:mm a'));
 
             // current and next work items
-            var pair = workingOn(now, output.breakdown, calc.END_OF_DAY);
+            var pair = workingOn(now, output.breakdown, calc);
 
             if (pair[0]) {
               $('#working-on').show();
