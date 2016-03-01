@@ -5894,7 +5894,7 @@ body {
     letter-spacing: 1px; }
 
 #clock {
-  margin: 15px 0;
+  margin-bottom: 15px;
   border: solid 1px #088;
   padding: 15px; }
 
