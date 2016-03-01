@@ -25,15 +25,15 @@
 
     function GetHours(mins) {
       var hours = Math.floor( mins / 60);
-      return hours;         
+      return hours;
     }
 
-    function GetMinutes(mins) {      
+    function GetMinutes(mins) {
       var minutes = Math.floor(mins % 60);
       return minutes;
     }
 
-    function GetSeconds(mins) {      
+    function GetSeconds(mins) {
       var seconds = Math.floor((mins * 60) % 60);
       return seconds;
     }
@@ -135,7 +135,7 @@
 
               var startHour = startTime.substr(0, startTime.indexOf(':'));
 
-              var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';       
+              var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';
 
               var rowHeight = Math.floor(mins * 14);
               if (rowHeight > 450){ rowHeight = 450; }
@@ -183,7 +183,7 @@
           $('#output-wrapper').show();
 
           // tell pym to resize
-          //pymChild.sendHeight();
+          pymChild.sendHeight();
         }
 
       });
