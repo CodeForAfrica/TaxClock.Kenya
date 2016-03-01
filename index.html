@@ -68,7 +68,7 @@
     $(function() {
       var firstLoop = true;
       var output;
-      //var pymChild = new pym.Child();
+      var pymChild = new pym.Child({id: 'code4sa-embed-taxclock'});
 
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
