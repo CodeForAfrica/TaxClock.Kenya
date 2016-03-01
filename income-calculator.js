@@ -44,7 +44,7 @@ var IncomeCalculator = function() {
     'Human settlements & municipal infrastructure': 182631,
     'Agriculture, rural development & land reform': 26417,
     'Science, technology, innovation and the environment': 19886,
-    'General publc services': 73652,
+    'General public services': 73652,
     'Debt-service costs': 147720,
     'Unallocated reserves': 6000,
   };
