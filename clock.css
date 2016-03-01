@@ -5930,6 +5930,13 @@ body {
   border: solid 2px #333333;
   background-color: rgba(255, 255, 255, 0.5); }
 
+.explanation-wrapper {
+  margin-top: 20px;
+  padding: 10px;
+  background-image: url("bg-linedpaper.png");
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9); }
+
 .explanation {
   background-color: #fff;
   background-color: rgba(255, 255, 255, 0.6);
@@ -5937,7 +5944,6 @@ body {
   color: #887300;
   padding: 13px;
   line-height: 1.4;
-  margin-bottom: 10px;
   border: solid 2px #EEC900;
   text-align: justify; }
   .explanation .icon {
