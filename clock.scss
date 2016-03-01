@@ -23,7 +23,6 @@ $gray: lighten($gray-base, 33.5%) !default;
 $gray-light: lighten($gray-base, 46.7%) !default;
 $gray-lighter: lighten($gray-base, 93.5%) !default;
 
-
 //== Scaffolding
 $body-bg: $beige !default;
 $text-color: $black !default;
@@ -41,6 +40,14 @@ $font-family-base: $font-family-sans-serif !default;
 
 $font-size-base: 16px !default;
 $line-height-base: 1 !default;
+
+$font-size-h1: floor(($font-size-base * 2.6)) !default;
+$font-size-h2: floor(($font-size-base * 2.15)) !default;
+$font-size-h3: ceil(($font-size-base * 1.7)) !default;
+$font-size-h4: ceil(($font-size-base * 1.25)) !default;
+$font-size-h5: $font-size-base !default;
+$font-size-h6: 12px;
+
 
 //== Jumbotron 
 $jumbotron-bg: $teal !default;
