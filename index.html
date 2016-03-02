@@ -68,11 +68,23 @@
       return [current, next];
     }
 
+    function checkEmbedLink() {
+      if (window.location.search.indexOf('embed-link') > -1) {
+          allowEmbedLink();
+      }
+    }
+
+    function allowEmbedLink() {
+        $('.embed-link').addClass('allowed');
+    }
+
+    var pymChild;
+
     $(function() {
       var firstLoop = true;
       var output;
-      var pymChild = new pym.Child({id: 'code4sa-embed-taxclock'});
-
+      pymChild = new pym.Child({id: 'code4sa-embed-taxclock'});
+      checkEmbedLink();
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
@@ -215,6 +227,9 @@
 </head>
 
 <body>
+  <div class="embed-link">
+    <a href="embed.html" target="_blank">&lt;EMBED&gt;</a>
+  </div>
 
   <div class="jumbotron">
     <div class="container">

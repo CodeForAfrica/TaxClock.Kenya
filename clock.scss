@@ -49,7 +49,7 @@ $font-size-h5: $font-size-base !default;
 $font-size-h6: 12px;
 
 
-//== Jumbotron 
+//== Jumbotron
 $jumbotron-bg: $teal !default;
 $jumbotron-padding: 40px !default;
 
@@ -74,6 +74,20 @@ strong {
 
 body {
 	background-image: url("bg-linedpaper.png");
+}
+
+//== Embed Link
+.embed-link {
+    display: none;
+    position: absolute;
+    right: 0px;
+    padding: 5px
+}
+.embed-link a {
+    color: #e6e6e6;
+}
+body:hover .embed-link.allowed {
+    display: block
 }
 
 //== Jumbotron
