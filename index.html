@@ -196,6 +196,7 @@
 
           /* Show the output */
           $('#output-wrapper').show();
+          ga('send', 'event', 'taxclock', 'salary', $(this).val());
 
           // tell pym to resize
           pymChild.sendHeight();
