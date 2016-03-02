@@ -79,6 +79,7 @@
     }
 
     var pymChild;
+    var engaged = false;
 
     $(function() {
       var firstLoop = true;
@@ -197,6 +198,11 @@
           /* Show the output */
           $('#output-wrapper').show();
           ga('send', 'event', 'taxclock', 'salary', $(this).val());
+
+          if (!engaged) {
+            ga('send', 'event', 'taxclock', 'engaged');
+          }
+          engaged = true;
 
           // tell pym to resize
           pymChild.sendHeight();
