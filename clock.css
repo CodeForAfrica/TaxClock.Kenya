@@ -5820,6 +5820,18 @@ strong {
 body {
   background-image: url("bg-linedpaper.png"); }
 
+.embed-link {
+  display: none;
+  position: absolute;
+  right: 0px;
+  padding: 5px; }
+
+.embed-link a {
+  color: #e6e6e6; }
+
+body:hover .embed-link.allowed {
+  display: block; }
+
 .jumbotron {
   background-image: url("bg-diagonal.png");
   text-align: center;
