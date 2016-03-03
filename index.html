@@ -5,10 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta property="og:title" content="The 2016 Tax Clock" />
-  <meta property="og:description" content="It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent.​" />
+  <meta property="og:description" content="It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent." />
+  <meta property="og:image" content="https://static.code4sa.org/taxclock/preview.jpg" />
+  <meta property="og:url" content="https://static.code4sa.org/taxclock/index.html?show-embed-link=true" />
 
   <title>The 2016 Tax Clock - Code4SA Data Journalism Academy</title>
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <div class="embed-link">
+    <a href="embed.html" target="_blank">&lt;EMBED&gt;</a>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>2016</h1>
+      <h2>Tax Clock</h2>
+      <h3><span class="h3-inner">​How much of your work day is spent paying taxes?​</span></h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="explanation-wrapper">
+          <div class="explanation">
+            <strong>Did you know, you don’t just pay tax in Rands, but hours as well?</strong> Tax forms part of your total salary, which means that part of your 9-5 goes to government too. Enter your salary below to see how many hours you spend on government services and where your money may be going.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div id="input-wrapper">
+            <div id="input">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-4 col-xs-8 col-xs-offset-2 col-sm-offset-0 icon">
+                    <img src="icon-income.png" class="img-responsive">
+                  </div>
+                  <div class="col-sm-8 col-xs-12">
+                  <h4>What is your <strong>annual income*</strong> (before tax)?</h4>
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon">R</span>
+                      <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
+                    </div>
+                  <h6>* This should be your income <i>before</i> tax but <i>after</i> deductions such as pension and medical aid.</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div id="output-wrapper">
+            <div id="clock">
+              <div id="output-clock">
+                <h4 id="right-now">Right now</h4>
+                <div id="clock-now"></div>
+                <h4 id="working-on">You're working for:</h4>
+                <div id="clock-item">?</div>
+                <div id="clock-next-wrapper">
+                  <h4>Next up:</h4>
+                  <div id="clock-next"></div>
+                </div>
+              </div>
+            </div>
+            <div id="dayplanner">
+              <h4>Your work schedule today would look like this:</h4>
+              <div id="output-dayplanner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnotes">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-3">
+        <h6>Approximations are based on VAT and personal income tax as per the 2016 budget. VAT has been assumed at a level of 14% of disposable income.</h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="credits">A project by <a href="http://academy.code4sa.org" target="_blank"><img src="logo_academy.png"></a></div>
+      <div class="registrations">Code for South Africa is a non-profit organisation registered with the South African Department of Social Development.</div>
+      <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
+    </div>
+  </div>
   <script src="jquery-1.12.0.min.js"></script>
   <script src="underscore-min.js"></script>
   <script src="moment.js"></script>
@@ -227,102 +324,6 @@
     ga('create', 'UA-48399585-35', 'auto');
     ga('send', 'pageview');
   </script>
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-</head>
-
-<body>
-  <div class="embed-link">
-    <a href="embed.html" target="_blank">&lt;EMBED&gt;</a>
-  </div>
-
-  <div class="jumbotron">
-    <div class="container">
-      <h1>2016</h1>
-      <h2>Tax Clock</h2>
-      <h3><span class="h3-inner">​How much of your work day is spent paying taxes?​</span></h3>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="explanation-wrapper">
-          <div class="explanation">
-            <strong>Did you know, you don’t just pay tax in Rands, but hours as well?</strong> Tax forms part of your total salary, which means that part of your 9-5 goes to government too. Enter your salary below to see how many hours you spend on government services and where your money may be going.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="calculator">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div id="input-wrapper">
-            <div id="input">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-sm-4 col-xs-8 col-xs-offset-2 col-sm-offset-0 icon">
-                    <img src="icon-income.png" class="img-responsive">
-                  </div>
-                  <div class="col-sm-8 col-xs-12">
-                  <h4>What is your <strong>annual income*</strong> (before tax)?</h4>
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon">R</span>
-                      <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
-                    </div>
-                  <h6>* This should be your income <i>before</i> tax but <i>after</i> deductions such as pension and medical aid.</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div id="output-wrapper">
-            <div id="clock">
-              <div id="output-clock">
-                <h4 id="right-now">Right now</h4>
-                <div id="clock-now"></div>
-                <h4 id="working-on">You're working for:</h4>
-                <div id="clock-item">?</div>
-                <div id="clock-next-wrapper">
-                  <h4>Next up:</h4>
-                  <div id="clock-next"></div>
-                </div>
-              </div>
-            </div>
-            <div id="dayplanner">
-              <h4>Your work schedule today would look like this:</h4>
-              <div id="output-dayplanner"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footnotes">
-    <div class="container">
-      <div class="col-md-6 col-md-offset-3">
-        <h6>Approximations are based on VAT and personal income tax as per the 2016 budget. VAT has been assumed at a level of 14% of disposable income.</h6>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="container">
-      <div class="credits">A project by <a href="http://academy.code4sa.org" target="_blank"><img src="logo_academy.png"></a></div>
-      <div class="registrations">Code for South Africa is a non-profit organisation registered with the South African Department of Social Development.</div>
-      <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
-    </div>
-  </div>
 
 </body>
 
