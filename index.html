@@ -11,9 +11,6 @@
 
   <title>The 2016 Tax Clock - Code4SA Data Journalism Academy</title>
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
@@ -263,7 +260,7 @@
             });
           });
 
-          $('#output-dayplanner').prepend('<div class="item" id="start"><i class="fa fa-sun-o"></i> <strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><i class="fa fa-moon-o"></i> <strong>5pm</strong> - End of the workday</div>');
+          $('#output-dayplanner').prepend('<div class="item" id="start"><strong>9am</strong> - Start of the workday</div>').append('<div class="item" id="end"><strong>5pm</strong> - End of the workday</div>');
 
           /* update clock */
           function tick() {
