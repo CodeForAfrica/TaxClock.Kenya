@@ -52,7 +52,7 @@ var IncomeCalculator = function() {
   // override ordering
   this.ORDERING = {
     'Working for yourself': 9999,
-    'Debt-service costs': -1,
+    'National debt': -1,
   };
 
   // Total budget expenditure
