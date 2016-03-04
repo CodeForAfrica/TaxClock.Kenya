@@ -1,7 +1,7 @@
 var IncomeCalculator = function() {
   var self = this;
 
-  this.VAT = 0.14;
+  this.VAT = 0.16;
 
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
@@ -12,41 +12,54 @@ var IncomeCalculator = function() {
 
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.18, 0, 0, 188000),
-    new TaxBand(0.26, 33840, 188001, 293600),
-    new TaxBand(0.31, 61296, 293601, 406400),
-    new TaxBand(0.36, 96264, 406401, 550100),
-    new TaxBand(0.39, 147996, 550101, 701300),
-    new TaxBand(0.41, 206964, 701301)
+    new TaxBand(0.10, 0, 10165),
+    new TaxBand(0.15, 10166, 19741),
+    new TaxBand(0.20, 19742, 29317),
+    new TaxBand(0.25, 29318, 38893),
+    new TaxBand(0.30, 38895, 701300),
+
   ];
 
-  this.PRIMARY_REBATE = 13500;
+  this.PRIMARY_REBATE = 13,942;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 350;
-  this.VAT_REVENUE = 260.6;
+  this.PERSONAL_INCOME_TAX_REVENUE = 181.2;
+  this.VAT_REVENUE = 233.3;
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Basic education': 228803,
-    'Post-school education & training': 68715,
-    'Health': 168393,
-    'Social protection': 167479,
-    'Employment, labour affairs & social security funds': 73127,
-    'Industrial development, trade & innovation': 31844,
-    'Economic infrastructure & network regulation': 87105,
-    'Defense & state security': 52344,
-    'Law courts & prisons': 41667,
-    'Police services': 87508,
-    'Human settlements & municipal infrastructure': 182631,
-    'Agriculture, rural development & land reform': 26417,
-    'Science, technology, innovation and the environment': 19886,
-    'General public services': 73652,
-    'Debt-service costs': 147720,
-    'Unallocated reserves': 6000,
+    'Sports Culture and Arts':	3872439308,
+    'Gender and Equality Commission':	189250930,
+    'National Intelligence Service':	17440000000,
+    'Land Commission':	652338149,
+    'Police Service Commission':	278119240,
+    'Attorney General and Department of Justice':	3313661691,
+    'Director of Public Prosecutions':	1851781263,
+    'The Registrar of Political Parties':	466960949,
+    'Public Service Commission':	1107204313,
+    'Ministry of Agriculture':	29313170895,
+    'Ministry of Commerce and Tourism':	4335707394,
+    'Coordination of National Government':	16068487019,
+    'Ministry of Devolution':	6883149315,
+    'East African Affairs':	1683603767,
+    'Ministry of Education':	76499089457,
+    'Environment And Natural Resources':	47324583890,
+    'Ministry of Fisheries':	2133936665,
+    'Ministry of Livestock':	5533991128,
+    'Ministry of Planning':	66344404018,
+    'Science and Technology':	139851294456,
+    'Infrastructure':	123533528398,
+    'Interior':	83589379394,
+    'Transport':	45408464077,
+    'Salaries and Remuneration Commission':	340649493,
+    'Teachers Service Commission':	165613978668,
+    'ommission on Administrative Justice':	272485500,
+    'Commission on Revenue Allocation':	264815482,
+    'Presidency	':4249523597,
+    'Witness Protection Agency':	169675000,
   };
 
   // override ordering
@@ -100,7 +113,7 @@ var IncomeCalculator = function() {
 
     // time spent working for myself
     info.breakdown.push(this.workingForSelf(info));
-    
+
     // sort
     info.breakdown = _.sortBy(info.breakdown, function(b) {
       return self.ORDERING[b.name] || -b.fraction;
