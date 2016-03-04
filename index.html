@@ -175,6 +175,11 @@
         $('.embed-link').addClass('allowed');
     }
 
+    if (window != window.top) {
+      $('body').addClass('embedded');
+    } else {
+      $('body').addClass('standalone');
+    }
     var pymChild;
     var engaged = false;
 
