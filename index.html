@@ -274,10 +274,17 @@
             var pair = workingOn(now, output.breakdown, calc);
 
             if (pair[0]) {
-              $('#working-on').show();
+              $('#clock-next-wrapper, #working-on').show();
               $('#clock-item').show().text(pair[0].name);
             } else {
-              $('#clock-item, #working-on').hide();
+              $('#clock-next-wrapper, #working-on').hide();
+              $('#clock-item').text('Put your feet up, you deserve a break for your tax contributions.');
+              // show morning message (after 4 am)
+              var nowHour = parseInt(now.format('H'));
+              console.log(nowHour);
+              if (nowHour >= 4 && nowHour < 9) {
+                $('#clock-item').text('Brace yourself, you have a long day ahead of you.');
+              }
             }
 
             $('#clock-next').text(pair[1] ? pair[1].name : 'End of the workday');
