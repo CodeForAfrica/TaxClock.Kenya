@@ -1,6 +1,9 @@
 <html>
 <head>
 
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="clock.css">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -178,7 +181,7 @@
     $(function() {
       var firstLoop = true;
       var output;
-      pymChild = new pym.Child({id: 'code4sa-embed-taxclock'});
+      pymChild = new pym.Child({id: 'code4sa-embed-taxclock' });
       checkEmbedLink();
       $('.income').on('change keyup', function() {
         var income = parseFloat($(this).val());
@@ -300,6 +303,9 @@
 
           // tell pym to resize
           pymChild.sendHeight();
+        } else {
+          var footer = $('.footer');
+          pymChild.sendMessage("childShrank", footer.offset().top+footer.height());
         }
 
       });
@@ -307,9 +313,6 @@
       setInterval(function() { pymChild.sendHeight(); }, 1000);
     })
   </script>
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="clock.css">
 
   <!-- Google Analytics -->
   <script>
