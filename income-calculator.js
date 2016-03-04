@@ -1,7 +1,7 @@
 var IncomeCalculator = function() {
   var self = this;
 
-  this.VAT = 0.14;
+  this.VAT = 0.16;
 
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
@@ -12,12 +12,12 @@ var IncomeCalculator = function() {
 
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.18, 0, 0, 188000),
-    new TaxBand(0.26, 33840, 188001, 293600),
-    new TaxBand(0.31, 61296, 293601, 406400),
-    new TaxBand(0.36, 96264, 406401, 550100),
-    new TaxBand(0.39, 147996, 550101, 701300),
-    new TaxBand(0.41, 206964, 701301)
+    new TaxBand(0.10, 0, 10165),
+    new TaxBand(0.15, 10166, 19741),
+    new TaxBand(0.20, 19742, 29317),
+    new TaxBand(0.25, 29318, 38893),
+    new TaxBand(0.30, 38895, 701300),
+
   ];
 
   this.PRIMARY_REBATE = 13500;
@@ -100,7 +100,7 @@ var IncomeCalculator = function() {
 
     // time spent working for myself
     info.breakdown.push(this.workingForSelf(info));
-    
+
     // sort
     info.breakdown = _.sortBy(info.breakdown, function(b) {
       return self.ORDERING[b.name] || -b.fraction;
