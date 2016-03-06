@@ -23,8 +23,8 @@ var IncomeCalculator = function() {
   this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 181.2;
-  this.VAT_REVENUE = 233.3;
+  this.PERSONAL_INCOME_TAX_REVENUE = 15.1;
+  this.VAT_REVENUE = 19.4;
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
