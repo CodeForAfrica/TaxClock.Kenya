@@ -20,7 +20,7 @@ var IncomeCalculator = function() {
 
   ];
 
-  this.PRIMARY_REBATE = 13,942;  //tax relief to be confirmed
+  this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
 
   // Budget revenue streams from individuals (billions)
   this.PERSONAL_INCOME_TAX_REVENUE = 181.2;
@@ -31,35 +31,35 @@ var IncomeCalculator = function() {
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Sports Culture and Arts':	3872439308,
-    'Gender and Equality Commission':	189250930,
-    'National Intelligence Service':	17440000000,
-    'Land Commission':	652338149,
-    'Police Service Commission':	278119240,
-    'Attorney General and Department of Justice':	3313661691,
-    'Director of Public Prosecutions':	1851781263,
-    'The Registrar of Political Parties':	466960949,
-    'Public Service Commission':	1107204313,
-    'Ministry of Agriculture':	29313170895,
-    'Ministry of Commerce and Tourism':	4335707394,
-    'Coordination of National Government':	16068487019,
-    'Ministry of Devolution':	6883149315,
-    'East African Affairs':	1683603767,
-    'Ministry of Education':	76499089457,
-    'Environment And Natural Resources':	47324583890,
-    'Ministry of Fisheries':	2133936665,
-    'Ministry of Livestock':	5533991128,
-    'Ministry of Planning':	66344404018,
-    'Science and Technology':	139851294456,
-    'Infrastructure':	123533528398,
-    'Interior':	83589379394,
-    'Transport':	45408464077,
-    'Salaries and Remuneration Commission':	340649493,
-    'Teachers Service Commission':	165613978668,
-    'ommission on Administrative Justice':	272485500,
-    'Commission on Revenue Allocation':	264815482,
-    'Presidency	':4249523597,
-    'Witness Protection Agency':	169675000,
+      'Sports Culture and Arts':	322703275.7,
+      'Gender and Equality Commission':	15770910.8,
+      'National Intelligence Service':	1453333333.3,
+      'Land Commission':	54361512.5,
+      'Police Service Commission':	23176603.3,
+      'Attorney General and Department of Justice':	276138474.3,
+      'Director of Public Prosecutions':	154315105.3,
+      'The Registrar of Political Parties':	38913412.7,
+      'Public Service Commission':	92267026.1,
+      'Ministry of Agriculture':	2442764241.3,
+      'Ministry of Commerce and Tourism':	361308949.5,
+      'Coordination of National Government': 1339040585,
+      'Ministry of Devolution':	573595776.3,
+      'East African Affairs':	140300314,
+      'Ministry of Education':	6374924121.5,
+      'Environment And Natural Resources':	3943715324.2,
+      'Ministry of Fisheries':	177828055.4,
+      'Ministry of Livestock':	461165927.3,
+      'Ministry of Planning':	5528700334.8,
+      'Science and Technology':	11654274538,
+      'Infrastructure':	10294460699.8,
+      'Interior':	6965781616.2,
+      'Transport':	3784038673.1,
+      'Salaries and Remuneration Commission':	28387457.8,
+      'Teachers Service Commission':	13801164889,
+      'ommission on Administrative Justice':	22707125,
+      'Commission on Revenue Allocation':	22067956.8,
+      'Presidency':	354126966.4,
+      'Witness Protection Agency':	14139583.3,
   };
 
   // override ordering
