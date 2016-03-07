@@ -111,9 +111,10 @@
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
   <script src="pym.js"></script>
+  <script src="icsFormatter.js"></script>
 
   <script>
-
+    var cal = null;
     function Slugify(str) {
       var $slug = '';
       var trimmed = $.trim(str);
@@ -175,6 +176,16 @@
         $('.embed-link').addClass('allowed');
     }
 
+    function createICS(breakdown) {
+        var num_slots = breakdown.length;
+        var secondlast_slot_start = breakdown[num_slots - 2].finish_time;
+        var end_day = breakdown[num_slots - 1].finish_time.subtract(180, 'minutes');;
+        cal = icsFormatter();
+        cal.addEvent('Working for yourself', 'Every minute from now on, you\'re working for yourself', 'Work', secondlast_slot_start, end_day, 'RRULE:FREQ=DAILY;INTERVAL=1');
+                
+        return cal;
+    }
+
     if (window != window.top) {
       $('body').addClass('embedded');
     } else {
@@ -192,6 +203,7 @@
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
         output = calc.calculateIncomeBreakdown(income);
+        cal = createICS(output.breakdown);
 
         /* Clear output */
         $('#output-wrapper').hide();
@@ -286,7 +298,6 @@
               $('#clock-item').text('Put your feet up, you deserve a break for your tax contributions.');
               // show morning message (after 4 am)
               var nowHour = parseInt(now.format('H'));
-              console.log(nowHour);
               if (nowHour >= 4 && nowHour < 9) {
                 $('#clock-item').text('Brace yourself, you have a long day ahead of you.');
               }
@@ -325,6 +336,7 @@
       setInterval(function() { pymChild.sendHeight(); }, 1000);
     })
   </script>
+<a href="javascript:cal.download()">Install daily calendar</a>
 
   <!-- Google Analytics -->
   <script>
