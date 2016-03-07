@@ -175,11 +175,6 @@
         $('.embed-link').addClass('allowed');
     }
 
-    if (window != window.top) {
-      $('body').addClass('embedded');
-    } else {
-      $('body').addClass('standalone');
-    }
     var pymChild;
     var engaged = false;
 
@@ -192,13 +187,13 @@
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
         output = calc.calculateIncomeBreakdown(income);
+        var startTime = calc.START_OF_DAY;
 
         /* Clear output */
         $('#output-wrapper').hide();
-
+        
         if (income > 0){
           $('#output-dayplanner').html('');
-          var startTime = calc.START_OF_DAY.format('h:mm a');
 
           $(output.breakdown).each(function(){
             var breakdown = this;
@@ -206,8 +201,18 @@
 
               var name = this.name;
               var slug = Slugify(this.name);
-              var finishtime = this.finish_time_s;
+              var finishTime = this.finish_time;
               var taxamount = this.taxpayer_amount;
+
+              var startTimeStr = startTime.format('h:mm a');
+
+              var startHour = startTime.format('H');
+              var startMinute = startTime.format('m');
+              var startSecond = startTime.format('s');
+
+              var finishHour = finishTime.format('H');
+              var finishMinute = finishTime.format('m');
+              var finishSecond = finishTime.format('s');
 
               var mins = this.minutes;
               var hours = GetHours(mins);
@@ -251,8 +256,6 @@
                 var secondsString = '<span class="item-seconds">' + seconds + ' seconds</span>';
               }
 
-              var startHour = startTime.substr(0, startTime.indexOf(':'));
-
               var durationDiv = '<div class="item-duration">' + hoursString + minutesString + secondsString + '</div>';
 
               var rowHeight = Math.floor(mins * 14);
@@ -262,9 +265,9 @@
               var smallClass = "";
               if (minutes < 5){ smallClass= " item-small"; }
 
-              $('#output-dayplanner').append('<div class="item hour-' + startHour + smallClass + '" id="' + slug + '" style="min-height: ' + rowHeight + 'px;"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTime + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
+              $('#output-dayplanner').append('<div class="item planner-item" id="' + slug + '" style="min-height: ' + rowHeight + 'px;" data-starthour="' + startHour + '" data-startminute="' + startMinute + '" data-startsecond="' + startSecond + '" data-finishhour="' + finishHour + '" data-finishminute="' + finishMinute + '" data-finishsecond="' + finishSecond + '"><div class="item-starttime-wrapper"><span class="item-starttime">' + startTimeStr + '</span></div><div class="item-details"><div class="item-name">' + name + '</div><div class="item-duration">' + durationDiv + "</div></div></div>");
 
-              startTime = finishtime;
+              startTime = this.finish_time;
             });
           });
 
@@ -275,6 +278,37 @@
             var now = moment();
             $('#clock-now').text(now.format('h:mm a'));
 
+            // draw current-time 'now' line
+            $('#output-dayplanner .planner-item').each(function(){
+
+              var startHour = parseInt($(this).attr('data-starthour'));
+              var startMinute = parseInt($(this).attr('data-startminute'));
+              var startSecond = parseInt($(this).attr('data-startsecond'));
+
+              var startSeconds = (startHour * 60 * 60) + (startMinute * 60) + startSecond; 
+
+              var finishHour = parseInt($(this).attr('data-finishhour'));
+              var finishMinute = parseInt($(this).attr('data-finishminute'));
+              var finishSecond = parseInt($(this).attr('data-finishsecond'));
+
+              var finishSeconds = (finishHour * 60 * 60) + (finishMinute * 60) + finishSecond; 
+
+              var nowHour = parseInt(now.format('H'));
+              var nowMinute = parseInt(now.format('m'));
+              var nowSecond = parseInt(now.format('s'));
+
+              var nowSeconds = (nowHour * 60 * 60) + (nowMinute * 60) + nowSecond;
+
+              if (nowSeconds < finishSeconds && nowSeconds >= startSeconds ) {
+                elementHeight = $(this).height() - 12;
+                topPosition = Math.round((nowSeconds - startSeconds) / (finishSeconds - startSeconds) * elementHeight) + 12;
+                console.log(elementHeight);
+                $('#now-line').remove();
+                $(this).prepend('<div id="now-line" title="' + now.format('h:mm a') + '" style="top: '+ topPosition +'px;"><span>Time Now</span></div>');
+              }
+
+            });
+
             // current and next work items
             var pair = workingOn(now, output.breakdown, calc);
 
@@ -283,12 +317,11 @@
               $('#clock-item').show().text(pair[0].name);
             } else {
               $('#clock-next-wrapper, #working-on').hide();
-              $('#clock-item').text('Put your feet up, you deserve a break for your tax contributions.');
+              $('#clock-item').text('Put your feet up, you’ve had a long day working and contributing to government.');
               // show morning message (after 4 am)
-              var nowHour = parseInt(now.format('H'));
-              console.log(nowHour);
-              if (nowHour >= 4 && nowHour < 9) {
-                $('#clock-item').text('Brace yourself, you have a long day ahead of you.');
+              var nowHour = parseInt(now.format('H')) >= 4
+              if (parseInt(now.format('H')) >= 4 & parseInt(now.format('H')) >= 4) {
+                $('#clock-item').text('Brace yourself, you have a hard day ahead of you.');
               }
             }
 
