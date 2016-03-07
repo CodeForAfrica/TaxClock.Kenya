@@ -323,11 +323,10 @@ body:hover .embed-link.allowed {
 //== 'Now' line
 
 #now-line {
-	opacity: 0.5;
 	position: absolute;
 	z-index: 5;
-	border-bottom: dotted 2px $blue;
-	height: 8px;
+	border-bottom: dotted 2px rgba(255,0,0,0.4);
+	height: 9px;
 	width: 100%;
 	left: 0;
 	text-align: right;
@@ -337,7 +336,7 @@ body:hover .embed-link.allowed {
 		font-weight: bold;
 		font-size: 9px;
 		padding: 3px;
-		background-color: $blue;
+		background-color: $red;
 		color: $white;
 		text-transform: uppercase;
 	}

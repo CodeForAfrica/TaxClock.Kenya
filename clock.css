@@ -6016,11 +6016,10 @@ body:hover .embed-link.allowed {
   font-size: 14px; }
 
 #now-line {
-  opacity: 0.5;
   position: absolute;
   z-index: 5;
-  border-bottom: dotted 2px #0054a6;
-  height: 8px;
+  border-bottom: dotted 2px rgba(255, 0, 0, 0.4);
+  height: 9px;
   width: 100%;
   left: 0;
   text-align: right; }
@@ -6030,7 +6029,7 @@ body:hover .embed-link.allowed {
     font-weight: bold;
     font-size: 9px;
     padding: 3px;
-    background-color: #0054a6;
+    background-color: #ad0000;
     color: #fff;
     text-transform: uppercase; }
 
