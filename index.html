@@ -18,7 +18,7 @@
 
 <body>
   <div class="embed-link">
-    <a href="embed.html" target="_blank">&lt;EMBED&gt;</a>
+    <a href="http://code4sa.org/2016/03/08/embeddable-tax-clock.html" target="_blank">&lt;EMBED&gt;</a>
   </div>
 
   <div class="jumbotron">
@@ -191,7 +191,7 @@
 
         /* Clear output */
         $('#output-wrapper').hide();
-        
+
         if (income > 0){
           $('#output-dayplanner').html('');
 
@@ -285,13 +285,13 @@
               var startMinute = parseInt($(this).attr('data-startminute'));
               var startSecond = parseInt($(this).attr('data-startsecond'));
 
-              var startSeconds = (startHour * 60 * 60) + (startMinute * 60) + startSecond; 
+              var startSeconds = (startHour * 60 * 60) + (startMinute * 60) + startSecond;
 
               var finishHour = parseInt($(this).attr('data-finishhour'));
               var finishMinute = parseInt($(this).attr('data-finishminute'));
               var finishSecond = parseInt($(this).attr('data-finishsecond'));
 
-              var finishSeconds = (finishHour * 60 * 60) + (finishMinute * 60) + finishSecond; 
+              var finishSeconds = (finishHour * 60 * 60) + (finishMinute * 60) + finishSecond;
 
               var nowHour = parseInt(now.format('H'));
               var nowMinute = parseInt(now.format('m'));
