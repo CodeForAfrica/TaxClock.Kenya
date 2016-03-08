@@ -129,7 +129,7 @@ var IncomeCalculator = function() {
   };
 
   this.vatTax = function(info) {
-    return info.netIncome * this.VAT;
+    return info.netIncome * this.VAT / (1 + this.VAT);
   };
 
   this.workingForSelf = function(info) {
