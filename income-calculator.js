@@ -56,7 +56,7 @@ var IncomeCalculator = function() {
       'Transport':	3784038673.1,
       'Salaries and Remuneration Commission':	28387457.8,
       'Teachers Service Commission':	13801164889,
-      'ommission on Administrative Justice':	22707125,
+      'Commission on Administrative Justice':	22707125,
       'Commission on Revenue Allocation':	22067956.8,
       'Presidency':	354126966.4,
       'Witness Protection Agency':	14139583.3,
