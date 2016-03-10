@@ -107,12 +107,33 @@
     </div>
   </div>
   <script src="jquery-1.12.0.min.js"></script>
+  <script src="tooltip.js"></script>
   <script src="underscore-min.js"></script>
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
   <script src="pym.js"></script>
 
   <script>
+
+    // Explanations for items
+    var itemExplanations = {
+      'national-debt': 'This is the tax revenue allocated to servicing South Africa\'s national debt. It is also the fastest growing item of expenditure in the 2016 budget.',
+      'basic-education': 'This department develops, maintains and supports the South African school education system.',
+      'local-government-and-housing': 'This department works to facilitate the creation of sustainable human settlements and the improvement to household quality of life.',
+      'health': 'This department provides leadership and coordination of health services to promote the health of all people in South Africa.',
+      'social-grants': 'This department aims to reduce poverty by providing income support to those in need.',
+      'police-services': 'The Police Department works to prevent, combat and investigate crime, maintain public order, and uphold and enforce the law.',
+      'economic-infrastructure': 'This department\'s goal is to create income generating opportunities through improved physical infrastructure.',
+      'general-public-services': 'This includes expenditure on the Presidency, Parliament, Dept of Home Affairs, Communications, International Relations, Public Service and Administration, and National Treasury.',
+      'employment-labour-affairs': 'This department works for you to reduce unemployment, poverty and inequality through pursuing the objectives of productive employment and decent work for all.',
+      'higher-education-training': 'This department develops and supports a quality higher education and vocational education sector.',
+      'defence-state-security': 'This department defends and protects the Republic of South Africa, its territorial integrity and its people.',
+      'law-courts-prisons': 'The focus of this department is to contribute to a just, peaceful and safer South Africa',
+      'trade-industry': 'This department works to facilitate access to sustainable economic activity and employment.',
+      'agriculture-rural-development-land-reform': 'This category involves the promotion of agricultural, forestry and fisheries resource management, and the creation of equitable and sustainable land dispensation.',
+      'science-technology-and-environment': 'This category focuses on realising the full potential of science and technology in social and economic development, and leads South Africa\'s environmental sector to achieve sustainable development.',
+      'unallocated-reserves': 'This is the contingency reserve - an amount set aside to accommodate changes in the economic environment as well as unforeseeable expenditure'
+    }
 
     function Slugify(str) {
       var $slug = '';
@@ -302,7 +323,6 @@
               if (nowSeconds < finishSeconds && nowSeconds >= startSeconds ) {
                 elementHeight = $(this).height() - 12;
                 topPosition = Math.round((nowSeconds - startSeconds) / (finishSeconds - startSeconds) * elementHeight) + 12;
-                console.log(elementHeight);
                 $('#now-line').remove();
                 $(this).prepend('<div id="now-line" title="' + now.format('h:mm a') + '" style="top: '+ topPosition +'px;"><span>Time Now</span></div>');
               }
@@ -336,6 +356,27 @@
             setInterval(tick, 1000);
             firstLoop = false;
           }
+
+          // Add explanations
+          $('.planner-item').each(function(){
+            var itemID = $(this).attr('id');
+            var explanation = itemExplanations[itemID];
+
+            var itemHeight = parseInt($(this).css('min-height'));
+
+            if (itemID != 'working-for-yourself'){
+              if (itemHeight > 80) {
+              $(this).find('.item-details').append('<div class="item-explanation"><span class="what-is-this">?</span> ' + explanation + '</div>');
+              }
+              else {
+                $(this).find('.item-name').append('<span class="explanation-icon" data-toggle="tooltip" title="'+ explanation +'">?</span>');
+              }
+            }
+
+            // Activate tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+
+          });
 
           /* Show the output */
           $('#output-wrapper').show();
