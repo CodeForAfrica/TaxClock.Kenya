@@ -65,7 +65,7 @@ var IncomeCalculator = function() {
   // override ordering
   this.ORDERING = {
     'Working for yourself': 9999,
-    'Debt-service costs': -1,
+    'National debt': -1,
   };
 
   // Total budget expenditure
@@ -142,7 +142,7 @@ var IncomeCalculator = function() {
   };
 
   this.vatTax = function(info) {
-    return info.netIncome * this.VAT;
+    return info.netIncome * this.VAT / (1 + this.VAT);
   };
 
   this.workingForSelf = function(info) {
