@@ -5943,7 +5943,7 @@ body:hover .embed-link.allowed {
   background-color: rgba(255, 255, 255, 0.5); }
 
 .explanation-wrapper {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px;
   background-image: url("bg-linedpaper.png");
   background-color: #fff;
@@ -6085,6 +6085,15 @@ body:hover .embed-link.allowed {
     background-color: #ad0000;
     color: #fff;
     text-transform: uppercase; }
+
+#social-media {
+  display: none;
+  min-height: 22.5px;
+  margin-top: 15px;
+  text-align: right; }
+
+body.standalone #social-media {
+  display: block; }
 
 .footnotes {
   color: #333333;

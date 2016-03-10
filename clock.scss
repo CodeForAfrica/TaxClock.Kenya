@@ -247,7 +247,7 @@ body:hover .embed-link.allowed {
 }
 
 .explanation-wrapper {
-	margin-top: 20px;
+	margin-top: 15px;
 	padding: 10px;
 	background-image: url("bg-linedpaper.png");
 	background-color: $white;
@@ -413,6 +413,18 @@ body:hover .embed-link.allowed {
 		text-transform: uppercase;
 	}
 
+}
+
+//== Social Media
+#social-media{
+	display: none;
+	min-height: 22.5px;
+	margin-top: 15px;
+	text-align: right;
+}
+
+body.standalone #social-media {
+	display: block;
 }
 
 //== Footnotes
