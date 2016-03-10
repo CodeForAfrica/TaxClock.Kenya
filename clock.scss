@@ -48,6 +48,13 @@ $font-size-h4: ceil(($font-size-base * 1.25)) !default;
 $font-size-h5: $font-size-base !default;
 $font-size-h6: 12px;
 
+//== Buttons
+$btn-font-weight: bold !default;
+
+$btn-default-color: $white !default;
+$btn-default-bg: $teal !default;
+$btn-default-border: #ccc !default;
+
 //== Jumbotron
 $jumbotron-bg: $teal !default;
 $jumbotron-padding: 40px !default;
@@ -362,7 +369,7 @@ body:hover .embed-link.allowed {
 		height: 18px;
 		border-radius: 9px;
 		text-align: center;
-	}	
+	}
 }
 
 .tooltip-inner{
@@ -373,6 +380,18 @@ body:hover .embed-link.allowed {
 	line-height: 1.2;
 }
 
+#calendar-download {
+	padding-top: 10px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.2;
+	.btn {
+		font-size: 12px;
+		border-radius: 10px;
+		border-width: 0;
+		line-height: 1;
+	}
+}
 //== 'Now' line
 
 #now-line {

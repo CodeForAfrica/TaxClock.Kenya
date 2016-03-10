@@ -84,6 +84,7 @@
             <div id="dayplanner">
               <h4>Your work schedule today would look like this:</h4>
               <div id="output-dayplanner"></div>
+              <div id="calendar-download">Install a daily reminder of when you start working for yourself: <a href="javascript:downloadICS()" class="btn btn-default">Install calendar (ICS)</a></div>
             </div>
           </div>
         </div>
@@ -112,6 +113,7 @@
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
   <script src="pym.js"></script>
+  <script src="icsFormatter.js"></script>
 
   <script>
 
@@ -134,6 +136,8 @@
       'science-technology-and-environment': 'This category focuses on realising the full potential of science and technology in social and economic development, and leads South Africa\'s environmental sector to achieve sustainable development.',
       'unallocated-reserves': 'This is the contingency reserve - an amount set aside to accommodate changes in the economic environment as well as unforeseeable expenditure'
     }
+
+    var cal = null;
 
     function Slugify(str) {
       var $slug = '';
@@ -196,6 +200,26 @@
         $('.embed-link').addClass('allowed');
     }
 
+    function createICS(breakdown) {
+        var num_slots = breakdown.length;
+        var secondlast_slot_start = breakdown[num_slots - 2].finish_time;
+        var end_day = breakdown[num_slots - 1].finish_time;
+        cal = icsFormatter();
+        cal.addEvent('Working for yourself', 'Every minute from now on, you\'re working for yourself', 'Work', secondlast_slot_start, end_day, 'RRULE:FREQ=DAILY;INTERVAL=1');
+
+        return cal;
+    }
+    function downloadICS() {
+        ga('send', 'event', 'taxclock', 'ics');
+        cal.download();
+    }
+
+    if (window != window.top) {
+      $('body').addClass('embedded');
+    } else {
+      $('body').addClass('standalone');
+    }
+
     var pymChild;
     var engaged = false;
 
@@ -208,6 +232,7 @@
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
         output = calc.calculateIncomeBreakdown(income);
+        cal = createICS(output.breakdown);
         var startTime = calc.START_OF_DAY;
 
         /* Clear output */
@@ -339,9 +364,10 @@
               $('#clock-next-wrapper, #working-on').hide();
               $('#clock-item').text('Put your feet up, you’ve had a long day working and contributing to government.');
               // show morning message (after 4 am)
-              var nowHour = parseInt(now.format('H')) >= 4
-              if (parseInt(now.format('H')) >= 4 & parseInt(now.format('H')) >= 4) {
-                $('#clock-item').text('Brace yourself, you have a hard day ahead of you.');
+
+              var nowHour = parseInt(now.format('H'));
+              if (nowHour >= 4 && nowHour < 9) {
+                $('#clock-item').text('Brace yourself, you have a long day ahead of you.');
               }
             }
 
