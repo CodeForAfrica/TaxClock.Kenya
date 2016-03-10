@@ -180,7 +180,7 @@
     function createICS(breakdown) {
         var num_slots = breakdown.length;
         var secondlast_slot_start = breakdown[num_slots - 2].finish_time;
-        var end_day = breakdown[num_slots - 1].finish_time.subtract(180, 'minutes');;
+        var end_day = breakdown[num_slots - 1].finish_time;
         cal = icsFormatter();
         cal.addEvent('Working for yourself', 'Every minute from now on, you\'re working for yourself', 'Work', secondlast_slot_start, end_day, 'RRULE:FREQ=DAILY;INTERVAL=1');
                 
