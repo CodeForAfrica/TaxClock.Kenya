@@ -84,7 +84,7 @@
             <div id="dayplanner">
               <h4>Your work schedule today would look like this:</h4>
               <div id="output-dayplanner"></div>
-              <div id="calendar-download">Install a daily reminder of when you start working for yourself: <a href="javascript:cal.download()" class="btn btn-default">Install calendar (ICS)</a></div>
+              <div id="calendar-download">Install a daily reminder of when you start working for yourself: <a href="javascript:downloadICS()" class="btn btn-default">Install calendar (ICS)</a></div>
             </div>
           </div>
         </div>
@@ -185,6 +185,10 @@
         cal.addEvent('Working for yourself', 'Every minute from now on, you\'re working for yourself', 'Work', secondlast_slot_start, end_day, 'RRULE:FREQ=DAILY;INTERVAL=1');
 
         return cal;
+    }
+    function downloadICS() {
+        ga('send', 'event', 'taxclock', 'ics');
+        cal.download();
     }
 
     if (window != window.top) {
