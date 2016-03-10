@@ -6012,12 +6012,15 @@ body:hover .embed-link.allowed {
   font-size: 14px; }
 
 #calendar-download {
-  text-align: right;
-  padding-top: 10px; }
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2; }
   #calendar-download .btn {
     font-size: 12px;
     border-radius: 10px;
-    border-width: 0; }
+    border-width: 0;
+    line-height: 1; }
 
 .footnotes {
   color: #333333;

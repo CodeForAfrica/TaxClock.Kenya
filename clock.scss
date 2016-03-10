@@ -323,12 +323,15 @@ body:hover .embed-link.allowed {
 }
 
 #calendar-download {
-	text-align: right;
 	padding-top: 10px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.2;
 	.btn {
 		font-size: 12px;
 		border-radius: 10px;
 		border-width: 0;
+		line-height: 1;
 	}
 }
 
