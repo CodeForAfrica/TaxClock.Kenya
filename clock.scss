@@ -272,6 +272,7 @@ body:hover .embed-link.allowed {
 		left: 7px;
 		top: 12px;
 		width: 75px;
+		z-index: 10;
 	}
 	.item-starttime {
 		font-weight: bold;
@@ -284,6 +285,9 @@ body:hover .embed-link.allowed {
 	}
 	.item-details {
 		margin-left: 75px;
+		padding-right: 70px;
+		position: relative;
+		z-index: 10;
 	}
 	.item-name {
 		display: inline;
@@ -333,6 +337,27 @@ body:hover .embed-link.allowed {
 		border-width: 0;
 		line-height: 1;
 	}
+//== 'Now' line
+
+#now-line {
+	position: absolute;
+	z-index: 5;
+	border-bottom: dotted 2px rgba(255,0,0,0.4);
+	height: 9px;
+	width: 100%;
+	left: 0;
+	text-align: right;
+	span {
+		display: inline-block;
+		margin-right: 10px;
+		font-weight: bold;
+		font-size: 9px;
+		padding: 3px;
+		background-color: $red;
+		color: $white;
+		text-transform: uppercase;
+	}
+
 }
 
 //== Footnotes
