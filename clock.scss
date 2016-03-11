@@ -48,10 +48,23 @@ $font-size-h4: ceil(($font-size-base * 1.25)) !default;
 $font-size-h5: $font-size-base !default;
 $font-size-h6: 12px;
 
+//== Buttons
+$btn-font-weight: bold !default;
+
+$btn-default-color: $white !default;
+$btn-default-bg: $teal !default;
+$btn-default-border: #ccc !default;
 
 //== Jumbotron
 $jumbotron-bg: $teal !default;
 $jumbotron-padding: 40px !default;
+
+//== Tooltips
+
+$tooltip-max-width: 300px !default;
+$tooltip-color: $black !default;
+$tooltip-bg: $yellow !default;
+$tooltip-opacity: 1 !default;
 
 //=====
 
@@ -234,7 +247,7 @@ body:hover .embed-link.allowed {
 }
 
 .explanation-wrapper {
-	margin-top: 20px;
+	margin-top: 15px;
 	padding: 10px;
 	background-image: url("bg-linedpaper.png");
 	background-color: $white;
@@ -320,6 +333,65 @@ body:hover .embed-link.allowed {
 	font-size: 14px;
 }
 
+.explanation-icon {
+	display: inline-block;
+	background-color: $yellow;
+	font-size: 14px;
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	line-height: 16px;
+	text-align: center;
+	border-radius: 9px;
+	border: solid 2px transparent;
+	cursor: default;
+	&:hover {
+		color: $black;
+		background-color: transparent;
+		border: solid 2px $yellow;
+	}
+}
+
+.item-explanation {
+	font-family: $font-family-serif;
+	font-size: 13px;
+	line-height: 1.4;
+	margin-top: 5px;
+	.what-is-this {
+		display: inline-block;
+		border: solid 2px $yellow;
+		font-size: 14px;
+		padding: 1px 2px;
+		line-height: 12px;
+		margin-right: 5px;
+		font-family: $font-family-sans-serif;
+		width: 18px;
+		height: 18px;
+		border-radius: 9px;
+		text-align: center;
+	}
+}
+
+.tooltip-inner{
+	text-align: left;
+	padding: 10px;
+	font-family: $font-family-serif;
+	font-size: 13px;
+	line-height: 1.2;
+}
+
+#calendar-download {
+	padding-top: 10px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.2;
+	.btn {
+		font-size: 12px;
+		border-radius: 10px;
+		border-width: 0;
+		line-height: 1;
+	}
+}
 //== 'Now' line
 
 #now-line {
@@ -341,6 +413,18 @@ body:hover .embed-link.allowed {
 		text-transform: uppercase;
 	}
 
+}
+
+//== Social Media
+#social-media{
+	display: none;
+	min-height: 22.5px;
+	margin-top: 15px;
+	text-align: right;
+}
+
+body.standalone #social-media {
+	display: block;
 }
 
 //== Footnotes

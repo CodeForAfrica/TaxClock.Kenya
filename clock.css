@@ -2876,7 +2876,7 @@ select[multiple].input-lg,
 .btn {
   display: inline-block;
   margin-bottom: 0;
-  font-weight: normal;
+  font-weight: bold;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -2897,7 +2897,7 @@ select[multiple].input-lg,
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
-    color: #333;
+    color: #fff;
     text-decoration: none; }
   .btn:active, .btn.active {
     outline: 0;
@@ -2915,33 +2915,33 @@ a.btn.disabled, fieldset[disabled] a.btn {
   pointer-events: none; }
 
 .btn-default {
-  color: #333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #088;
   border-color: #ccc; }
   .btn-default:focus, .btn-default.focus {
-    color: #333;
-    background-color: #e6e6e6;
+    color: #fff;
+    background-color: #005555;
     border-color: #8c8c8c; }
   .btn-default:hover {
-    color: #333;
-    background-color: #e6e6e6;
+    color: #fff;
+    background-color: #005555;
     border-color: #adadad; }
   .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
-    color: #333;
-    background-color: #e6e6e6;
+    color: #fff;
+    background-color: #005555;
     border-color: #adadad; }
     .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus, .open > .btn-default.dropdown-toggle:hover, .open > .btn-default.dropdown-toggle:focus, .open > .btn-default.dropdown-toggle.focus {
-      color: #333;
-      background-color: #d4d4d4;
+      color: #fff;
+      background-color: #003131;
       border-color: #8c8c8c; }
   .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
     background-image: none; }
   .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default.focus {
-    background-color: #fff;
+    background-color: #088;
     border-color: #ccc; }
   .btn-default .badge {
-    color: #fff;
-    background-color: #333; }
+    color: #088;
+    background-color: #fff; }
 
 .btn-primary {
   color: #fff;
@@ -5206,8 +5206,8 @@ button.close {
   opacity: 0;
   filter: alpha(opacity=0); }
   .tooltip.in {
-    opacity: 0.9;
-    filter: alpha(opacity=90); }
+    opacity: 1;
+    filter: alpha(opacity=100); }
   .tooltip.top {
     margin-top: -3px;
     padding: 5px 0; }
@@ -5222,11 +5222,11 @@ button.close {
     padding: 0 5px; }
 
 .tooltip-inner {
-  max-width: 200px;
+  max-width: 300px;
   padding: 3px 8px;
-  color: #fff;
+  color: #000;
   text-align: center;
-  background-color: #000;
+  background-color: #fcdc23;
   border-radius: 4px; }
 
 .tooltip-arrow {
@@ -5241,49 +5241,49 @@ button.close {
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000; }
+  border-top-color: #fcdc23; }
 .tooltip.top-left .tooltip-arrow {
   bottom: 0;
   right: 5px;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000; }
+  border-top-color: #fcdc23; }
 .tooltip.top-right .tooltip-arrow {
   bottom: 0;
   left: 5px;
   margin-bottom: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000; }
+  border-top-color: #fcdc23; }
 .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: #000; }
+  border-right-color: #fcdc23; }
 .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: #000; }
+  border-left-color: #fcdc23; }
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000; }
+  border-bottom-color: #fcdc23; }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
   right: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000; }
+  border-bottom-color: #fcdc23; }
 .tooltip.bottom-right .tooltip-arrow {
   top: 0;
   left: 5px;
   margin-top: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000; }
+  border-bottom-color: #fcdc23; }
 
 .popover {
   position: absolute;
@@ -5943,7 +5943,7 @@ body:hover .embed-link.allowed {
   background-color: rgba(255, 255, 255, 0.5); }
 
 .explanation-wrapper {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px;
   background-image: url("bg-linedpaper.png");
   background-color: #fff;
@@ -6015,6 +6015,59 @@ body:hover .embed-link.allowed {
 .item-small .item-name {
   font-size: 14px; }
 
+.explanation-icon {
+  display: inline-block;
+  background-color: #fcdc23;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 9px;
+  border: solid 2px transparent;
+  cursor: default; }
+  .explanation-icon:hover {
+    color: #000;
+    background-color: transparent;
+    border: solid 2px #fcdc23; }
+
+.item-explanation {
+  font-family: "Bitter", serif;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 5px; }
+  .item-explanation .what-is-this {
+    display: inline-block;
+    border: solid 2px #fcdc23;
+    font-size: 14px;
+    padding: 1px 2px;
+    line-height: 12px;
+    margin-right: 5px;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    text-align: center; }
+
+.tooltip-inner {
+  text-align: left;
+  padding: 10px;
+  font-family: "Bitter", serif;
+  font-size: 13px;
+  line-height: 1.2; }
+
+#calendar-download {
+  padding-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2; }
+  #calendar-download .btn {
+    font-size: 12px;
+    border-radius: 10px;
+    border-width: 0;
+    line-height: 1; }
+
 #now-line {
   position: absolute;
   z-index: 5;
@@ -6032,6 +6085,15 @@ body:hover .embed-link.allowed {
     background-color: #ad0000;
     color: #fff;
     text-transform: uppercase; }
+
+#social-media {
+  display: none;
+  min-height: 22.5px;
+  margin-top: 15px;
+  text-align: right; }
+
+body.standalone #social-media {
+  display: block; }
 
 .footnotes {
   color: #333333;

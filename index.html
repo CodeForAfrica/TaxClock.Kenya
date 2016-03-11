@@ -16,7 +16,8 @@
 
 </head>
 
-<body>
+<body>http://taxclock.codeforkenya.org
+
   <div class="embed-link">
     <a href="http://code4sa.org/2016/03/08/embeddable-tax-clock.html" target="_blank">&lt;EMBED&gt;</a>
   </div>
@@ -29,12 +30,21 @@
     </div>
   </div>
 
+  <div class="container text-center" id="social-media">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="fb-share-button" data-href="http://taxclock.codeforkenya.org" data-layout="button_count"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://taxclock.codeforkenya.org" data-via="CodeForKenya" data-hashtags="taxclock2016">Tweet</a>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="explanation-wrapper">
           <div class="explanation">
-            <strong>Did you know, you don’t just pay tax in Kenya Shillings, but hours as well?</strong> Tax forms part of your total salary, which means that part of your 9-5 goes to government too. Enter your salary below to see how many hours you spend on government services and where your money may be going.
+            <strong>Did you know, you don’t just pay tax in Kenya Shillings, but hours as well?</strong> Tax forms part of your total salary, which means that part of your 9-5 goes to towards the development of the state. Enter your salary below to see how many hours you spend on government services and where your money may be going.
           </div>
         </div>
       </div>
@@ -84,6 +94,7 @@
             <div id="dayplanner">
               <h4>Your work schedule today would look like this:</h4>
               <div id="output-dayplanner"></div>
+              <div id="calendar-download">Install a daily reminder of when you start working for yourself: <a href="javascript:downloadICS()" class="btn btn-default">Install calendar (ICS)</a></div>
             </div>
           </div>
         </div>
@@ -101,24 +112,77 @@
 
   <div class="footer">
     <div class="container">
+    <div class="col-md-6 col-md-offset-3">
       <div class="text-center">
         <h4>Made Possible With Support From</h4>
           <p><a href="http://www.internationalbudget.org/budget-work-by-country/ibps-work-in-countries/kenya/" target="_blank"><img src="ibp-k_logo.png"></a>
-             <a href="http://www.codeforkenya.org" target="_blank"><img src="c4k_logo.png"></a></p><p></p>
+            <a href="http://www.codeforkenya.org" target="_blank"><img src="c4k_logo.png"></a></p><p></p>
           <div class="credits">Built by <a href="http://academy.code4sa.org" target="_blank"><img src="logo_academy.png"></a>
           </div><p></p><p></p><p></p>
 <!--           <div class="registrations">Code for South Africa is a non-profit organisation registered with the South African Department of Social Development.</div>
  -->      <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
+      </div>
      </div>
     </div>
   </div>
   <script src="jquery-1.12.0.min.js"></script>
+  <script src="tooltip.js"></script>
   <script src="underscore-min.js"></script>
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
   <script src="pym.js"></script>
+  <script src="icsFormatter.js"></script>
+
+<!-- Social Media: Facebook Share button -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Social Media: Twitter button -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <script>
+
+    // Explanations for items
+    var itemExplanations = {
+      'Sports Culture and Arts': 'is responsible with development , co-ordination and management of sports, film industry, fine, creative and performing arts',
+      'Gender and Equality Commission':	'monitors, facilitate and advise on the integration of the principles of equality and freedom from discrimination in all national and county policies, laws, and administrative regulations in all public and private institutions',
+      'National Intelligence Service':	'mandate of the NIS is to gather and employ internal, external and strategic intelligence information to neutralize any threats to Kenya’s social, economic and political stability.',
+      'Land Commission':	'conducts research related to land and the use of natural resources, and make recommendations to appropriate authorities; advises the national government on a comprehensive programme for the registration of title in land throughout Kenya ',
+      'Police Service Commission':'manages  persons to hold or act in office in the police service, confirm appointments and determine promotions and transfers within the national police service',
+      'Attorney General and Department of Justice':	'advising government departments, commissions and state corporations on legislative and other legal matters',
+      'Director of Public Prosecutions':	'institutes undertaking of criminal proceedings against any person before any court of law except the court martial',
+      'The Registrar of Political Parties':	'',
+      'Public Service Commission':	'is responsible for registration of Political Parties and arbitration of disputes, maintaining records of political parties and administration of the Political Parties Fund',
+      'Ministry of Agriculture':	'works on formulation, implementation and monitoring of agricultural legislations, regulations and policies that are supporting agricultural research and promoting technology delivery',
+      'Ministry of Commerce and Tourism':	'fomulates  policy , implementation, monitoring and review in collaboration with stakeholders for  Internal or external resource mobilization in consultation with the Treasury for the development of tourism and trade',
+      'Coordination of National Government': 'ensures effective coordination of National Government functions and services at the county and sub-county levels.',
+      'Ministry of Devolution':	'provides leadership, coordination, an enabling environment for planning, transforming public service delivery and management of devolved system of government.',
+      'East African Affairs':	'aims at widening and deepening co-operation among the Partner States in, among others, political, economic and social fields for their mutual benefit',
+      'Ministry of Education':	'is responsible for national policies and programmes that help Kenyans access quality and affordable, school education, post-school, higher education and academic research',
+      'Environment And Natural Resources':	'mandated to protect, conserve and manage the environment and natural resources for socio-economic development',
+      'Ministry of Fisheries':	'is mandated to facilitate the exploration, exploitation, utilization, management, development and conservation of fisheries resources as well as aquaculture development and to undertake research in marine and fresh water fisheries.',
+      'Ministry of Livestock':	'is mandated to promote, regulate and facilitate livestock production for socio-economic development and industrialization',
+      'Ministry of Planning':	'mandated to improve coordination of development planning, policy formulation and budgeting through spearhead affirmative action and empowerment',
+      'Science and Technology':	'is responsible for national policies and programmes that help Kenyans access infomation and technology resourses',
+      'Infrastructure':	'develops policies  on  infrastructure and roads management ',
+      'Interior':	'interior functions include internal security covering Police, Immigration, Prisons and Correctional services.',
+      'Transport':	'develops policies on maritime , rail and road  transport infrastructure standardization and maintenance',
+      'Salaries and Remuneration Commission':	'sets and regularly reviews the remuneration and benefits of all state officers;  and  advises the national and county governments on the remuneration and benefits of all other public officers',
+      'Teachers Service Commission':	'registers, recruits, employs and assigns  trained teachers for service in any public school or institution',
+      'Commission on Administrative Justice':	'is mandated to address the rampant rise in maladministration and promote good governance and efficient public service delivery by enforcing the right to fair administrative action',
+      'Commission on Revenue Allocation':	'recommends the basis for equitable sharing of revenues raised nationally between the national and the county governments, and among the county governments.',
+      'Presidency':'role of the Presidency is the organization and coordination of Government business  in policy formulation, review and decision-making.',
+      'Witness Protection Agency':	'advises a government ministry, department or  agencies  on adoption of strategies and measures on witness protection ',
+
+    }
+
+    var cal = null;
 
     function Slugify(str) {
       var $slug = '';
@@ -181,6 +245,26 @@
         $('.embed-link').addClass('allowed');
     }
 
+    function createICS(breakdown) {
+        var num_slots = breakdown.length;
+        var secondlast_slot_start = breakdown[num_slots - 2].finish_time;
+        var end_day = breakdown[num_slots - 1].finish_time;
+        cal = icsFormatter();
+        cal.addEvent('Working for yourself', 'Every minute from now on, you\'re working for yourself', 'Work', secondlast_slot_start, end_day, 'RRULE:FREQ=DAILY;INTERVAL=1');
+
+        return cal;
+    }
+    function downloadICS() {
+        ga('send', 'event', 'taxclock', 'ics');
+        cal.download();
+    }
+
+    if (window != window.top) {
+      $('body').addClass('embedded');
+    } else {
+      $('body').addClass('standalone');
+    }
+
     var pymChild;
     var engaged = false;
 
@@ -193,6 +277,7 @@
         var income = parseFloat($(this).val());
         var calc = new IncomeCalculator();
         output = calc.calculateIncomeBreakdown(income);
+        cal = createICS(output.breakdown);
         var startTime = calc.START_OF_DAY;
 
         /* Clear output */
@@ -308,7 +393,6 @@
               if (nowSeconds < finishSeconds && nowSeconds >= startSeconds ) {
                 elementHeight = $(this).height() - 12;
                 topPosition = Math.round((nowSeconds - startSeconds) / (finishSeconds - startSeconds) * elementHeight) + 12;
-                console.log(elementHeight);
                 $('#now-line').remove();
                 $(this).prepend('<div id="now-line" title="' + now.format('h:mm a') + '" style="top: '+ topPosition +'px;"><span>Time Now</span></div>');
               }
@@ -323,11 +407,12 @@
               $('#clock-item').show().text(pair[0].name);
             } else {
               $('#clock-next-wrapper, #working-on').hide();
-              $('#clock-item').text('Put your feet up, you’ve had a long day working and contributing to government.');
+              $('#clock-item').text('Put your feet up, you’ve had a long day working and contributing to the state.');
               // show morning message (after 4 am)
-              var nowHour = parseInt(now.format('H')) >= 4
-              if (parseInt(now.format('H')) >= 4 & parseInt(now.format('H')) >= 4) {
-                $('#clock-item').text('Brace yourself, you have a hard day ahead of you.');
+
+              var nowHour = parseInt(now.format('H'));
+              if (nowHour >= 4 && nowHour < 9) {
+                $('#clock-item').text('Brace yourself, you have a long day ahead of you.');
               }
             }
 
@@ -342,6 +427,27 @@
             setInterval(tick, 1000);
             firstLoop = false;
           }
+
+          // Add explanations
+          $('.planner-item').each(function(){
+            var itemID = $(this).attr('id');
+            var explanation = itemExplanations[itemID];
+
+            var itemHeight = parseInt($(this).css('min-height'));
+
+            if (itemID != 'working-for-yourself'){
+              if (itemHeight > 80) {
+              $(this).find('.item-details').append('<div class="item-explanation"><span class="what-is-this">?</span> ' + explanation + '</div>');
+              }
+              else {
+                $(this).find('.item-name').append('<span class="explanation-icon" data-toggle="tooltip" title="'+ explanation +'">?</span>');
+              }
+            }
+
+            // Activate tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+
+          });
 
           /* Show the output */
           $('#output-wrapper').show();
