@@ -31,6 +31,11 @@ var IncomeCalculator = function() {
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
+      'Industialization and Enterprise Development': 769029086,
+      'Information-Communications and Technology': 823280041,
+      'Labour Social Security and Services': 1667448904,
+      'Land Housing and Urban Development': 1809705995,
+      'Mining': 172060586,
       'Sports Culture and Arts':	322703275.7,
       'Gender and Equality Commission':	15770910.8,
       'National Intelligence Service':	1453333333.3,
@@ -53,13 +58,25 @@ var IncomeCalculator = function() {
       'Science and Technology':	11654274538,
       'Infrastructure':	10294460699.8,
       'Interior':	6965781616.2,
-      'Transport':	3784038673.1,
+      'Transport Ministry':	3784038673.1,
       'Salaries and Remuneration Commission':	28387457.8,
       'Teachers Service Commission':	13801164889,
       'Commission on Administrative Justice':	22707125,
       'Commission on Revenue Allocation':	22067956.8,
       'Presidency':	354126966.4,
       'Witness Protection Agency':	14139583.3,
+      'Auditor-General':	221751308,
+      'Commission for the Implementation of the Constitution':	25500000,
+      'Controller of Budget':	4663562,
+      'Ethics and Anti-Corruption Commission':	151966667,
+      'Independent Electoral and Boundaries Commission':257614973,
+      'Independent Police Oversight Authority':	17093430,
+      'Kenya National Commission on Human Rights': 21362070,
+      'Ministry of Defence':	6106750000,
+      'Energy and Petroleum':	6410120189,
+      'Foreign Affairs and International Trade':	1037819995,
+      'Health':	3946855105,
+      'Auditor-General': 221751308,
   };
 
   // override ordering
