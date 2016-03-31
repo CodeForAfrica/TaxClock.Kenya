@@ -1,3 +1,5 @@
+---
+---
 <html>
 <head>
 
@@ -12,8 +14,16 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/CodeForAfrica/TaxClock.Kenya/gh-pages/preview.jpg" />
   <meta property="og:url" content="http://taxclock.codeforkenya.org/?show-embed-link=true" />
   <meta property="fb:app_id" content="193758347662800" />
+  
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 
   <title>The 2016 Tax Clock </title>
+  
+  <script type="text/javascript">
+    var host = "{{ site.enforce_ssl }}";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+  </script>
 
 </head>
 
