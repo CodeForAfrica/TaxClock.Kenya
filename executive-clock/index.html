@@ -1,18 +1,19 @@
+---
+---
 <!DOCTYPE html> 
 <html lang="en"> 
     <head> 
         <meta charset="utf-8"> 
-        <title>Working</title> 
-        <link rel="stylesheet" href="main.css" type="text/css" media="screen"> 
-        <script src="raphael.js"></script> 
-        <script src="jquery-1.5.1.min.js"></script>
+        <title>Every Day Is Tax Day - fchasen.com</title> 
+        <!-- <script src="jquery-1.5.1.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
         <script src="jquery-ui-1.8.11.custom.min.js"></script> 
 
         <script src="../moment.js"></script>
         <script src="../underscore-min.js"></script>
         <script src="../income-calculator.js"></script>
          
-        <!-- <script src="jclock.js"></script>  -->
+        <script src="raphael-min.js"></script> 
         <script src="g.raphael.js"></script> 
         <script src="g.timechart.js"></script>         
         <script src="g.piechart.js"></script> 
@@ -20,190 +21,84 @@
         <script src="dvc.ajax.js"></script>  
         <script src="main.js"></script> 
         
-        <!-- <script src="pie.js"></script>  -->
-        <style type="text/css" media="screen"> 
-            body {
-              background: #41403f;
-              font-size: 18px;
-              color: #e4e0da;
-             /* background: -moz-radial-gradient(center 45deg, circle closest-side, #ddd 0%, #333 350%);*/
-              font-family: 'Crimson Text', arial, serif;
-              letter-spacing: 1px;
-              margin: 0 auto;
-              width: 850px;
-              text-align: center;
-            }
-            
-            #holder {
-                margin: 15px 0 0 0;
-                overflow: hidden;
-                font-family: 'Crimson Text', arial, serif;
-                
-            }
-            
-            #header {
-                position: relative;
-                top: 515px;
-                left: 200px;
-                width: 520px;
-                height: 100px;
-                text-align: center;
-            }
-            #logo {
-                position: relative;
-                top: 100px;
-                left: 350px;
-                width: 200px;
-                text-align: center;
-            }
-            
-            #dept {
-              font-style: italic;
-              font-weight: 400;
-              font-size: 24px;
-              color: #000;
-            }
-            #timefor {
-              font-weight: 400;
-              font-size: 18px;
-              color: #000;
-            }
-            h2 {
-              margin-top: 0;
-              margin-bottom: 0;
-            }
-            
-            #options{
-              font-size: 18px;
-              font-style: italic;
-              
-            }
-            
-            #salary, #hourly, #state {
-              font-weight: 400;
-              font-style: normal;
-              
-              display: inline-block;
-              font-size: 22px;
-              padding-left: 2px;
-              
-            }
-            
-            #slider {
-              width: 400px;
-              margin: 10px auto;
-            }
-            
-            #salaryLeft, #salaryRight, #hourlyLeft, #hourlyRight, #stateLeft, #stateRight {
-              display: inline-block;
-              padding-left: 4px;
-              padding-right: 4px;
-              opacity: .4;
-            }
-            
-            #salaryLeft:hover, #salaryRight:hover, #hourlyLeft:hover, #hourlyRight:hover, #stateLeft:hover, #stateRight:hover {
-             opacity: .8;
-             cursor: pointer;
-            }
-            
-            #timeline {
-              opacity: .2;
-              
-            }
-            
-             #timeline:hover {
-                opacity: 1;
-
-              }
-            #theyears {
-              margin-left: 39px;
-              display: inline-block;
-              
-            }
-            .bend {
-              margin-top: -45px;
-              display: block;
-              
-            }
-            
-            #slider {
-              display: inline-block;
-              margin-right: 14px;
-              margin-left: 20px;
-              height: 40px;
-            }
-            
-            #year {
-              display: inline-block;
-              font-style: normal;
-              font-size: 22px;
-              padding-left: 6px;
-              
-            }
-            
-            #info {
-              font-size: 14px;
-              margin-top: 30px;
-            }
-            
-            .q {
-              font-size: 18px;
-            }
-            
-            #iSalary, #iHourly, #iHour, #iMin{
-               font-size: 18px;
-                font-style: italic;
-            }
-        </style> 
-      <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
-    		
+      <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">       
+      <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.11.custom.css" rel="stylesheet" /> 
+        
        <link href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,regularitalic' rel='stylesheet' type='text/css'>
     </head> 
-    <body> 
-        
-       
+    <body id = "thebody"> 
         
         <div id="holder">
           
          <div id="canvas"></div>
         </div> 
+        <div id = "logo">
+           <img src = "images/edtd.png">
+         </div>
         <div id="options">
-          I make
-          <div id = "salaryLeft">&lsaquo;</div>Ksh.<div id = "salary">600000</div><div id = "salaryRight">&rsaquo;</div>
+          My salary is
+          <div id = "salaryLeft">&lsaquo;</div>$<div id = "salary">50,000</div><div id = "salaryRight">&rsaquo;</div>
           a year, or
-          <div id = "hourlyLeft">&lsaquo;</div>Ksh.<div id = "hourly">50000</div><div id = "hourlyRight">&rsaquo;</div>
-          a month in
-          <div id = "year">2015</div>.
+          <div id = "hourlyLeft">&lsaquo;</div>$<div id = "hourly">24</div><div id = "hourlyRight">&rsaquo;</div>
+          per hour in
+          <div id = "year">2010</div>.
           <div id = "timeline">
             <div id = "slider"></div>
             <div class = "bend">1984 &laquo;<div id = "theyears"></div>&raquo; 2015</div>
             
           </div>
           
-          I pay about <div id = "stateLeft">&lsaquo;</div><div id = "state">10</div>%<div id = "stateRight">&rsaquo;</div> in State & Local Taxes
-          
         </div>
         
         <div id="info">
           <p>
-            Tax day, April 14th, is only one day a year, 
+            Tax day, April 18th in 2011, is only one day a year, 
             <br/>
-            but if you take withholdings from your paycheck
+            but if tax is withheld from your paycheck
              <br/>
-             you are working for the government everyday.
+             you are working for the government every day.
           </p>
           <p>
-          With the info above you would pay $<span id="iSalary">4000</span> a year in taxes, which is about $<span id="iHourly">40</span> a day. 
+          With the settings above you would pay $<span id="iSum">4000</span> a year in federal taxes, which is about $<span id="iDaily">40</span> a day*. 
           </p>
           <p>
-          That's <span id="iHour">4</span> hours and <span id="iMin">2</span> minutes that you spend each day
+          That's <span id="iHours">...</span> that you spend each day
            <br/>
            working for the funding of the Departments of the US government.
           </p>
+          <p>* Based on 260 days worked a year at 8 hours a day</p>
           <p> 
-          Click any Department above for more information <br/> about how your time is spent.
+          Click any Department (Slice on the color ring) above for more information <br/> about how your time is spent.
+          </p>
+          
+          <p> 
+          Instructions on how to build a working model of the clock @ <a href = "http://fchasen.com/buildaclock" style = "color: #a52e2a;font-weight:bold;text-decoration: none;">fchasen.com/buildaclock</a>
           </p>
           </div>
           
+          <div id = "credits">
+            <h4>CREDITS:</h4>
+            <p>Designed and Developed By <a target = "_blank" href = "http://fchasen.com">Fred Chasen</a>.</p>
+            <p>Thanks to <a target = "_blank" href = "http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a> for his development on the <a target = "_blank" href = "http://raphaeljs.com/">Raphaël JS </a>vector graphics library</p>
+            <p>and <a target = "_blank" href = "http://jonobr1.com/">jonobr1</a> for his example code at <a target = "_blank" href = "http://datavizchallenge.org/example-viz/">example-viz</a>.</p>
+          </div>
+          <div id = "social">
+            <iframe src="http://www.facebook.com/plugins/like.php?href=fchasen.com%2Ftaxday&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+          </div>
+          
+          <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{{ site.google_analytics }}']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+          </script>
     </body> 
 </html>

@@ -4,7 +4,7 @@
  * Copyright (c) 2009 Dmitry Baranovskiy (http://g.raphaeljs.com)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
-Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
+Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
     var data = [];
     var paper = this
     var data = 0, //[24, 92, 24, 52, 78, 99, 82, 27]
@@ -14,6 +14,8 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
         start,
         hoursText,
         bg = paper.circle(cx, cy, 0).attr({stroke: "none", "stroke-width": 4});
+    
+    var remove, closer, subfuncText, subRev, subTime;
          
     paper.customAttributes.segment = function (x, y, r, a1, a2) {
         var flag = (a2 - a1) > 180,
@@ -27,23 +29,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
         };
     };
     
-    this.update = function (values, labels) {
-      //this.draw(values);
-       data = values;
-        total = 0;
-       for (var i = 0; i < data.length; i++) {
-           total += data[i];
-           data[i] = {value: data[i], label: labels[i], order: i};
-           //console.log("data: "+data[i].value+" - "+"labels: "+labels[i]);
-       }
-       values.sort(function (a, b) {
-           return b.value - a.value;
-       });
-       start = 180;
-       
-       //this.animate(2500, "bounce");
-    }
-    
+   
     this.draw = function (values, labels) {
           data = values;
           parent = this;
@@ -61,11 +47,13 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
           });
  
           start = 180;
-         
+          
+        
+           
           for (i = 0; i < data.length; i++) {
               var val = 360 / total * data[i].value;
               (function (i, val) {
-                  var coloring = "rgb(" + (i+1) *23 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
+                  var coloring = "rgb(" + (i+1) *40 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
                   
                   var p = paper.path().attr({segment: [cx, cy, rad-20, 180, 180 + val], title: data[i].label || "", stroke: "none", fill: coloring});
                   
@@ -80,29 +68,43 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
                    p.click(function () {
                      paper.wipe();
                    });
-                  // p.click(function () {
-                  //                       d = data[i];
-                  //                       total += d.value;
-                  //                       d.value *= 2;
-                  //                       parent.animate("600", "bounce", function(){
-                  //                         this.stop();
-                  //                         total -= d.value;
-                  //                         d.value = 0; //REMOVE
-                  //                         //total -= d.value /2;
-                  //                         //d.value /= 2;
-                  //                         parent.animate("600");
-                  //                       });
-                  //                       
-                  //                       $("#info").html(getInfo(d.label,d.value));
-                  //                       //console.log(d.label);
-                  //                       getInfo(i, d.label, d.value);
-                  //                   });
+
                   
                   p.hover(function () {
                        //this.stop();
                       this.animate({opacity: .60}, 500,  "ease");
-                      hoursText.attr('text', p.attr("title"));
-            	        
+                      var title = p.attr("title");
+                      if(title == "Money"){
+                        
+                      var daily = (salary / 260);
+                      
+                       subfuncText.attr('text', "You took home "+(Math.round(amount/salary * 100))+" %");
+                       subRev.attr('text',  "of the $"+Math.round(daily)+" you earned today.");
+                        subTime.attr('text', "");
+                       
+                      }else if(title == "State & Local Governments"){
+                         subfuncText.attr('text', title);
+
+                           var daily = (data[i].value / 260);
+                           var aday = daily / hourly;
+
+                          subRev.attr('text', "took an around $"+formatDollar(data[i].value)+" or about 10%");
+                          subTime.attr('text', "of that as income tax, depending on your state.");
+                      }else{
+                          
+                          subfuncText.attr('text', title);
+
+                           var daily = (data[i].value / 260);
+                           var aday = daily / hourly;
+                           //var ayear = amount / hourly;
+
+
+
+                           subRev.attr('text', "received $"+formatDollar(data[i].value)+" of that $"+formatDollar(amount));
+                          subTime.attr('text', "or "+formatHoursFlat(aday)+" of your time today");
+                      }  
+                      
+                      
                    }, function () {
                        //this.animate({segment: [p.ccx, p.ccy, rad, p.ss, p.ss + p.vval]}, 500,  "bounce");
                        this.animate({opacity: 1}, 500,  "ease");
@@ -125,17 +127,101 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
         
         
         var fontSizer = 20;
-        if(cx <= 360){
-          fontSizer = 16;
-        }
+         if(cx > 360 && cx <= 500){
+            fontSizer = 16;
+          }
+          if(cx > 280 && cx <= 360){
+            fontSizer = 14;
+          }
+          if(cx <= 280){
+            fontSizer = 10;
+          }
+ 
+        var daily = ((amount / 260));
+        var aday = daily / hourly;
+        var ayear = amount / hourly;
+
+        face.push(
+         paper.circle(cx+2, cy+2, rad-wheight/25).attr({fill:"#dedddb", stroke: "none", "stroke-width": 4}),
+          
+          
+          paper.text(cx, (cy-(rad-(fontSizer*6))), "This year you worked a total of").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),           
+          paper.text(cx, (cy-(rad-(fontSizer*7.5))), formatHoursFlat(ayear)).attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px", "font-style":"italic"}),
+          paper.text(cx, (cy-(rad-(fontSizer*9))), "for a contribution of $"+formatDollar(amount)).attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          
+          paper.text(cx, cy-(fontSizer*2), "You worked").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
+          paper.text(cx, cy, formatHoursFlat(aday)+" today").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          paper.text(cx, cy+fontSizer*2, "for the "+which).attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
+          //paper.text(cx, (cy-(rad-120)), "You paid $"+amount+" to the").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          
+          subfuncText = paper.text(cx, (cy+(rad-(fontSizer*10.5))), "Hover Over Any Inner Ring Slice").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px", "font-style":"italic"}),
+          subRev = paper.text(cx, (cy+(rad-(fontSizer*9))), "For A Cost / Time Breakdown").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          subTime = paper.text(cx, (cy+(rad-(fontSizer*7.5))), "").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          
+          closer = paper.text(cx, (cy+fontSizer*4), ">> BACK To Clock <<").attr({"font-family": "Crimson Text", 'font-size': (fontSizer-4)+"px"})
+          //remove = paper.text(cx, (cy+fontSizer*5), "or REMOVE").attr({"font-family": "Crimson Text", 'font-size': (fontSizer-4)+"px"})
+          
+         );
+         
+         closer.click(function () {
+             paper.wipe();
+             pie.redraw();
+             
+          });
+          
+         // remove.click(function () {
+         //             paper.wipe();
+         //          });
+    }
+    
+    this.showMoney = function (amount) {
+        
+        var fontSizer = 20;
+         if(cx > 360 && cx <= 500){
+            fontSizer = 16;
+          }
+          if(cx > 280 && cx <= 360){
+            fontSizer = 14;
+          }
+          if(cx <= 280){
+            fontSizer = 10;
+          }
+ 
+        var daily = Math.round((amount / 260));
+        var aday = daily / hourly;
+        var ayear = amount / hourly;
         
         face.push(
-         paper.circle(cx+2, cy+2, rad-60).attr({fill:"#dedddb", stroke: "none", "stroke-width": 4}),
-                                                                                                                
-          paper.text(cx, (cy-(rad-120)), "You paid $"+amount+" to the").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
-          paper.text(cx, (cy-(rad-150)), which).attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
-     	    hoursText = paper.text(cx, (cy), "").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px", "font-style":"italic"})
+         paper.circle(cx+2, cy+2, rad-wheight/25).attr({fill:"#dedddb", stroke: "none", "stroke-width": 4}),
+          
+          
+          paper.text(cx, (cy-(rad-(fontSizer*6))), "This year you took home").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),           
+          paper.text(cx, (cy-(rad-(fontSizer*7.5))), "$"+formatDollar(amount)+" and paid "+(100-Math.round(amount/salary * 100))+" %").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          paper.text(cx, (cy-(rad-(fontSizer*9))), "of your salary of $"+formatDollar(salary)+" towards taxes.").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          
+          paper.text(cx, cy-(fontSizer*2), "You worked").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
+          paper.text(cx, cy, formatHoursFlat(aday)+" today").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          paper.text(cx, cy+fontSizer*2, "for yourself.").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
+          //paper.text(cx, (cy-(rad-120)), "You paid $"+amount+" to the").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          
+          subfuncText = paper.text(cx, (cy+(rad-(fontSizer*10.5))), "Hover Over Any Inner Ring Slice").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px", "font-style":"italic"}),
+          subRev = paper.text(cx, (cy+(rad-(fontSizer*9))), "For A Cost / Time Breakdown").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          subTime = paper.text(cx, (cy+(rad-(fontSizer*7.5))), "").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          
+          closer = paper.text(cx, (cy+fontSizer*4), ">> BACK To Clock <<").attr({"font-family": "Crimson Text", 'font-size': (fontSizer-4)+"px"})
+          //remove = paper.text(cx, (cy+fontSizer*5), "or Click Here to CLOSE and Remove").attr({"font-family": "Crimson Text", 'font-size': (fontSizer-4)+"px"})
+          
          );
+         
+         closer.click(function () {
+             paper.wipe();
+             pie.redraw();
+             
+          });
+          
+         // remove.click(function () {
+         //             paper.wipe();
+         //          });
     }
     
     this.wipe = function (){
@@ -181,22 +267,3 @@ Raphael.fn.g.piechart = function (cx, cy, rad, opts) {
 Array.prototype.diff = function(a) {
     return this.filter(function(i) {return !(a.indexOf(i) > -1);});
 };
-
-// //this.draw(values);
-//        parent = this;
-//        old_data = data;
-//        //data = values;
-//        differO = data.diff(values);
-//        differ = values.diff(data);
-//        console.log(differ);
-//        
-//        for (var i = 0; i < differ.length; i++) {
-//             var where = data.indexOf(differO[i]);
-//             console.log(total);
-//             data[where] = differ[i];
-//             total += data[where];
-//             console.log(data[where]);
-//             
-//             
-//         }
-//        parent.animate();

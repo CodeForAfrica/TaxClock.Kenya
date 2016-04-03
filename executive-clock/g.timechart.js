@@ -11,8 +11,12 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
         paths = paper.set(),
         total,
         start,
+        oldData,
+        oldItem,
         bg = paper.circle(cx, cy, 0).attr({stroke: "none", "stroke-width": 4});
     
+    var coloring = ["#475a3c", "#60744f", "#3c6657",  "#276a63", "#3e5f6a", "#732f53", "#8b3e4e", "#ad5050", "#a1735b", "#7b5252", "#b9a868",  "#c4b880", "#736a2f", "#73572f", "#d84f13",  "#ffe010", "#7c94ec","#9d110a","#7c0986", "#098987","#098b18", "#7a5e54"];
+    //var coloring = ["#60744f", "#495031",  "#87936f", "#576a4e", "#6a7854", "#969a7f", "#a2a47f", "#a1735b", "#7b5252", "#b9a868",  "#c4b880", "#736a2f", "#73572f", "#d84f13",  "#ffe010", "#7c94ec","#9d110a","#7c0986", "#d3d9b7","#bdc6a9", "#d8d4b1"];
              
     paper.customAttributes.segment = function (x, y, r, a1, a2) {
         var flag = (a2 - a1) > 180,
@@ -40,7 +44,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
        });
        start = 180;
        
-       this.animate(2500, "bounce");
+       this.animateAll(2500, "bounce");
     }
     
     this.draw = function (values, labels, ids) {
@@ -64,10 +68,10 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
           for (i = 0; i < data.length; i++) {
               var val = 270 / total * data[i].value;
               (function (i, val) {
-                  var coloring = "rgb(" + (i+1) *23 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
+                //var coloring = "rgb(" + (i+1) *23 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
                   
-                  var p = paper.path().attr({segment: [cx, cy, rad-20, 180, 180 + val], title: data[i].label || "", stroke: "none", fill: coloring});
-                  
+                  var p = paper.path().attr({segment: [cx, cy, rad-20, 180, 180 + val], title: data[i].label || "", stroke: "none", fill: coloring[i]});
+                  var od = false;
                   
                   p.ss = start;
                   p.ccx = cx;
@@ -77,34 +81,47 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
                   paths.push(p)
                   
                   p.click(function () {
+                    
+                      //parent.redraw();
+                      
                       d = data[i];
-                      od = d.value;
+                      oldItem = d;
+                      oldData = d.value;
                       total += d.value;
                       d.value *= 2;
-                      parent.animate("600", "bounce", function(){
+                      parent.animateAll("600", "bounce", function(){
                         this.stop();
                         total -= d.value;
                         d.value = 0; //REMOVE
                         //total -= d.value /2;
                         //d.value /= 2;
                         var lb = d.label;
-                        var vl = od;
+                        var vl = oldData;
                         var wh = i;
 
-                        parent.animate("600", "bounce", function(){
-                          getInfo(ids[wh], wh, lb, vl);
+                        parent.animateAll("600", "bounce", function(){
+                          if(wh > 0){
+                            getInfo(ids[wh-1], wh, lb, vl);
+                          }else{
+                            getMoney();
+                          }
                           
                         });
                       });
-                      
-                      $("#info").html(getInfo(d.label,d.value));
+                    
+            
+                      //$("#info").html(getInfo(d.label,d.value));
                       //console.log(d.label);
                   });
                   
                   p.hover(function () {
                        this.stop();
                        this.animate({segment: [p.ccx, p.ccy, rad+10, p.ss, p.ss + p.vval]}, 500,  "bounce");
-                       clocked.writeto(p.attr("title"));
+                       
+                       var daily = (data[i].value / 260);
+                       var aday = daily / hourly;
+                        
+                       clocked.writeto(p.attr("title"),formatHoursFlat(aday));
                       //$("#dept").html(p.attr("title"));
                    }, function () {
                        this.animate({segment: [p.ccx, p.ccy, rad, p.ss, p.ss + p.vval]}, 500,  "bounce");
@@ -116,9 +133,18 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
           }
           
           //bg.animate({r: 151}, 1000, "easeout");
-          parent.animate(1000, "bounce");
+          parent.animateAll(1000, "bounce");
     }
     
+    this.redraw = function () {
+      if(oldItem){
+        oldItem.value = oldData;                        
+        total += oldItem.value;
+        this.animateAll(1000, "bounce");
+      }      
+      oldItem = false;
+      oldData = false;
+    }
     
     this.showInfo = function (i, which) {
         var start = 180,
@@ -130,7 +156,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
         
     }
     
-    this.animate = function (ms, effect, backto) {
+    this.animateAll = function (ms, effect, backto) {
         var start = 180,
             val;
             

@@ -2,25 +2,32 @@ var canvas;
 var clocked;
 var pie;
 var init = true;
-var salary = 600000;
-var hourly = 50000;
-var year = 2015;
+var salary = 50000;
+var hourly = 24;
+var year = 2010;
+var oldYear;
 var offset = 0;
+var sum = 0;
+var state = 0;
+var wheight = 600;
+var divisor = 10;
 
 jQuery(document).ready(function($) {
   
-  var wheight = parseInt($(window).height());
-
-  if(wheight < 700){
-    canvas = Raphael("canvas", 620, 700);
-    clocked = canvas.clock(300,300,230);
-    pie = canvas.g.timechart(300, 300, 280);
-  }else{
-    canvas = Raphael("canvas", 840, 900);
-    clocked = canvas.clock(420,420,350);
-    pie = canvas.g.timechart(420, 420, 410);
+  wheight = parseInt($(window).height()) - 100;
+  if(wheight > 900){
+    wheight = 900;
+    divisor = 12;
+  }else if((400 < wheight) && (wheight < 600)){
+    divisor = 9;
+  }else if(wheight < 400){
+    wheight = 400;
+    divisor = 8;
   }
   
+  canvas = Raphael("canvas", wheight, wheight);
+  clocked = canvas.clock(wheight/2,wheight/2,wheight/2-(wheight/divisor));
+  pie = canvas.g.timechart(wheight/2,wheight/2, wheight/2-30);
   
   
   timeline = Raphael("theyears", 450, 8).timeline(400,31);
@@ -30,8 +37,11 @@ jQuery(document).ready(function($) {
     max: 2015,
     slide: function(event, ui) { $("#year").html(ui.value); },
     change: function(event, ui) {
-      year =  parseInt($("#salary").html());
-      getData("agency", ui.value, year);
+      oldYear = year;
+      year =  ui.value;
+      getData("agency", year, salary);
+      clocked.updateYear();
+
       },
     value: 2011
   });
@@ -42,42 +52,68 @@ jQuery(document).ready(function($) {
   });
   
   $("#salaryRight").click(function(){
-    salary = salary+10000;
-    hourly = Math.round(salary / 12);
+    salary = salary+5000;
+    hourly = Math.round(salary / 54 / 40);
     $("#hourly").html(hourly);
-    $("#salary").html(salary);
+    $("#salary").html(formatDollar(salary));
+    clocked.updateSalary();
+    
     getData("agency", year, salary);
   });
   
   $("#salaryLeft").click(function(){
-    if(salary > 10000){
-      salary = salary-10000;
-      hourly = Math.round(salary / 12);
+    if(salary > 5000){
+      salary = salary-5000;
+      hourly = Math.round(salary / 54 / 40);
       $("#hourly").html(hourly);
-      $("#salary").html(salary);
+      $("#salary").html(formatDollar(salary));
+      clocked.updateSalary();
       getData("agency", year, salary);
     }
   });
 
   $("#hourlyRight").click(function(){
-    hourly = hourly+5000;
-    salary = Math.round(hourly * 12);
+    hourly = hourly+1;
+    salary = Math.round(hourly * 52 * 40);
     
     $("#hourly").html(hourly);
-    $("#salary").html(salary);
+    $("#salary").html(formatDollar(salary));
+    
+    clocked.updateSalary();
     getData("agency", year, salary);
   });
 
   $("#hourlyLeft").click(function(){
     if(salary > 1){
-      hourly = hourly-5000;
-      salary = Math.round(hourly * 12);
+      hourly = hourly-1;
+      salary = Math.round(hourly * 52 * 40);
       
       $("#hourly").html(hourly);
-      $("#salary").html(salary);
+      $("#salary").html(formatDollar(salary));
+      
+      clocked.updateSalary();
+      
       getData("agency", year, salary);
     }
   });
+  
+  // $("#stateRight").click(function(){
+  //   state = state+1;
+  //   
+  //   $("#state").html(state);
+  //   
+  //   getData("agency", year, salary);
+  // });
+  // 
+  // $("#stateLeft").click(function(){
+  //   if(state > 0){
+  //     state = state-1;
+  //     
+  //     $("#state").html(state);
+  //     
+  //     getData("agency", year, salary);
+  //   }
+  // });
  
 });
 
@@ -107,7 +143,6 @@ var getData = function(group,year,income) {
          
     });
     
-
 }
 
 var getSubData = function(agency,year,income, label, val) {
@@ -123,7 +158,8 @@ var getSubData = function(agency,year,income, label, val) {
           "&income=" + income ;
           
     var api  = base + type + call;
-
+    
+    
     Ajax.get(api, function(data) {
          var xml = data;
          if(typeof data == 'string') {
@@ -138,44 +174,60 @@ var getSubData = function(agency,year,income, label, val) {
 
 }
 
-window.onload = getData("agency", "2015", "50000");
+window.onload = getData("agency", "2011", "50000");
 
 function analyzeData(data, income){
  var  items = [],
       labels = [],
       ids = [],
       leftover = income;
-      
+      sum = 0;
       $(data).each(function () {
             var id     = $(this).attr('dimensionID');
             var name   = $(this).attr('dimensionName');
             var amount = Math.abs(parseInt($(this).attr('mycosti')));
-
-            if(amount > 0){
+            sum += parseFloat(amount);
+            if(amount > 1){
             
             items.push(amount);
             labels.push(name);
             ids.push(id);
             
-            leftover -= amount;
+            
           }
       });
+
+      parsePayment(sum);
       
-      var state = income * .10;
-      items.push(state);
-      labels.push("State/Local");
-      leftover -= state;
+      if(state > 0){
+        var stateTax = income * (state/100);
+        items.push(stateTax);
+        labels.push("State/Local");
+        leftover -= stateTax;
+      }
+      
+      leftover = salary - sum;
       
       items.push(leftover);
       labels.push("Money");
-      
+
+        
       if(init){
         pie.draw(items, labels, ids);
         clocked.toFront();
         init = false;
       }else{
-        pie.update(items, labels, ids);
+        if(typeof(subpie) == 'object'){
+          subpie.wipe();
+        }
+        pie.update(items, labels, ids);        
       }
+      
+      var daily = Math.round((sum / 260));
+      var aday = daily / hourly;
+
+      clocked.writeto("United States Government",formatHoursFlat(aday));
+      
 }
 
 function analyzeSubData(data, income, label, val){
@@ -188,25 +240,20 @@ function analyzeSubData(data, income, label, val){
             var id     = $(this).attr('accountID');
             var name   = $(this).attr('account');
             var amount = Math.abs(parseInt($(this).attr('mycosti')));
-            if(amount >= 10){              
+
               subitems.push(amount);
               sublabels.push(name); 
-            }else{
-              other.push(amount);
-              otherlabels.push(amount);
-              
-            }           
+
       });
       
-      
-      //pie = canvas.g.timechart(420, 420, 410);
+     
       
       if(typeof(subpie) == 'object'){
               subpie.wipe();
-
       }
       
-      subpie = canvas.g.piechart(420, 419, 350);
+      
+      subpie = canvas.g.piechart(wheight/2, wheight/2, wheight/2-(wheight/divisor+3), val);
       
       subpie.draw(subitems, sublabels);
 
@@ -214,29 +261,171 @@ function analyzeSubData(data, income, label, val){
       
 }
 
+function getMoney(){
+  var subitems = [],
+      sublabels = [],
+      other = [],
+      otherlabels = [];
+      
+      leftover = salary - sum;
+      
+      //if(state > 0){
+        var stateTax = salary * (10/100);
+        subitems.push(stateTax);
+        sublabels.push("State & Local Governments");
+        leftover -= stateTax;
+      //}
+
+        
+        subitems.push(leftover);
+        sublabels.push("Money");
+      
+      
+      //pie = canvas.g.timechart(420, 420, 410);
+      
+      if(typeof(subpie) == 'object'){
+              subpie.wipe();
+      }
+      
+      subpie = canvas.g.piechart(wheight/2, wheight/2, wheight/2-(wheight/divisor+3), leftover);
+      
+      subpie.draw(subitems, sublabels);
+
+      subpie.showMoney(leftover);
+    
+}
 
 function getInfo(id, place, label, val){  
-  a = getSubData(id, year, salary, label, val);
+  getSubData(id, year, salary, label, val);
   
 }
 
-// function createPie(items, labels){
-//   pie = canvas.g.piechart(402 + right, 402+top, 400, items, {legend: labels, legendpos: "east", stroke: "none"});
-//   clocked.toFront();
-//   
-//   pie.hover(function () {
-//       this.sector.stop();
-//          this.sector.animate({scale: [1.04, 1.04, this.cx, this.cy]}, 500, "bounce");
-//          if (this.label) {
-//              this.label[0].stop();
-//              this.label[0].scale(1.5);
-//              this.label[1].attr({"font-weight": 800});
-//          }
-//      }, function () {
-//          this.sector.animate({scale: [1, 1, this.cx, this.cy]}, 500, "bounce");
-//          if (this.label) {
-//              this.label[0].animate({scale: 1}, 500, "bounce");
-//              this.label[1].attr({"font-weight": 400});
-//          }
-//      });
-// }
+function parsePayment(sum){
+     $("#iSum").html(formatDollar(sum));
+    
+    daily = Math.round((sum / 260));
+    $("#iDaily").html(daily);
+    
+    aday = daily / hourly;
+    
+    
+    $("#iHours").html(formatHours(aday));
+}
+
+function formatHours(val) {
+  num = val;
+  str = "";
+  
+  //http://www.springfrog.com/converter/decimal-time.htm
+  var hours = parseInt(num);
+     num -= parseInt(num); num *= 60;
+  var mins = parseInt(num);
+  
+  if(hours == 1){
+    str = "<span class='num'>"+hours+"</span> hour ";
+  }else if(hours > 1){
+    str = "<span class='num'>"+hours+"</span> hours ";
+  }
+  
+  if(mins >= 1 && hours > 0){
+    str += "and ";
+  }
+  
+  if(mins < 1){
+    num -= parseInt(num); num *= 60;
+    var sec = parseInt(num);
+  }
+  
+  if(mins == 1){
+    str += "<span class='num'>"+mins+"</span> minute ";
+  }else if(mins > 1){
+    str += "<span class='num'>"+mins+"</span> minutes ";
+  }
+  
+  if(sec){
+    str += "<span class='num'>"+sec+"</span> seconds";
+  }  
+  return str
+}
+
+function formatHoursFlat(val) {
+  num = val;
+  str = "";
+  
+  //http://www.springfrog.com/converter/decimal-time.htm
+  
+  if(num < 24){
+    var hours = parseInt(num);
+       num -= parseInt(num); num *= 60;
+    var mins = parseInt(num);
+  }else{
+    
+    var days = parseInt(num/24);
+    num -= parseInt(days*24); 
+    var hours = parseInt(num);
+       num -= parseInt(num); num *= 60;
+    var mins = parseInt(num);
+  }
+  
+  if(mins < 1){
+    num -= parseInt(num); num *= 60;
+    var sec = parseInt(num);
+  }
+
+  if(days){
+    str += days+" days, ";
+  }
+  if(hours == 1){
+    str +=  hours+" hour ";
+  }else if(hours > 1){
+    str +=  hours+" hours ";
+  }
+  
+  if(mins >= 1 && hours > 0){
+    str += "and ";
+  }
+  
+  if(mins == 1){
+    str += mins+" minute";
+  }else if(mins > 1){
+    str += mins+" minutes";
+  }
+  
+  if(sec){
+    str += sec+" seconds";
+  }
+     
+  return str
+}
+
+
+// thanks jonobr1...
+// Takes a number and adds commas and
+// formatting US Citizens have come to
+// expect when looking at money.
+function formatDollar(value) {
+  var word = value.toString();
+  var period = word.indexOf('.');
+  
+  if(period == -1) period = word.length;
+  
+  if(period > 3) {
+    var result = '';
+    for(var i = 0; i < word.length; i++) {
+      result += word.charAt(i);
+      if(i < period) {
+      
+        var n = period - i;
+        if(n % 3 == 1 && word.charAt(n - 1) != '-') {
+          result += ',';
+        }
+      }
+    }
+    result = result.replace(',.', '.');
+    result = result.replace(/\,$/, '');
+  } else {
+    result = word;
+  }
+  
+  return result;
+}
