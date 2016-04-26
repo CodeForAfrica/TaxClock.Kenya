@@ -79,46 +79,44 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
                   p.vval = val;
                   
                   paths.push(p)
-                  
-                  p.click(function () {
-                    
-                      //parent.redraw();
-                      
-                      d = data[i];
-                      oldItem = d;
-                      oldData = d.value;
-                      total += d.value;
-                      d.value *= 2;
-                      parent.animateAll("600", "bounce", function(){
-                        this.stop();
-                        total -= d.value;
-                        d.value = 0; //REMOVE
-                        //total -= d.value /2;
-                        //d.value /= 2;
-                        var lb = d.label;
-                        var vl = oldData;
-                        var wh = i;
 
-                        parent.animateAll("600", "bounce", function(){
-                          if(wh > 0){
-                            getInfo(ids[wh-1], wh, lb, vl);
-                          }else{
-                            getMoney();
-                          }
-                          
-                        });
-                      });
+                  // REMOVE CLICK OPTION
+                  
+                  // p.click(function () {
                     
-            
-                      //$("#info").html(getInfo(d.label,d.value));
-                      //console.log(d.label);
-                  });
+                  //     parent.redraw();
+                      
+                  //     d = data[i];
+                  //     oldItem = d;
+                  //     oldData = d.value;
+                  //     total += d.value;
+                  //     d.value *= 2;
+                  //     parent.animateAll("600", "bounce", function(){
+                  //       this.stop();
+                  //       total -= d.value;
+                  //       d.value = 0; //REMOVE
+                  //       //total -= d.value /2;
+                  //       //d.value /= 2;
+                  //       var lb = d.label;
+                  //       var vl = oldData;
+                  //       var wh = i;
+
+                  //       parent.animateAll("600", "bounce", function(){
+                  //         if (wh > 0) {
+                  //           getInfo(ids[wh-1], wh, lb, vl);
+                  //         } else {
+                  //           getMoney();
+                  //         }
+                          
+                  //       });
+                  //     });
+                  // });
                   
                   p.hover(function () {
                        this.stop();
                        this.animate({segment: [p.ccx, p.ccy, rad+10, p.ss, p.ss + p.vval]}, 500,  "bounce");
                        
-                       var daily = (data[i].value / 260);
+                       var daily = (data[i].value / 20);
                        var aday = daily / hourly;
                         
                        clocked.writeto(p.attr("title"),formatHoursFlat(aday));
