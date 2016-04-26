@@ -121,7 +121,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
 
       chart.spent = paper.text(cx, (cy+(rad-(fontSizer*9.5))), "Time spent working for the").attr({"font-family": "Crimson Text", 'font-size': fontSizer+"px", "text-align":"center"}),
       workingFor = paper.text(cx, (cy+(rad-(fontSizer*7.8))), "Kenya Government").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
-      clickHere = paper.text(cx, (cy+(rad-(fontSizer*6))), "Click Any Color Slice For More Info").attr({"font-family": "Crimson Text", 'font-size': fontSizer+"px", "text-align":"center"})
+      clickHere = paper.text(cx, (cy+(rad-(fontSizer*6))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Crimson Text", 'font-size': fontSizer+"px", "text-align":"center"})
 
     );
     sec = (cy-(rad-20));

@@ -155,7 +155,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
     }
     
     this.animateAll = function (ms, effect, backto) {
-        var start = 180,
+        var start = 150,
             val;
             
         for (i = 0; i < data.length; i++) {
