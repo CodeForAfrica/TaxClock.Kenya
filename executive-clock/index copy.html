@@ -1,0 +1,255 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Raphaël · Pie chart</title> 
+        <link rel="stylesheet" href="demo.css" type="text/css" media="screen"> 
+        <link rel="stylesheet" href="demo-print.css" type="text/css" media="print"> 
+        <script src="raphael.js"></script> 
+        <script src="jquery.js"></script> 
+        <script src="jclock.js"></script> 
+        <script src="g.raphael.js"></script> 
+        <script src="g.pie.js"></script> 
+        <!-- <script src="pie.js"></script>  -->
+        <style type="text/css" media="screen"> 
+            body {
+              background: #ddd;
+              font-size: 24px;
+            }
+            #holder {
+                width: 800px;
+                height: 800px;
+                margin: -100px 0 0 0;
+            }
+            
+            
+        </style> 
+        <script>
+          var params = {
+  					year: 2010,		// 1984 - 2015
+  					type: 0,		// 0 - 3
+  					sortby: 0,		// 0 - 3
+  					sortdir: false,
+  					income: 50000,
+  					filing: 0,		// 0 - 4
+  					group: ["agency", "bureau", "function", "subfunction"],
+  					groupKey: 2
+  				};
+  				
+            var data = [];
+            var labels = [];
+            var r;
+           var offset = 0;
+            var right = 50;
+            var top = 100;
+            
+            var pollData = function(year) {
+              
+    					// Gather parameters to pass to the API
+    					call = 
+    					     "group=" + "agency"
+    					     "&year=" + "2005" + 
+    						   // "&type=" + 0 + 
+    						   //                  "&sortdir=" + 0 + 
+    						  "&income=" + 50000 ;//+ 
+    						   //                  "&filing=" + filing + 
+    						   //                  "&group=" + params.group[params.groupKey] + 
+    						   //                  "&showChange=" + 0 +
+    						   //                  "&showExtra="  + 0;
+
+    					// Construct the API URL
+    					api	 = "http://www.whatwepayfor.com/api/getBudgetAggregate?group=agency&year=2005&income=50000";
+
+    					// About to stand on the shoulders of giants
+    					Ajax.get(api, receive);
+    				}
+    				
+          	// Once the data is received
+    				var receive = function(data) {
+
+    					// The data comes in xml, but
+    					// for some reason when received
+    					// it is a string. Not a problem
+    					// we just need to tell javascript
+    					// it IS xml.
+
+    					var xml = data;
+    					if(typeof data == 'string') {
+    						xml = stringToXml(data);
+    					}
+    					var items = xml.getElementsByTagName('item');
+              
+    					var data = [],
+                 labels = [];
+                 console.log(items);
+       				leftover = 50000;	
+             $(items).each(function () {
+                 // Grab relevant items from the XML
+             			var id	   = $(this).attr('dimensionID');
+             			var name   = $(this).attr('dimensionName');
+             			var amount = $(this).attr('mycosti');
+             			var exists = false;
+
+             		
+                 			console.log(amount)
+                 data.push(parseInt(amount));
+                 leftover -= parseInt(amount);
+                 labels.push(name);
+             });
+             console.log(leftover);
+    					data.push(leftover);
+    					labels.push("leftover");
+    					pie = r.g.piechart(402 + right, 402+top, 400, data, {legend: labels, legendpos: "east", stroke: "none"});
+              pie.toBack();   
+    				};
+    				
+          var Ajax = (function() {
+
+  					var counter = 0, head, query, key, window = this;
+  					function load(url) {
+  						var script = document.createElement('script'),
+  							done = false;
+  						script.src = url;
+  						script.async = true;
+
+  						script.onload = script.onreadystatechange = function() {
+  							if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+  								done = true;
+  								script.onload = script.onreadystatechange = null;
+  								if ( script && script.parentNode ) {
+  									script.parentNode.removeChild( script );
+  								}
+  							}
+  						};
+  						if ( !head ) {
+  							head = document.getElementsByTagName('head')[0];
+  						}
+  						head.appendChild( script );
+  					}
+  					function jsonp(url, callback) {
+  						query = "?";
+  						params = params || {};
+  						for ( key in params ) {
+  							if ( params.hasOwnProperty(key) ) {
+  								query += key + "=" + params[key] + "&";
+  							}
+  						}
+  						var jsonp = "json" + (++counter);
+  						window[ jsonp ] = function(data){
+  							callback(data);
+  							window[ jsonp ] = null;
+  							try {
+  								delete window[ jsonp ];
+  							} catch (e) {}
+  						};
+  						load(url + "&callback=" + jsonp);
+  						return jsonp;
+  					}
+  					return {
+  						get:jsonp
+  					};
+  				}());
+          
+          // Perhaps place in Utils?
+  				function stringToXml(text){
+
+  					if (window.ActiveXObject){
+  						var doc = new ActiveXObject('Microsoft.XMLDOM');
+  						doc.async = 'false';
+  						doc.loadXML(text);
+  					} else {
+  						var parser = new DOMParser();
+  						var doc = parser.parseFromString(text,'text/xml');
+  					}
+
+  					return doc;
+  				}
+
+  				
+  				
+  				
+          function genClock(clockId, offset) {
+            
+          	 r = Raphael(clockId, 1300, 1000);
+          	 
+          	 
+          	  
+          	 
+             
+                         
+             // pie.hover(function () {
+             //      this.sector.stop();
+             //         this.sector.animate({scale: [1.08, 1.08, this.cx, this.cy]}, 500, "bounce");
+             //         if (this.label) {
+             //             this.label[0].stop();
+             //             this.label[0].scale(1.5);
+             //             this.label[1].attr({"font-weight": 800});
+             //         }
+             //     }, function () {
+             //         this.sector.animate({scale: [1, 1, this.cx, this.cy]}, 500, "bounce");
+             //         if (this.label) {
+             //             this.label[0].animate({scale: 1}, 500, "bounce");
+             //             this.label[1].attr({"font-weight": 400});
+             //         }
+             //     });
+             
+           
+                      
+          	 c = r.circle(402+ right, 402+top, 350).attr({fill:"#fff", stroke:"#333"});
+          	 n12 = r.text(403+ right,80+top,'12').attr({"font-size":"36px"});
+          	 //n1 = r.text(130,49,'1').attr({"font-size":"26px"});
+          	 //n2 = r.text(152,72,'2');
+          	 n3 = r.text(732+ right,402+top,'3').attr({"font-size":"26px"});
+          	 //n4 = r.text(152,130,'4');
+          	 //n5 = r.text(130,152,'5');
+          	 n6 = r.text(402+ right,732+top,'6').attr({"font-size":"26px"});
+          	 //n7 = r.text(70,152,'7');
+          	 //n8 = r.text(48,130,'8');
+          	 n9 = r.text(75+ right,402+top,'9').attr({"font-size":"26px"});
+          	 //n10 = r.text(48,72,'10');
+          	 //n11 = r.text(70,49,'11');
+              
+              
+          	 mid = r.circle(402+ right, 402+top, 6).attr({stroke: "none", fill:"#000"});
+          	 pa = "M"+(402+right)+" "+(432+top)+"L"+(402+right)+" ";
+
+          	 handHour = r.path(pa+220).attr({'stroke-width':8});
+          	 handMin = r.path(pa+195).attr({'stroke-width':4});
+          	 handSec = r.path(pa+185).attr({'stroke-width':1,stroke:"red"});
+          	 midSec = r.circle(402+right, 402+top, 2).attr({stroke: "none", fill:"red"});
+             
+             pollData(2005);
+          };
+          
+          function tick() {
+      	        var t = new Date( (new Date()).getTime() - (offset * 1000) );
+      	        var hour   = t.getHours()
+                var minute = t.getMinutes()
+                var second = t.getSeconds()
+      	     
+                handSec.animate({rotation: (second * 6)  + " "+(402+right)+" "+(402+top)}, 1, "bounce");
+                handMin.animate({rotation: (minute * 6)  + " "+(402+right)+" "+(402+top)}, 1, "bounce");
+                handHour.animate({rotation: ((hour * 30) + (minute * 0.5))  + " "+(402+right)+" "+(402+top)}, 1, "bounce");
+      	        
+          	}
+      	    
+      	    window.setInterval("tick()", 1000);
+      	    
+      	   
+        </script>
+        
+    </head> 
+    <body onload = "genClock('clockId', 0);"> 
+        
+        <div id="header">
+          <h1>Time You Spent Working For The United States Government</h1>
+        </div>
+        
+        <div id="pie"></div>
+        
+        <div id="holder">
+         <div id="clockId"></div>
+          </div> 
+          
+    </body> 
+</html>

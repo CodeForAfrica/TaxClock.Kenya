@@ -1,0 +1,90 @@
+---
+---
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Every Day Is Tax Day - fchasen.com</title> 
+        <!-- <script src="jquery-1.5.1.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script src="jquery-ui-1.8.11.custom.min.js"></script> 
+
+        <script type="text/javascript" src="../moment.js"></script>
+        <script type="text/javascript" src="../underscore-min.js"></script>
+        <script type="text/javascript" src="../income-calculator.js"></script>
+        <script type="text/javascript" src="../pym.js"></script>
+         
+        <script src="raphael-min.js"></script> 
+        <script src="g.raphael.js"></script> 
+        <script src="g.timechart.js"></script>         
+        <script src="g.piechart.js"></script> 
+        <script src="clock.js"></script>
+        <script src="dvc.ajax.js"></script>  
+        <script src="main.js"></script> 
+        
+      <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">       
+      <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.11.custom.css" rel="stylesheet" /> 
+        
+       <link href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,regularitalic' rel='stylesheet' type='text/css'>
+    </head> 
+    <body id = "thebody"> 
+        
+        <div id="holder" style="min-height: 500px;">
+          
+         <div id="canvas"></div>
+        </div> 
+        <div id = "logo">
+           <img src = "images/edtd.png">
+         </div>
+        <div id="options">
+          My salary is
+          <div id = "salaryLeft">&lsaquo;</div>Ksh.<div id = "salary">50,000</div><div id = "salaryRight">&rsaquo;</div>
+          a month, or
+          <div id = "hourlyLeft">&lsaquo;</div>Ksh.<div id = "hourly">313</div><div id = "hourlyRight">&rsaquo;</div>
+          per hour in
+          <div id = "year">2015</div>.
+          <div id = "timeline" style="display: none;">
+            <div id = "slider"></div>
+            <div class = "bend">2014 &laquo;<div id = "theyears"></div>&raquo; 2016</div>
+            
+          </div>
+          
+        </div>
+        
+        <div id="info">
+          <p>
+          With the settings above you would pay Ksh.<span id="iSum">4000</span> a month in taxes, which is about Ksh.<span id="iDaily">40</span> a day*. 
+          </p>
+          <p>
+          That's <span id="iHours">...</span> that you spend each day
+           <br/>
+           working for the funding of the Departments of the Kenyan Governement.
+          </p>
+          <!-- <p>* Based on 260 days worked a year at 8 hours a day</p> -->
+          </div>
+          <br/><br/>
+          <!-- <div id = "social">
+            <iframe src="http://www.facebook.com/plugins/like.php?href=fchasen.com%2Ftaxday&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+          </div> -->
+
+          <script type="text/javascript">
+              var pymChild = new pym.Child();
+          </script>
+          
+          <!-- Google Analytics -->
+          <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{{ site.google_analytics }}']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+          </script>
+    </body> 
+</html>

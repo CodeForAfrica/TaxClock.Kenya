@@ -1,0 +1,161 @@
+body {
+  background: #41403f;
+  font-size: 18px;
+  color: #e4e0da;
+ /* background: -moz-radial-gradient(center 45deg, circle closest-side, #ddd 0%, #333 350%);*/
+  font-family: 'Crimson Text', arial, serif;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+#holder {
+    margin: 15px 0 0 0;
+    overflow: hidden;
+    font-family: 'Crimson Text', arial, serif;
+    
+}
+
+#header {
+    position: relative;
+    top: 515px;
+    left: 200px;
+    width: 520px;
+    height: 100px;
+    text-align: center;
+}
+#logo {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    width: 200px;
+}
+
+#dept {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
+}
+#timefor {
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+}
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#options{
+  font-size: 18px;
+  font-style: italic;
+  
+}
+
+#salary, #hourly, #state {
+  font-weight: 400;
+  font-style: normal;
+  
+  display: inline-block;
+  font-size: 22px;
+  padding-left: 2px;
+  
+}
+
+#slider {
+  width: 400px;
+  margin: 10px auto;
+}
+
+#salaryLeft, #salaryRight, #hourlyLeft, #hourlyRight, #stateLeft, #stateRight {
+  display: inline-block;
+  padding-left: 4px;
+  padding-right: 4px;
+  opacity: .4;
+}
+
+
+
+#options:hover #salaryLeft, #options:hover #salaryRight, #options:hover #hourlyLeft, #options:hover #hourlyRight, #options:hover #stateLeft, #options:hover #stateRight{
+  opacity: .6;
+  
+  
+}
+
+#options:hover #salaryLeft:hover, #options:hover #salaryRight:hover, #options:hover #hourlyLeft:hover, #options:hover #hourlyRight:hover, #options:hover #stateLeft:hover,#options:hover #stateRight:hover {
+ opacity: .8;
+ cursor: pointer;
+}
+
+#timeline {
+  opacity: .2;
+  
+}
+
+ #timeline:hover {
+    opacity: 1;
+
+  }
+#theyears {
+  margin-left: 39px;
+  display: inline-block;
+  
+}
+.bend {
+  margin-top: -45px;
+  display: block;
+  
+}
+
+#slider {
+  display: inline-block;
+  margin-right: 14px;
+  margin-left: 20px;
+  height: 40px;
+}
+
+#year {
+  display: inline-block;
+  font-style: normal;
+  font-size: 22px;
+  padding-left: 6px;
+  
+}
+
+#info {
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.q {
+  font-size: 18px;
+}
+
+#iSum, #iDaily, #iHour, #iMin, .num{
+   font-size: 18px;
+    font-style: italic;
+}
+
+#credits {
+  font-size: 11px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  
+}
+
+#credits a {
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+#credits a:hover {
+  text-decoration: underline;
+}
+
+#social{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
