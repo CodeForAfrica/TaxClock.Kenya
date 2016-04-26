@@ -12,7 +12,7 @@
   <meta property="og:title" content="The 2016 Tax Clock" />
   <meta property="og:description" content="It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent." />
   <meta property="og:image" content="https://raw.githubusercontent.com/CodeForAfrica/TaxClock.Kenya/gh-pages/preview.jpg" />
-  <meta property="og:url" content="http://taxclock.codeforkenya.org/?show-embed-link=true" />
+  <meta property="og:url" content="https://taxclock.codeforkenya.org/?show-embed-link=true" />
   <meta property="fb:app_id" content="193758347662800" />
   
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
@@ -25,27 +25,34 @@
         window.location.protocol = "https";
   </script>
 
+  <script src="pym.js"></script>
+
 </head>
 
 <body>
 
   <div class="embed-link">
-    <a href="http://taxclock.codeforkenya.org/" target="_blank">&lt;EMBED&gt;</a>
+    <a href="https://taxclock.codeforkenya.org/" target="_blank">&lt;EMBED&gt;</a>
   </div>
 
-  <div class="jumbotron">
+  <!-- <div class="jumbotron">
     <div class="container">
       <h1>2016</h1>
       <h2>Tax Clock</h2>
       <h3><span class="h3-inner">​How much of your work day is spent paying taxes?​</span></h3>
     </div>
-  </div>
+  </div> -->
+
+  <div id="executive-clock" style="background-color: #41403f; min-height: 400px;"></div>
+  <script>
+      var pymParent = new pym.Parent('executive-clock', 'executive-clock/index.html', {});
+  </script>
 
   <div class="container text-center" id="social-media">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <div class="fb-share-button" data-href="http://taxclock.codeforkenya.org/" data-layout="button_count"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://taxclock.codeforkenya.org" data-via="Code4Africa" data-hashtags="taxclock2016">Tweet</a>
+        <div class="fb-share-button" data-href="https://taxclock.codeforkenya.org/" data-layout="button_count"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://taxclock.codeforkenya.org" data-via="Code4Africa" data-hashtags="taxclock2016">Tweet</a>
       </div>
     </div>
   </div>
@@ -128,10 +135,13 @@
         <h4>Made Possible With Support From</h4>
           <p><a href="http://www.internationalbudget.org/budget-work-by-country/ibps-work-in-countries/kenya/" target="_blank"><img src="ibp-k_logo.png"></a>
             <a href="http://www.codeforkenya.org" target="_blank"><img src="c4k_logo.png"></a></p><p></p>
-          <div class="credits">Built by <a href="http://academy.code4sa.org" target="_blank"><img src="logo_academy.png"></a>
-          </div><p></p><p></p><p></p>
-<!--           <div class="registrations">Code for South Africa is a non-profit organisation registered with the South African Department of Social Development.</div>
- -->      <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
+          <div class="credits">
+            <p>Tax Schedule Designed and Developed By <a href="http://academy.code4sa.org" target="_blank">Code4SA Acadamey</a></p>
+            <p>Tax Clock Designed and Developed By <a target = "_blank" href = "http://fchasen.com">Fred Chasen</a>.</p>
+          </div>
+          <hr/>
+          <div class="license">Licensed under a Creative Commons Attribution 4.0 International License</div>
+          
       </div>
      </div>
     </div>
@@ -141,7 +151,6 @@
   <script src="underscore-min.js"></script>
   <script src="moment.js"></script>
   <script src="income-calculator.js"></script>
-  <script src="pym.js"></script>
   <script src="icsFormatter.js"></script>
 
   <!-- Social Media: Facebook Share button -->
@@ -205,7 +214,7 @@
       'energy-and-petroleum':	'Overallmanagement of the oil, gas and minerals sectors ',
       'foreign-affairs-and-international-trade':	"Oversees, promotes, protects and projects Kenya's interests abroad",
       'health':	'Responsible for the provision of health services.',
-      'auditor-general': 'Scrutinises the accounts of public entities and organs for potential instances of wastage, inefficiency or ineffectiveness and presents the report on accounts to Parliament.'
+      'auditor-general': 'Scrutinises the accounts of public entities and organs for potential instances of wastage, inefficiency or ineffectiveness and presents the report on accounts to Parliament.',
       'ministry-of-water-and-regional-authorities': 'Mobilizing and promoting efficiency in management ,access and utilization of water resources'
     }
 
