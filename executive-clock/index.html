@@ -9,9 +9,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
         <script src="jquery-ui-1.8.11.custom.min.js"></script> 
 
-        <script src="../moment.js"></script>
-        <script src="../underscore-min.js"></script>
-        <script src="../income-calculator.js"></script>
+        <script type="text/javascript" src="../moment.js"></script>
+        <script type="text/javascript" src="../underscore-min.js"></script>
+        <script type="text/javascript" src="../income-calculator.js"></script>
+        <script type="text/javascript" src="../pym.js"></script>
          
         <script src="raphael-min.js"></script> 
         <script src="g.raphael.js"></script> 
@@ -28,7 +29,7 @@
     </head> 
     <body id = "thebody"> 
         
-        <div id="holder">
+        <div id="holder" style="min-height: 500px;">
           
          <div id="canvas"></div>
         </div> 
@@ -37,14 +38,14 @@
          </div>
         <div id="options">
           My salary is
-          <div id = "salaryLeft">&lsaquo;</div>$<div id = "salary">50,000</div><div id = "salaryRight">&rsaquo;</div>
-          a year, or
-          <div id = "hourlyLeft">&lsaquo;</div>$<div id = "hourly">24</div><div id = "hourlyRight">&rsaquo;</div>
+          <div id = "salaryLeft">&lsaquo;</div>Ksh.<div id = "salary">50,000</div><div id = "salaryRight">&rsaquo;</div>
+          a month, or
+          <div id = "hourlyLeft">&lsaquo;</div>Ksh.<div id = "hourly">313</div><div id = "hourlyRight">&rsaquo;</div>
           per hour in
-          <div id = "year">2010</div>.
-          <div id = "timeline">
+          <div id = "year">2015</div>.
+          <div id = "timeline" style="display: none;">
             <div id = "slider"></div>
-            <div class = "bend">1984 &laquo;<div id = "theyears"></div>&raquo; 2015</div>
+            <div class = "bend">2014 &laquo;<div id = "theyears"></div>&raquo; 2016</div>
             
           </div>
           
@@ -52,41 +53,26 @@
         
         <div id="info">
           <p>
-            Tax day, April 18th in 2011, is only one day a year, 
-            <br/>
-            but if tax is withheld from your paycheck
-             <br/>
-             you are working for the government every day.
-          </p>
-          <p>
-          With the settings above you would pay $<span id="iSum">4000</span> a year in federal taxes, which is about $<span id="iDaily">40</span> a day*. 
+          With the settings above you would pay Ksh.<span id="iSum">4000</span> a month in taxes, which is about Ksh.<span id="iDaily">40</span> a day*. 
           </p>
           <p>
           That's <span id="iHours">...</span> that you spend each day
            <br/>
-           working for the funding of the Departments of the US government.
+           working for the funding of the Departments of the Kenyan Governement.
           </p>
-          <p>* Based on 260 days worked a year at 8 hours a day</p>
-          <p> 
-          Click any Department (Slice on the color ring) above for more information <br/> about how your time is spent.
-          </p>
-          
-          <p> 
-          Instructions on how to build a working model of the clock @ <a href = "http://fchasen.com/buildaclock" style = "color: #a52e2a;font-weight:bold;text-decoration: none;">fchasen.com/buildaclock</a>
-          </p>
+          <!-- <p>* Based on 260 days worked a year at 8 hours a day</p> -->
           </div>
-          
-          <div id = "credits">
-            <h4>CREDITS:</h4>
-            <p>Designed and Developed By <a target = "_blank" href = "http://fchasen.com">Fred Chasen</a>.</p>
-            <p>Thanks to <a target = "_blank" href = "http://dmitry.baranovskiy.com/">Dmitry Baranovskiy</a> for his development on the <a target = "_blank" href = "http://raphaeljs.com/">Raphaël JS </a>vector graphics library</p>
-            <p>and <a target = "_blank" href = "http://jonobr1.com/">jonobr1</a> for his example code at <a target = "_blank" href = "http://datavizchallenge.org/example-viz/">example-viz</a>.</p>
-          </div>
+          <br/><br/>
           <div id = "social">
             <iframe src="http://www.facebook.com/plugins/like.php?href=fchasen.com%2Ftaxday&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
             <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
           </div>
+
+          <script type="text/javascript">
+              var pymChild = new pym.Child();
+          </script>
           
+          <!-- Google Analytics -->
           <script type="text/javascript">
 
             var _gaq = _gaq || [];

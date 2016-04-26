@@ -52,12 +52,12 @@ Raphael.fn.g.piechart = function (cx, cy, r, values, opts) {
                 cut = i;
                 defcut = false;
             }
-          if (i > cut) {
-                          defcut = false;
-                          values[cut].value += values[i];
-                          values[cut].others = true;
-                          others = values[cut].value;
-                      }
+            if (i > cut) {
+                defcut = false;
+                values[cut].value += values[i];
+                values[cut].others = true;
+                others = values[cut].value;
+            }
         }
         len = Math.min(cut + 1, values.length);
         others && values.splice(len) && (values[cut].others = true);
