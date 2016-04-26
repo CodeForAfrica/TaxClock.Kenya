@@ -93,7 +93,7 @@ var IncomeCalculator = function() {
   this.TAXPAYER_RATIO = (this.PERSONAL_INCOME_TAX_REVENUE + this.VAT_REVENUE) / this.CONSOLIDATED_EXPENDITURE;
 
   // start of day as a moment.js object. The date is irrelevant.
-  this.START_OF_DAY = moment().hour(9).minute(0).second(0);
+  this.START_OF_DAY = moment().hour(8).minute(0).second(0);
 
   this.WORKDAY_HOURS = 8;
   this.WORKDAY_MINS = this.WORKDAY_HOURS * 60;
