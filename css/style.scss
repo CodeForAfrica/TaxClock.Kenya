@@ -9,4 +9,55 @@
 html, body {
   background-color: #0D68A8;
   color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+}
+
+.tc-box-clear {
+  border: 1px solid #fff;
+  padding: 10px 15px 0px;
+}
+
+.tc-box-red {
+  background-color: #ED1C24;
+  padding: 1px 15px 10px;
+}
+
+.tc-box-blue {
+  background-color: #0D68A8;
+  padding: 1px 15px 10px;
+  color: #fff;
+
+  .tc-box-arrow-right {
+    height: 46px;
+    width: 51px;
+    background-image: url('/img/tc_box_arrow_right_blue.png');
+    background-size: cover;
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+  }
+  .tc-box-arrow-bottom {
+    height: 51px;
+    width: 46px;
+    background-image: url('/img/tc_box_arrow_bottom_blue.png');
+    background-size: cover;
+    position: absolute;
+    bottom: -50px;
+    left: 100px;
+  }
+}
+
+.tc-text-time {
+  padding: 0 15px;
+  margin-bottom: 20px;
 }
