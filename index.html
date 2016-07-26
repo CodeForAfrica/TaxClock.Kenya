@@ -37,12 +37,12 @@ layout: home
           Compared to <strong>x hours and xx minutes</strong> in South Africa and <strong>x hours and xx minutes</strong> in Nigeria.
         </p>
 
-        <div class="tc-box-red">
+        <div class="tc-box tc-box-red">
           <h3>DID YOU KNOW?</h3>
           <p>You don’t just pay tax in Kenya Shillings, but hours as well? Tax forms part of your total salary, which means that part of your 8-5 goes towards the development of the state.</p>
         </div>
 
-        <div class="tc-box-blue">
+        <div class="tc-box tc-box-blue">
           <div class="tc-box-arrow-right hidden-xs"></div>
           <div class="tc-box-arrow-bottom visible-xs"></div>
           <h3>
@@ -63,12 +63,37 @@ layout: home
     <div class="visible-xs" style="height:215px;"></div>
     <div class="row">
       <div class="col-sm-6 pull-right">
-        <div class="tc-box-blue text-center">
+        <div class="tc-box tc-box-blue text-center">
           <h4>What is your monthly income<sup>*</sup> (before tax)?</h4>
-          <div class="form-group">
-            <input type="text" name="income">
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">KSH</span>
+            <input class="income form-control" type="text" name="income"  aria-label="Annual income before tax">
           </div>
           <p><small><sup>*</sup> This should be your income before tax but after deductions such as pension and medical aid.</small></p>
+        </div>
+        <div class="tc-box tc-box-white" id="clock-digital">
+          <div class="container-fluid row">
+            <div class="col-xs-5 col-sm-5 col-md-3 tc-bg-blue">
+              Right now
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-9 tc-bg-lightblue">
+              You're working for
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-5 col-sm-5 col-md-3 tc-text-blue" id="clock-now">
+              1:59
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-9 tc-text-lightblue" id="clock-item">
+              Working for yourself
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-5 col-sm-5 col-md-3 tc-bg-blue">
+              Next Up
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-9 tc-bg-lightblue" id="clock-next">
+              End of the workday
+            </div>
+          </div>
         </div>
       </div>
     </div>  <!-- /.row -->
