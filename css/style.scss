@@ -29,7 +29,11 @@ footer {
 }
 
 .tc-box {
-  padding: 1px 15px 10px;
+  padding: 10px 15px 10px;
+  .h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .tc-box-clear {
@@ -64,10 +68,6 @@ footer {
     left: 100px;
   }
 
-  h4 {
-    margin-top: 20px;
-  }
-
   .input-group {
     max-width: 330px;
     margin: 10px auto;
@@ -87,6 +87,11 @@ footer {
   background-color: #fff;
   color: $blue;
   padding-top: 20px; padding-bottom: 20px;
+}
+
+.tc-box-black {
+  background-color: #000;
+  color: #fff;
 }
 
 .tc-bg-blue {
@@ -134,4 +139,8 @@ footer {
     // height: 35px;
     // white-space: nowrap;
   }
+}
+
+#dayplanner {
+  margin-top: 20px;
 }
