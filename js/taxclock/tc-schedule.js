@@ -345,5 +345,5 @@ $(function() {
     incomeChange();
   });
   /* Stupid hack to probably fix size once probably rendered initially */
-  setInterval(function() { pymChild.sendHeight(); }, 1000);
+  // setInterval(function() { pymChild.sendHeight(); }, 1000);
 });
