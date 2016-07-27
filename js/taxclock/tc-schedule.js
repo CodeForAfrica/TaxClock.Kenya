@@ -281,6 +281,8 @@ function incomeChange() {
       }
 
       $('#clock-next').text(pair[1] ? pair[1].name : 'End of the workday');
+
+      TC.colors.setSchedule();
     };
 
     // update it now

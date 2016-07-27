@@ -54,6 +54,4 @@ TC.colors.setSchedule = function () {
     var color_id = key % colors_count;
     $( this ).css( "background-color", colors[color_id] );
   });
-
-  return TC.colors;
 };
