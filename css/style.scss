@@ -1,0 +1,254 @@
+---
+---
+
+/**
+ * Tax Clock - style.css
+ * ---------------------
+ */
+
+
+$blue: #0D68A8;
+$lightblue: #5394C1;
+$red: #ED1C24;
+
+$darkblue: #1B4969;
+$green-one: #1DA087;
+$teal: #A6DDD3;
+$green-two: #547770;
+$green-three: #A9A6A6;
+$lightblue-two: #97B4B7;
+$grey-four: #636263;
+
+$darkred: #AF1E29;
+$orange-one: #EA971F;
+$lightorange: #EDBE6C;
+$red-two: #D46137;
+$lightpink: #E28A79;
+$pink: #E281A0;
+$brightpink: #E0446D;
+$darkpink: #89343E;
+$dullpink: #99618C;
+
+$black: #000;
+$grey: #48494B;
+$purple: #81549D;
+$maroon: #5E1517;
+$purple-two: #414C8C;
+$lightpurple: #808AB2;
+$darkpurple: #172872;
+$dullpurple: #4C5472;
+$lightpurple-two: #DDC7D4;
+$royalty: #823464;
+
+$dullpurple-two: #824D58;
+$dullpurple-three: #532F37;
+$darkpurple-two: #371A13;
+$dullgreen: #9A9B78;
+$darkblue-two: #102B3A;
+$darkgreen: #1B564B;
+$yellow: #D3D35B;
+$dullorange: #D1AD5D;
+$lightgreen: #A2E28A;
+$grey-two: #444444;
+
+
+$colors-list: $blue $lightblue $red $darkblue $green-one $teal $green-two $green-three $lightblue-two $grey-four $darkred $orange-one $lightorange $red-two $lightpink $pink $brightpink $darkpink $dullpink $black $grey $purple $maroon $purple-two $lightpurple $darkpurple $dullpurple $lightpurple-two $royalty $dullpurple-two $dullpurple-three $darkpurple-two $dullgreen $darkblue-two $darkgreen $yellow $dullorange $lightgreen $grey-two;
+
+
+
+html, body {
+  background-color: $blue;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.tc-box {
+  padding: 10px 15px 10px;
+  .h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.tc-box-clear {
+  border: 1px solid #fff;
+  padding: 10px 15px 0px;
+}
+
+.tc-box-red {
+  background-color: $red;
+}
+
+.tc-box-blue {
+  background-color: $blue;
+  color: #fff;
+
+  .tc-box-arrow-right {
+    height: 46px;
+    width: 51px;
+    background-image: url('/img/tc_box_arrow_right_blue.png');
+    background-size: cover;
+    position: absolute;
+    bottom: 15px;
+    right: 0px;
+  }
+  .tc-box-arrow-bottom {
+    height: 51px;
+    width: 46px;
+    background-image: url('/img/tc_box_arrow_bottom_blue.png');
+    background-size: cover;
+    position: absolute;
+    bottom: -50px;
+    left: 100px;
+  }
+
+  .input-group {
+    max-width: 330px;
+    margin: 10px auto;
+    .input-group-addon, .form-control {
+      border-radius: 0;
+      border: 0;
+    }
+    .input-group-addon {
+      background-color: $lightblue;
+      color: #fff;
+    }
+  }
+}
+
+.tc-box-white {
+  border: 5px solid $blue;
+  background-color: #fff;
+  color: $blue;
+  padding-top: 20px; padding-bottom: 20px;
+}
+
+.tc-box-black {
+  background-color: #000;
+  color: #fff;
+}
+
+.tc-bg-blue {
+  background-color: $blue;
+  color: #fff;
+}
+.tc-bg-lightblue {
+  background-color: $lightblue;
+  color: #fff;
+}
+
+.tc-text-blue {
+  color: $blue;
+}
+.tc-text-lightblue {
+  color: $lightblue;
+}
+
+.tc-text-time {
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+/**
+ * Other
+ */
+
+#clock-now {
+  font-size: 52px;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+#clock-item {
+  line-height: 52px;
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+#clock-digital {
+  .tc-bg-blue, .tc-bg-lightblue {
+    font-size: 18px;
+    padding: 5px 15px;
+  }
+}
+
+#dayplanner {
+  margin-top: 20px;
+
+  #output-dayplanner {
+    .item {
+      background-color: $blue;
+      color: #fff;
+      padding: 20px 40px;
+      font-size: 18px;
+      .item-starttime {
+        background-color: #fff;
+        color: $blue;
+        padding: 5px 15px;
+        float: left;
+        margin-left: -40px;
+        width: 110px;
+        text-align: right;
+        margin-right: 15px;
+      }
+
+      .item-details {
+        padding-left: 90px;
+        .item-name {
+          font-size: 24px;
+          font-weight: 100;
+        }
+        .item-duration {
+          font-size: 35px;
+          font-weight: 500;
+        }
+        .item-explanation {
+          font-size: 90%;
+          font-weight: 100;
+          padding-left: 35px;
+          .what-is-this {
+            background-color: #fff;
+            color: $blue;
+            border-radius: 9999px;
+            width: 27px;
+            height: 27px;
+            display: inline-block;
+            padding: 3.3px 8.5px;
+            font-weight: 600;
+            margin-left: -35px;
+            margin-right: 3px;
+          }
+        }
+      }
+    }
+    
+  }
+
+  #calendar-download {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  #clock-area {
+    padding-top: 40px;
+  }
+  #clock-area, #schedule-area {
+    float: right;
+  }
+
+}

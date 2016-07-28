@@ -68,24 +68,24 @@ Raphael.fn.clock = function (cx, cy, rad) {
     
     chart.push(
   
-      c = paper.circle(cx, cy, rad).attr({fill:"#dedddb", stroke:"#676767",'stroke-width':8}),
-      n12 = paper.text(cx, cy-(rad-30),'12').attr({"font-size":"36px", "font-family":"Crimson Text"}),
-      n3 = paper.text(cx+(rad-20),cy,'3').attr({"font-size":"26px", "font-family":"Crimson Text"}),
-      n6 = paper.text(cx,cy+(rad-20),'6').attr({"font-size":"26px", "font-family":"Crimson Text"}),
-      n9 = paper.text(cx-(rad-20),cy,'9').attr({"font-size":"26px", "font-family":"Crimson Text"})
+      c = paper.circle(cx, cy, rad).attr({fill:"#0D68A8", stroke:"#fff",'stroke-width':8}),
+      n12 = paper.text(cx, cy-(rad-60),'12').attr({"font-size":"36px", "font-family":"Poppins", "fill":"#fff"}),
+      n3 = paper.text(cx+(rad-50),cy,'3').attr({"font-size":"26px", "font-family":"Poppins", "fill":"#fff"}),
+      n6 = paper.text(cx,cy+(rad-50),'6').attr({"font-size":"26px", "font-family":"Poppins", "fill":"#fff"}),
+      n9 = paper.text(cx-(rad-50),cy,'9').attr({"font-size":"26px", "font-family":"Poppins", "fill":"#fff"})
       
     ); 
     for (var i = 0; i < 60; i++) {
       var trad = 1;
-      var ccol = 676767;
+      var ccol = "fff";
       if ((i%5) == 0 ){
-        trad = 2;
-        ccol = 252628;
+        trad = 5;
+        ccol = "fff";
       }
       chart.push(
         paper.circle( 
-        ((rad-5)  * Math.cos(i / 60 * 2 * Math.PI) + cx), 
-        ((rad-5)  * Math.sin(i / 60 * 2 * Math.PI) + cy),
+        ((rad-20)  * Math.cos(i / 60 * 2 * Math.PI) + cx), 
+        ((rad-20)  * Math.sin(i / 60 * 2 * Math.PI) + cy),
         trad
       ).attr({stroke: "none", fill:"#"+ccol}));
     }
@@ -106,37 +106,37 @@ Raphael.fn.clock = function (cx, cy, rad) {
       
     
     chart.push( 
-      paper.circle(cx, cy, rad).attr({fill:"none", stroke:"#a7a7a7",'stroke-width':6}),
+      paper.circle(cx, cy, rad).attr({fill:"none", stroke:"#fff",'stroke-width':6}),
       //paper.image("images/usa.png", cx-81,(cy-(rad-65)), 162, 86),
-      thesalary = paper.text(cx, (cy-(rad-(fontSizer*7))), "Ksh."+formatDollar(salary)).attr({"font-family": "Crimson Text", 'font-size':  (fontSizer+6)+"px", fill:"#38383a"}),
+      thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "Ksh."+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
-      paper.text(cx, (cy-(rad-(fontSizer*8.35))), "IN").attr({"font-family": "Crimson Text", 'font-size':  (fontSizer-4)+"px", fill:"#38383a"}),
+      paper.text(cx, (cy-(rad-(fontSizer*10.35))), "IN").attr({"font-family": "Poppins", 'font-size':  (fontSizer-4)+"px", fill:"#fff"}),
 
-      theyear= paper.text(cx, (cy-(rad-(fontSizer*9.5))), year.toString().split("").join(" ")).attr({"font-family": "Crimson Text", 'font-size':  (fontSizer+6)+"px", fill:"#38383a"}),
+      theyear= paper.text(cx, (cy-(rad-(fontSizer*11.5))), year.toString().split("").join(" ")).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
       //paper.text(cx+100, (cy-(rad-200)), "1 2 4").attr({"font-family": "Crimson Text", 'font-size': "17px", fill:"#38383a"}),
       //paper.image("images/datepicker.png", cx-26,(cy-(rad-113)), 51, 19),
       //paper.image("images/salary.png", cx-38,(cy-(rad-143)), 75, 19),
       //paper.image("images/hourly.png", cx+80,(cy-(rad-189)), 39, 19),
 
-      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*9.5))), "Time spent working for the").attr({"font-family": "Crimson Text", 'font-size': fontSizer+"px", "text-align":"center"}),
-      workingFor = paper.text(cx, (cy+(rad-(fontSizer*7.8))), "Kenya Government").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
-      clickHere = paper.text(cx, (cy+(rad-(fontSizer*6))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Crimson Text", 'font-size': fontSizer+"px", "text-align":"center"})
+      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), "Time spent working for the").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
+      workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), "Kenya Government").attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
+      clickHere = paper.text(cx, (cy+(rad-(fontSizer*8))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"})
 
     );
     sec = (cy-(rad-20));
     
     chart.push(
 
-      mid = paper.circle(cx, cy, 6).attr({stroke: "none", fill:"#000"}),
-      pa = "M"+(cx)+" "+(cy+40)+"L"+(cx)+" ",
+      mid = paper.circle(cx, cy, 6).attr({stroke: "none", fill:"#ED1C24"}),
+      pa = "M"+(cx)+" "+(cy)+"L"+(cx)+" ",
 
-      handHour = paper.path(pa+(sec + 55)).attr({'stroke-width':stroker,stroke:"#252628"}),
-      handMin = paper.path(pa+(sec + 30)).attr({'stroke-width':stroker-2,stroke:"#252628"}),
-      midSec = paper.circle(cx, cy, 12).attr({stroke: "none", fill:"#252628"}),
-      handSec = paper.path(pa+sec).attr({'stroke-width':stroker-4,stroke:"#7a2221"}),
+      handHour = paper.path(pa+(sec + 100)).attr({'stroke-width':stroker+5,stroke:"#fff"}),
+      handMin = paper.path(pa+(sec + 30)).attr({'stroke-width':stroker+5,stroke:"#fff"}),
+      midSec = paper.circle(cx, cy, 12).attr({stroke: "none", fill:"#ED1C24"}),
+      handSec = paper.path(("M"+(cx)+" "+(cy+40)+"L"+(cx)+" ")+sec).attr({'stroke-width':stroker,stroke:"#5394C1"}),
 
-      midSec = paper.circle(cx, cy, 7).attr({stroke: "none", fill:"#7a2221"})
+      midSec = paper.circle(cx, cy, 20).attr({stroke: "none", fill:"#ED1C24"})
 
     );
     
