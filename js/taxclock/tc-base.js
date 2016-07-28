@@ -1,1 +1,8 @@
-var TC = {};
+var TC = {
+  clock: {
+    update: function () {
+      
+    }
+  }
+  
+};

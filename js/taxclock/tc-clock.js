@@ -14,16 +14,22 @@ var divisor = 10;
 
 jQuery(document).ready(function($) {
   
-  wheight = parseInt($(window).height()) - 230;
-  if (wheight > 900) {
-    wheight = 900;
-    divisor = 12;
-  } else if((500 < wheight) && (wheight < 600)) {
-    divisor = 9;
-  } else if(wheight < 500) {
-    wheight = 500;
-    divisor = 8;
-  }
+  // wheight = parseInt($(window).height()) - 230;
+  // wwidth = parseInt($(window).width()) - 20;
+  // if (wheight > 500) {
+  //   wheight = 500;
+  //   divisor = 12;
+  // } else if((500 < wheight) && (wheight < 600)) {
+  //   divisor = 9;
+  // } else if(wheight < 500) {
+  //   wheight = 500;
+  //   divisor = 8;
+  // }
+
+  // if (wheight > wwidth) {
+  //   wheight = wwidth;
+  // }
+  wheight = parseInt($('#clock-area').width());
   
   canvas = Raphael("canvas", wheight, wheight);
   clocked = canvas.clock(wheight/2,wheight/2,wheight/2-(wheight/divisor));
@@ -48,6 +54,15 @@ jQuery(document).ready(function($) {
   $("#info").click(function(){
     getData("agency", year, salary);
   });
+
+  TC.clock.update = function () {
+    salary = $('input[name="income"]').val();
+    hourly = Math.round(salary / 20 / 8);
+    $("#hourly").html(hourly);
+    $("#salary").html(formatDollar(salary));
+    clocked.updateSalary();
+    getData("agency", year, salary);
+  };
   
   $("#salaryRight").click(function(){
     salary = salary + 10000;

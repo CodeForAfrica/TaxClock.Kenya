@@ -72,6 +72,10 @@ footer {
   }
 }
 
+.logo {
+  max-width: 100%;
+}
+
 .tc-box {
   padding: 10px 15px 10px;
   .h1, .h2, .h3, h1, h2, h3 {
@@ -237,4 +241,14 @@ footer {
   #calendar-download {
     margin-top: 20px;
   }
+}
+
+@media (min-width: 992px) {
+  #clock-area {
+    padding-top: 40px;
+  }
+  #clock-area, #schedule-area {
+    float: right;
+  }
+
 }

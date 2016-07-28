@@ -325,7 +325,7 @@ function incomeChange() {
     engaged = true;
 
     // tell pym to resize
-    pymChild.sendHeight();
+    // pymChild.sendHeight();
   } else {
     var footer = $('.footer');
     pymChild.sendMessage("childShrank", footer.offset().top+footer.height());
@@ -343,6 +343,7 @@ $(function() {
 
   $('input[name="income"]').on('change keyup', function() {
     incomeChange();
+    TC.clock.update();
   });
   /* Stupid hack to probably fix size once probably rendered initially */
   // setInterval(function() { pymChild.sendHeight(); }, 1000);

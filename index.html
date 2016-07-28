@@ -5,38 +5,38 @@ layout: home
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-6 text-center">
-      <img src="/img/logo.png" class="img-responsive" />
+    <div class="col-md-6 text-center">
+      <img src="/img/logo.png" class="logo" />
     </div>
 
-    <div class="col-sm-6 pull-right" style="padding-top: 25px;">
-      <div id="holder" style="max-height: 500px;">
+    <div class="col-md-6" id="clock-area">
+      <div id="holder">
         <div id="canvas"></div>
       </div> 
     </div>
 
-    <div class="clearfix visible-xs"></div>
+    <div class="clearfix visible-xs visible-sm hidden-md"></div>
 
-    <div class="col-sm-6 text-center">
+    <div class="col-md-6 text-center">
       <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>If your salary is <strong>Ksh.50,000</strong> a month or <strong>Ksh.313 per</strong> hour in <strong>2015</strong>.</p>
+            <p>If your salary is <strong>Ksh.<span id="salary">50,000</span></strong> a month or <strong>Ksh.<span id="hourly">313</span> per</strong> hour in <strong><span id="year">2015</span></strong>.</p>
           </div>
         </div>
         <div class="visible-xs" style="min-height: 20px;"></div>
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>You would pay <strong>Ksh.9,306 a month</strong> in taxes which is about <strong>Ksh.465 a day<sup>*</sup></strong>.</p>
+            <p>You would pay <strong>Ksh.<span id="iSum">9,306</span> a month</strong> in taxes which is about <strong>Ksh.<span id="iDaily">465</span> a day<sup>*</sup></strong>.</p>
           </div>
         </div>
       </div>
 
       <div style="padding: 0 35px;">
         <p class="tc-text-time">
-          That's <strong>1 hour and 29 minutes</strong> that you spend each day working for the funding of the Departments of the Kenyan Governement.
-          <br/>
-          Compared to <strong>x hours and xx minutes</strong> in South Africa and <strong>x hours and xx minutes</strong> in Nigeria.
+          That's <strong><span id="iHours">1 hour and 29 minutes</span> </strong> that you spend each day working for the funding of the Departments of the Kenyan Governement.
+          <!-- <br/> -->
+          <!-- Compared to <strong>x hours and xx minutes</strong> in South Africa and <strong>x hours and xx minutes</strong> in Nigeria. -->
         </p>
 
         <div class="tc-box tc-box-red">
@@ -45,8 +45,8 @@ layout: home
         </div>
 
         <div class="tc-box tc-box-blue">
-          <div class="tc-box-arrow-right hidden-xs"></div>
-          <div class="tc-box-arrow-bottom visible-xs"></div>
+          <div class="tc-box-arrow-right hidden-xs hidden-sm"></div>
+          <div class="tc-box-arrow-bottom visible-xs visible-sm"></div>
           <h3>
             ENTER YOUR SALARY
           </h3>
@@ -59,12 +59,12 @@ layout: home
   </div> <!-- /.row -->
 </div> <!-- /.container -->
 
-<div style="background-color: #fff; color: #0D68A8; margin-top: -170px; min-height: 300px; padding-bottom: 40px;">
+<div style="background-color: #fff; color: #0D68A8; margin-top: -145px; min-height: 300px; padding-bottom: 40px;">
   <div class="container">
-    <div class="hidden-xs" style="height:65px;"></div>
-    <div class="visible-xs" style="height:215px;"></div>
+    <div class="hidden-xs hidden-sm" style="height:65px;"></div>
+    <div class="visible-xs visible-sm" style="height:230px;"></div>
     <div class="row">
-      <div class="col-sm-6 pull-right">
+      <div class="col-md-6" id="schedule-area">
         <div class="tc-box tc-box-blue text-center">
           <h4>What is your monthly income<sup>*</sup> (before tax)?</h4>
           <div class="input-group input-group-lg">
