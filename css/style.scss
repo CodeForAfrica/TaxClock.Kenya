@@ -60,6 +60,10 @@ html, body {
   background-color: $blue;
   color: #fff;
   font-family: 'Poppins', sans-serif;
+
+  a {
+    color: $red;
+  }
 }
 
 footer {
