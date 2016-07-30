@@ -131,8 +131,8 @@ Raphael.fn.clock = function (cx, cy, rad) {
       mid = paper.circle(cx, cy, 6).attr({stroke: "none", fill:"#ED1C24"}),
       pa = "M"+(cx)+" "+(cy)+"L"+(cx)+" ",
 
-      handHour = paper.path(pa+(sec + 100)).attr({'stroke-width':stroker+5,stroke:"#fff"}),
-      handMin = paper.path(pa+(sec + 30)).attr({'stroke-width':stroker+5,stroke:"#fff"}),
+      handHour = paper.path(pa+(sec + 100)).attr({'stroke-width':stroker+5,stroke:"#fff", 'stroke-opacity': 0.5}),
+      handMin = paper.path(pa+(sec + 20)).attr({'stroke-width':stroker+5,stroke:"#fff", 'stroke-opacity': 0.5}),
       midSec = paper.circle(cx, cy, 12).attr({stroke: "none", fill:"#ED1C24"}),
       handSec = paper.path(("M"+(cx)+" "+(cy+40)+"L"+(cx)+" ")+sec).attr({'stroke-width':stroker,stroke:"#5394C1"}),
 
