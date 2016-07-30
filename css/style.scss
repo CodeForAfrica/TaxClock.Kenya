@@ -66,10 +66,13 @@ footer {
   padding-top: 40px;
   padding-bottom: 20px;
 
-  img {
-    height: 60px;
-    margin-bottom: 10px;
+  .logos {
+    img {
+      height: 60px;
+      margin: 0 10px 10px;
+    }
   }
+  
 }
 
 .logo {
