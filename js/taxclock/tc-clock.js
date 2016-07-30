@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
   wheight = parseInt($('#clock-area').width());
   
   canvas = Raphael("canvas", wheight, wheight);
-  clocked = canvas.clock(wheight/2,wheight/2,wheight/2-(wheight/divisor));
+  clocked = canvas.clock(wheight/2,wheight/2,wheight/2-50);
   pie = canvas.g.timechart(wheight/2,wheight/2, wheight/2-30);
   
   // timeline = Raphael("theyears", 450, 8).timeline(500,31);
