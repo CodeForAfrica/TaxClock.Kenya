@@ -334,7 +334,7 @@ function formatHours(val) {
   }
   
   if(mins >= 1 && hours > 0){
-    str += "and ";
+    str += '<span style="font-weight: normal;">and</span> ';
   }
   
   if(mins < 1){
