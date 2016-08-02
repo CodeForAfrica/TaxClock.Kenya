@@ -40,7 +40,7 @@ var IncomeCalculator = function() {
     'Infrastructure and ICT': (202 * Math.pow(10,9)),
     'Transport': (181.6 * Math.pow(10,9)),
     'General Economic and Commercial Affairs': (20.9 * Math.pow(10,9)),
-    'General Public Services': (232 * Math.pow(10,9)),
+    'Public Administration And International Relations': (232 * Math.pow(10,9)),
     'Social Protection': (33.7 * Math.pow(10,9)),
     'Environmental Protection': (92.9  * Math.pow(10,9)),
     'National Security': (124  * Math.pow(10,9)),

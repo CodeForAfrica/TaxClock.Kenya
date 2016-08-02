@@ -9,7 +9,7 @@ var itemExplanations = {
   'infrastructure-and-ict': 'State Department of Infrastructure and Ministry Information Communication and Technology',
   'transport': 'State Department of Transport',
   'general-economic-and-commercial-affairs': 'Ministry of Industrialization and Enterprise Development, State Department for Commerce and Tourism, and State Department for East African Affairs',
-  'general-public-services': 'Public Admin & International Relations; Parliament, CDF, Contingencies',
+  'public-administration-and-international-relations': 'The National Treasury, State Department for Planning, Ministry of Foreign Affairs and International Trade, State Department for Devolution, The Presidency, Auditor General, Public Service Commission, Controller of Budget, Salaries and Remuneration Commission, The Commission on Administrative of Justice, The Commission on Revenue Allocation, Parliament, CDF, Contingencies',
   'social-protection': 'Ministry of Labour Social Security and Services, and Ministry of Sports Culture and Arts',
   'environmental-protection': 'Ministry of Water and Irrigation, Ministry of Environment, Natural Resources & RDAs, and Ministry of Mining',
   'national-security': 'National Security matters + agencies. Spies and what not.'
