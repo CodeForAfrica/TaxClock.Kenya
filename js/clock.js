@@ -119,7 +119,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
       //paper.image("images/salary.png", cx-38,(cy-(rad-143)), 75, 19),
       //paper.image("images/hourly.png", cx+80,(cy-(rad-189)), 39, 19),
 
-      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), "Time spent working for the").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
+      chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), "Time spent working for").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
       workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), "Kenya Government").attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
       clickHere = paper.text(cx, (cy+(rad-(fontSizer*8))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"})
 
@@ -142,7 +142,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
     
     chart.writeto = function (text, time, link) {
       workingFor.attr('text', text);
-      this.spent.attr('text', time+" today working for the");
+      this.spent.attr('text', time+" today working for");
       //clickHere.attr('text', link)
     }
           
