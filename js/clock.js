@@ -110,9 +110,9 @@ Raphael.fn.clock = function (cx, cy, rad) {
       //paper.image("images/usa.png", cx-81,(cy-(rad-65)), 162, 86),
       thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "Ksh."+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
-      paper.text(cx, (cy-(rad-(fontSizer*10.35))), "IN").attr({"font-family": "Poppins", 'font-size':  (fontSizer-4)+"px", fill:"#fff"}),
+      // paper.text(cx, (cy-(rad-(fontSizer*10.35))), "IN").attr({"font-family": "Poppins", 'font-size':  (fontSizer-4)+"px", fill:"#fff"}),
 
-      theyear= paper.text(cx, (cy-(rad-(fontSizer*11.5))), year.toString().split("").join(" ")).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
+      // theyear= paper.text(cx, (cy-(rad-(fontSizer*11.5))), year.toString().split("").join(" ")).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
       //paper.text(cx+100, (cy-(rad-200)), "1 2 4").attr({"font-family": "Crimson Text", 'font-size': "17px", fill:"#38383a"}),
       //paper.image("images/datepicker.png", cx-26,(cy-(rad-113)), 51, 19),
