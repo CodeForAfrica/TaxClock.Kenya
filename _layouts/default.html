@@ -44,26 +44,27 @@
         <!-- Add your site or application content here -->
         {{ content }}
 
-        <footer class="text-center">
+        <footer>
             <div class="container">
-                <p class="lead">Built By</p>
-                <p class="logos">
-                    <a href="https://codeforkenya.org/" target="_blank"><img src="/img/cfkenya_blue.png" /></a>
-                </p>
-                <p class="lead">With Support From</p>
-                <p class="logos">
-                    <a href="http://hivos.org/" target="_blank"><img src="/img/hivos.png" /></a>
-                    <a href="https://codeforafrica.org/" target="_blank"><img src="/img/cfafrica_blue.png" /></a>
-                    <a href="http://icfj.org/" target="_blank"><img src="/img/icfj-square.jpg" /></a>
-                </p>
-                <p>. . .</p>
-                <p style="font-size: 120%; font-weight: 100;">Inpsired By:</p>
-                <p>
-                    <a href="http://code4sa.org/taxclock" target="_blank">Tax Schedule</a> by <a href="http://code4sa.org/" target="_blank">Code for South Africa</a> <br/>
-                    <a href="http://fchasen.com/taxday/" target="_blank">Tax Day</a> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a>
-                </p>
-                <p>. . .</p>
-                <p>Licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a></p>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p><small><strong>{{ site.title }}</strong> maps out the ways in which public data can be used to improve the way we understand how governments spend our money. It has been inspired by <a href="http://code4sa.org/taxclock" target="_blank">Tax Schedule</a> by <a href="http://code4sa.org/" target="_blank">Code for South Africa</a>, and <a href="http://fchasen.com/taxday/" target="_blank">Tax Day</a> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a>.</small></p>
+
+                        <p><small>This site is a project of <a href="https://codeforkenya.org/" target="_blank">Code for Kenya</a>. All content is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Page code is available <a href="https://github.com/CodeForAfrica/TaxClock.Kenya/" target="_blank">on GitHub</a>.</small></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <ul>
+                            <li><a href="http://openafrica.net/" target="_blank">openAFRICA</a>
+                            <li><a href="https://pesacheck.org/" target="_blank">PesaCheck</a>
+                            <li><a href="http://biscuitindex.codeforkenya.org/" target="_blank">BiscuitIndex</a>
+                            <li><a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 logos text-center">
+                        <a href="https://codeforkenya.org/" target="_blank"><img src="/img/cfkenya_blue.png" /></a>
+                        <a href="http://hivos.org/" target="_blank"><img src="/img/hivos.png" /></a>
+                    </div>
+                </div>
             </div>
             
         </footer>
