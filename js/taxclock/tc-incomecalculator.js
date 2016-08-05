@@ -31,19 +31,19 @@ var IncomeCalculator = function() {
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Education': (339 * Math.pow(10,9)),
-    'Health': (60.3 * Math.pow(10,9)),
-    'Governance Justice Law and Order': (188 * Math.pow(10,9)),
-    'Economic Affairs': (597 * Math.pow(10,9)),
-    'Agriculture, Rural and Urban Development': (69.6 * Math.pow(10,9)),
-    'Energy': (122.3 * Math.pow(10,9)),
-    'Infrastructure and ICT': (202 * Math.pow(10,9)),
-    'Transport': (181.6 * Math.pow(10,9)),
-    'General Economic and Commercial Affairs': (20.9 * Math.pow(10,9)),
-    'Public Administration And International Relations': (232 * Math.pow(10,9)),
+    'Basic Education': (339 * Math.pow(10,9)),
+    'Public Healthcare': (60.3 * Math.pow(10,9)),
+    'Law and Order': (188 * Math.pow(10,9)),
+    'Debt Repayment and Pensions': (597 * Math.pow(10,9)),
+    'Agriculture and Rural Development': (69.6 * Math.pow(10,9)),
+    'Lights and Power': (122.3 * Math.pow(10,9)),
+    'Public Infrastructure': (202 * Math.pow(10,9)),
+    'Transport Infrastructure': (181.6 * Math.pow(10,9)),
+    'Trade and Commerce': (20.9 * Math.pow(10,9)),
+    'Running Government': (232 * Math.pow(10,9)),
     'Social Protection': (33.7 * Math.pow(10,9)),
     'Environmental Protection': (92.9  * Math.pow(10,9)),
-    'National Security': (124  * Math.pow(10,9)),
+    'Military and Intelligence Services': (124  * Math.pow(10,9)),
   };
 
   // override ordering

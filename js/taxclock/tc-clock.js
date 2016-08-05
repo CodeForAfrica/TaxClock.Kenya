@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 
   TC.clock.update = function () {
     salary = $('input[name="income"]').val();
-    hourly = Math.round(salary / 20 / 8);
+    hourly = Math.round(salary / 21 / 8);
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
     clocked.updateSalary();
@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
   
   $("#salaryRight").click(function(){
     salary = salary + 10000;
-    hourly = Math.round(salary / 20 / 8);
+    hourly = Math.round(salary / 21 / 8);
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
     clocked.updateSalary();
@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
   $("#salaryLeft").click(function(){
     if(salary > 10000){
       salary = salary-10000;
-      hourly = Math.round(salary / 20 / 8);
+      hourly = Math.round(salary / 21 / 8);
       $("#hourly").html(hourly);
       $("#salary").html(formatDollar(salary));
       clocked.updateSalary();
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
 
   $("#hourlyRight").click(function(){
     hourly = hourly+1;
-    salary = Math.round(hourly * 20 * 8);
+    salary = Math.round(hourly * 21 * 8);
     
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
@@ -104,7 +104,7 @@ jQuery(document).ready(function($) {
   $("#hourlyLeft").click(function(){
     if(salary > 1){
       hourly = hourly-1;
-      salary = Math.round(hourly * 20 * 8);
+      salary = Math.round(hourly * 21 * 8);
       
       $("#hourly").html(hourly);
       $("#salary").html(formatDollar(salary));
