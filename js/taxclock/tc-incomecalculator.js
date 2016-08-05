@@ -31,10 +31,10 @@ var IncomeCalculator = function() {
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Basic Education': (339 * Math.pow(10,9)),
+    'Education': (339 * Math.pow(10,9)),
     'Public Healthcare': (60.3 * Math.pow(10,9)),
     'Law and Order': (188 * Math.pow(10,9)),
-    'Debt Repayment and Pensions': (597 * Math.pow(10,9)),
+    'Debt Repayment': (466.5 * Math.pow(10,9)),
     'Agriculture and Rural Development': (69.6 * Math.pow(10,9)),
     'Lights and Power': (122.3 * Math.pow(10,9)),
     'Public Infrastructure': (202 * Math.pow(10,9)),
@@ -44,6 +44,7 @@ var IncomeCalculator = function() {
     'Social Protection': (33.7 * Math.pow(10,9)),
     'Environmental Protection': (92.9  * Math.pow(10,9)),
     'Military and Intelligence Services': (124  * Math.pow(10,9)),
+    'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
   };
 
   // override ordering
