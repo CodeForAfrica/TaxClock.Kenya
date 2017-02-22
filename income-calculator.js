@@ -24,29 +24,32 @@ var IncomeCalculator = function() {
   this.PRIMARY_REBATE = 13635;
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 350;
-  this.VAT_REVENUE = 260.6;
+  // http://www.treasury.gov.za/documents/national%20budget/2017/review/FullBR.pdf (page 4)
+  this.PERSONAL_INCOME_TAX_REVENUE = 482.1;
+  this.VAT_REVENUE = 312.8;
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Basic education': 228803,
-    'Higher education & training': 68715,
-    'Health': 168393,
-    'Social grants': 167479,
-    'Employment & labour affairs': 73127,
-    'Trade & industry': 31844,
-    'Economic infrastructure': 87105,
-    'Defence & state security': 52344,
-    'Law courts & prisons': 41667,
-    'Police services': 87508,
-    'Local government and housing': 182631,
-    'Agriculture, rural development & land reform': 26417,
-    'Science & Technology and environment': 19886,
-    'General public services': 73652,
-    'National debt': 147720,
+    'Basic education': 232600,
+    'Higher education & training': 77500,
+    'Health': 187500,
+    'Social grants': 180000,
+    'Employment & labour affairs': 75900,
+    'Trade & industry': 28900,
+    'Economic infrastructure': 89500,
+    'Defence & state security': 54000,
+    'Law courts & prisons': 43800,
+    'Police services': 93800,
+    'Home affairs': 7200,
+    'Local government and housing': 195800,
+    'Agriculture, rural development & land reform': 26500,
+    'Science & Technology and environment': 20600,
+    'Arts, sports, recreation and culture': 10400,
+    'General public services': 70700,
+    'National debt': 162400,
     'Unallocated reserves': 6000,
   };
 
