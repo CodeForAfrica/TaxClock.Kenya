@@ -1,0 +1,17 @@
+<html>
+  <head>
+    
+  </head>
+  
+  <body>
+    <div id="embed"></div>
+  </body>
+  
+  <footer>    
+  </footer>
+  <script src="js/vendor/pym.js"></script>
+  <script>
+    var pymParent = new pym.Parent("embed", "{{  site.url  }}/embed.html", {});
+    pymParent.iframe.setAttribute('style', 'height: 1024px');  
+  </script>
+</html>

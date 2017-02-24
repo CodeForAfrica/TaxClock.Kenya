@@ -13,7 +13,6 @@ var wheight = 600;
 var divisor = 10;
 
 jQuery(document).ready(function($) {
-  
   // wheight = parseInt($(window).height()) - 230;
   // wwidth = parseInt($(window).width()) - 20;
   // if (wheight > 500) {
@@ -33,7 +32,7 @@ jQuery(document).ready(function($) {
   
   canvas = Raphael("canvas", wheight, wheight);
   clocked = canvas.clock(wheight/2,wheight/2,((wheight/2)-45));
-  pie = canvas.g.timechart(wheight/2,wheight/2, ((wheight/2)-15));
+  pie = canvas.g.timechart(wheight/2,wheight/2, ((wheight/2)-15), {sorted:false});
 
   if (wheight < (992/2)) {
     clocked = canvas.clock(wheight/2,wheight/2,((wheight/2)-35));
@@ -59,7 +58,8 @@ jQuery(document).ready(function($) {
   $("#info").click(function(){
     getData("agency", year, salary);
   });
-
+ 
+  
   TC.clock.update = function () {
     salary = $('input[name="income"]').val();
     hourly = Math.round(salary / 21 / 8);
@@ -235,7 +235,7 @@ function analyzeData(data, income){
         if (typeof(subpie) == 'object') {
           subpie.wipe();
         }
-        pie.update(items, labels, ids);        
+       pie.update(items, labels, ids);        
       }
       
       var daily = Math.round((sum / 20));

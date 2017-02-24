@@ -1,7 +1,6 @@
 TC.colors = {};
 
 TC.colors.all = {
-  blue: '#0D68A8',
   lightblue: '#5394C1',
   red: '#ED1C24',
 
@@ -12,16 +11,18 @@ TC.colors.all = {
   green_three: '#A9A6A6',
   lightblue_two: '#97B4B7',
   grey_four: '#636263',
-
-  darkred: '#AF1E29',
-  orange_one: '#EA971F',
-  lightorange: '#EDBE6C',
-  red_two: '#D46137',
-  lightpink: '#E28A79',
-  pink: '#E281A0',
-  brightpink: '#E0446D',
-  darkpink: '#89343E',
-  dullpink: '#99618C',
+  
+  dullpurple_two: '#824D58',
+  dullpurple_three: '#532F37',
+  darkpurple_two: '#371A13',
+  dullgreen: '#9A9B78',
+  darkblue_two: '#102B3A',
+  darkgreen: '#1B564B',
+  yellow: '#D3D35B',
+  dullorange: '#D1AD5D',
+  lightgreen: '#A2E28A',
+  grey_two: '#444444',
+  
 
   black: '#000',
   grey: '#48494B',
@@ -34,16 +35,18 @@ TC.colors.all = {
   lightpurple_two: '#DDC7D4',
   royalty: '#823464',
 
-  dullpurple_two: '#824D58',
-  dullpurple_three: '#532F37',
-  darkpurple_two: '#371A13',
-  dullgreen: '#9A9B78',
-  darkblue_two: '#102B3A',
-  darkgreen: '#1B564B',
-  yellow: '#D3D35B',
-  dullorange: '#D1AD5D',
-  lightgreen: '#A2E28A',
-  grey_two: '#444444'
+  darkred: '#AF1E29',
+  orange_one: '#EA971F',
+  lightorange: '#EDBE6C',
+  red_two: '#D46137',
+  lightpink: '#E28A79',
+  pink: '#E281A0',
+  brightpink: '#E0446D',
+  darkpink: '#89343E',
+  dullpink: '#99618C',
+
+  
+  blue: '#0D68A8',
 };
 
 TC.colors.setSchedule = function () {
