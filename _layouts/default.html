@@ -1,149 +1,153 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ site.title }}</title>
-    <meta name="description" content="{{ site.desription }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    
-    <meta property="og:title" content="The Kenya 2016 Tax Clock" />
-    <meta property="og:description" content="{{ site.description }}" />
-    <meta property="og:image" content="{{ site.url }}/preview.png" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-    <meta property="fb:app_id" content="193758347662800" />
-    
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-    
-    <script type="text/javascript">
-      var host = "{{ site.enforce_ssl }}";
-      if ((host == window.location.host) && (window.location.protocol != "https:"))
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.desription }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <meta property="og:title" content="The Kenya 2016 Tax Clock" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <meta property="og:image" content="{{ site.url }}/preview.png" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="fb:app_id" content="193758347662800" />
+
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
+  <script type="text/javascript">
+    var host = "{{ site.enforce_ssl }}";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
       window.location.protocol = "https";
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-  </head>
-  <body>
-    <!--[if lt IE 8]>
-	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
-    
-    <!-- Add your site or application content here -->
-    
-    {{ content }}
-    
-    {% if {{page.footer}} == "non" %}
-    <div style="background-color: #fff; margin-bottom: 0px">
-      <article class="text-center">
-	<small ><a href="https://codeforkenya.org/" target="_blank" style="color: #0D68A8">TaxClock by Code for Kenya</a></small>
-      </article>
-    </div>
-    
-    {% else %}
-    
-    <footer>
-      <div class="container">
-	<div class="row">
-	  <div class="col-sm-5">
-	    <p>
-	      <small><strong>TaxClock</strong> shows how public budget data can be used to help citizens better understand how governments spend our taxmoney.</small>
-	    </p>
-	    
-	    <p>
-	      <small>The project has been inspired by <strong><a href="http://fchasen.com/taxday/" target="_blank">Tax Day</a></strong> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a> and by <strong><a href="http://code4sa.org/taxclock" target="_blank">Tax Schedule</a></strong> by <a href="http://code4sa.org/" target="_blank">Code for South Africa</a></small>
-	    </p>
-	    <p>
-	      <small>This site is an <strong>africanSPENDING</strong> project of <strong><a href="https://codeforkenya.org/" target="_blank">Code for Kenya</a></strong> as part of the wider ​<strong><a href="https://codeforafrica.org/" target="_blank">Code for Africa</a></strong> federation. All content is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on <strong><a href="https://github.com/CodeForAfrica/TaxClock.Kenya/" target="_blank">GitHub</a></strong> and data is available on ​<strong><a href="http://openafrica.net/" target="_blank">openAFRICA</a></strong>​.</small>
-	    </p>
-	  </div>
-	  <div class="col-sm-3">
-	    <p style="margin-bottom: 0;">
-	      Other africanSPENDING tools:
-	    </p>
-	    <ul>
-	      <li>
-		<a href="https://pesacheck.org/" target="_blank">PesaCheck</a>
-	      <li>
-		<a href="http://biscuitindex.codeforkenya.org/" target="_blank">Biscuit Index</a>
-	    </ul>
-	    <br/>
-	    <p style="margin-bottom: 0;">
-	      Join Our Community:
-	    </p>
-	    <ul>
-	      <li>
-		<a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
-	    </ul>
-	  </div>
-	  <div class="col-sm-4 logos text-center">
-	    <a href="https://codeforkenya.org/" target="_blank"><img src="img/cfkenya_white.png" /></a>
-	    <a href="http://hivos.org/" target="_blank"><img src="img/hivos_white.png" /></a>
-	  </div>
-	</div>
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 8]>
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  {{ content }}
+
+  {% if page.footer == "non" %}
+
+  <div style="background-color: #fff; margin-bottom: 0px">
+    <article class="text-center">
+      <small ><a href="https://codeforkenya.org/" target="_blank" style="color: #0D68A8;">TaxClock by Code for Kenya</a></small>
+    </article>
+  </div>
+
+  {% else %}
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5">
+          <p>
+            <small><strong>TaxClock</strong> shows how public budget data can be used to help citizens better understand how governments spend our taxmoney.</small>
+          </p>
+
+          <p>
+            <small>The project has been inspired by <strong><a href="http://fchasen.com/taxday/" target="_blank">Tax Day</a></strong> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a> and by <strong><a href="http://code4sa.org/taxclock" target="_blank">Tax Schedule</a></strong> by <a href="http://code4sa.org/" target="_blank">Code for South Africa</a></small>
+          </p>
+          <p>
+            <small>This site is an <strong>africanSPENDING</strong> project of <strong><a href="https://codeforkenya.org/" target="_blank">Code for Kenya</a></strong> as part of the wider ​<strong><a href="https://codeforafrica.org/" target="_blank">Code for Africa</a></strong> federation. All content is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on <strong><a href="https://github.com/CodeForAfrica/TaxClock.Kenya/" target="_blank">GitHub</a></strong> and data is available on ​<strong><a href="http://openafrica.net/" target="_blank">openAFRICA</a></strong>​.</small>
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p style="margin-bottom: 0;">
+            Other africanSPENDING tools:
+          </p>
+          <ul>
+            <li>
+              <a href="https://pesacheck.org/" target="_blank">PesaCheck</a>
+            </li>
+            <li>
+              <a href="http://biscuitindex.codeforkenya.org/" target="_blank">Biscuit Index</a>
+            </li>
+          </ul>
+          <br/>
+          <p style="margin-bottom: 0;">
+            Join Our Community:
+          </p>
+          <ul>
+            <li>
+              <a href="https://facebook.com/HacksHackersAfrica" target="_blank">Hacks/Hackers Africa</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-4 logos text-center">
+          <a href="https://codeforkenya.org/" target="_blank"><img src="img/cfkenya_white.png" /></a>
+          <a href="http://hivos.org/" target="_blank"><img src="img/hivos_white.png" /></a>
+        </div>
       </div>
-      
-    </footer>
-    
-    {% endif %}
-    
-    <script src="js/vendor/jquery-1.12.0.min.js"></script>
-    <script>
-      window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.0.min.js"><\/script>')
-      </script>
-      <script src="js/plugins.js"></script>
-      
-      <script src="js/vendor/jquery-ui-1.8.11.custom.min.js"></script>
-      
-      <script src="js/vendor/bootstrap.min.js"></script>
-      <script src="js/vendor/underscore-min.js"></script>
-      <script src="js/vendor/pym.js"></script>
-      <script src="js/vendor/moment.js"></script>
-      <script src="js/main.js"></script>
-      
-      <script src="js/taxclock/tc-base.js"></script>
-      <script src="js/taxclock/tc-colors.js"></script>
-      
-      <script src="js/taxclock/tc-incomecalculator.js"></script>
-      <script src="js/taxclock/tc-icsformatter.js"></script>
-      
-      <script src="js/taxclock/tc-schedule.js"></script>
-      
-      <script src="js/vendor/raphael-min.js"></script>
-      
-      <script src="js/vendor/g.raphael.js"></script>
-      <script src="js/vendor/g.timechart.js"></script>
-      <script src="js/vendor/g.piechart.js"></script>
-      <script src="js/clock.js"></script>
-      <script src="js/vendor/dvc.ajax.js"></script>
-      <script src="js/taxclock/tc-clock.js"></script>
-      
-      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-      <script>
-	( function(b, o, i, l, e, r) {
-	b.GoogleAnalyticsObject = l;
-	b[l] || (b[l] = function() {
-	(b[l].q = b[l].q || []).push(arguments)
-	});
-	b[l].l = +new Date;
-	e = o.createElement(i);
-	r = o.getElementsByTagName(i)[0];
-	e.src = 'https://www.google-analytics.com/analytics.js';
-	r.parentNode.insertBefore(e, r)
-	}(window, document, 'script', 'ga'));
-	ga('create', '{{ site.google_analytics }}', 'auto');
-	ga('send', 'pageview');
-      </script>
-  </body>
+    </div>
+
+  </footer>
+
+  {% endif %}
+
+  <script src="js/vendor/jquery-1.12.0.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.0.min.js"><\/script>')
+  </script>
+  <script src="js/plugins.js"></script>
+
+  <script src="js/vendor/jquery-ui-1.8.11.custom.min.js"></script>
+
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/underscore-min.js"></script>
+  <script src="js/vendor/pym.js"></script>
+  <script src="js/vendor/moment.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="js/taxclock/tc-base.js"></script>
+  <script src="js/taxclock/tc-colors.js"></script>
+
+  <script src="js/taxclock/tc-incomecalculator.js"></script>
+  <script src="js/taxclock/tc-icsformatter.js"></script>
+
+  <script src="js/taxclock/tc-schedule.js"></script>
+
+  <script src="js/vendor/raphael-min.js"></script>
+
+  <script src="js/vendor/g.raphael.js"></script>
+  <script src="js/vendor/g.timechart.js"></script>
+  <script src="js/vendor/g.piechart.js"></script>
+  <script src="js/clock.js"></script>
+  <script src="js/vendor/dvc.ajax.js"></script>
+  <script src="js/taxclock/tc-clock.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+    ( function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = 'https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', '{{ site.google_analytics }}', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
 </html>
