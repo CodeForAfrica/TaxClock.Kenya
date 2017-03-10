@@ -16,6 +16,9 @@ $(window).on('load', function() {
     incomeChange();
     TC.clock.update();
     
-    //}
+    
+    // Show on Safari
+
+    if (isSafari) {$('.visible-safari').show();}
     
 });
