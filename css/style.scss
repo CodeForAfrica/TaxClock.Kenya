@@ -70,6 +70,12 @@ html, body {
   }
 }
 
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-top: 1px solid $blue;
+}
+
 footer {
   padding-top: 40px;
   padding-bottom: 30px;
@@ -155,6 +161,9 @@ footer {
   background-color: #fff;
   color: $blue;
   padding-top: 20px; padding-bottom: 20px;
+  a {
+    color: $blue;
+  }
 }
 
 .tc-box-black {
@@ -181,6 +190,15 @@ footer {
 .tc-text-time {
   padding: 0 15px;
   margin-bottom: 20px;
+}
+
+
+.tc-story {
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /**
