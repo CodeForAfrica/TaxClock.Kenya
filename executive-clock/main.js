@@ -350,6 +350,7 @@ function formatHoursFlat(val) {
     var hours = parseInt(num);
        num -= parseInt(num); num *= 60;
     var mins = parseInt(num);
+ 
   }else{
     
     var days = parseInt(num/24);

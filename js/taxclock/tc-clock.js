@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
   
   TC.clock.update = function () {
     salary = $('input[name="income"]').val();
-    hourly = Math.round(salary / 21 / 8);
+    hourly = Math.round(salary / 20 / 8);
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
     clocked.updateSalary();
@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
   
   $("#salaryRight").click(function(){
     salary = salary + 10000;
-    hourly = Math.round(salary / 21 / 8);
+    hourly = Math.round(salary / 20 / 8);
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
     clocked.updateSalary();
@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
   $("#salaryLeft").click(function(){
     if(salary > 10000){
       salary = salary-10000;
-      hourly = Math.round(salary / 21 / 8);
+      hourly = Math.round(salary / 20 / 8);
       $("#hourly").html(hourly);
       $("#salary").html(formatDollar(salary));
       clocked.updateSalary();
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
 
   $("#hourlyRight").click(function(){
     hourly = hourly+1;
-    salary = Math.round(hourly * 21 * 8);
+    salary = Math.round(hourly * 20 * 8);
     
     $("#hourly").html(hourly);
     $("#salary").html(formatDollar(salary));
@@ -104,7 +104,7 @@ jQuery(document).ready(function($) {
   $("#hourlyLeft").click(function(){
     if(salary > 1){
       hourly = hourly-1;
-      salary = Math.round(hourly * 21 * 8);
+      salary = Math.round(hourly * 20 * 8);
       
       $("#hourly").html(hourly);
       $("#salary").html(formatDollar(salary));
@@ -201,31 +201,36 @@ var getSubData = function(agency,year,income, label, val) {
 }
 
 function analyzeData(data, income){
+	salary = income;
  var  items = [],
       labels = [],
       ids = [],
       leftover = income;
       sum = 0;
+      taxman_fraction = 0;
 
       $(data).each(function (index, element) {
           var id     = index;
           var name   = element.name;
-          var amount = Math.abs(parseInt(element.fraction * income));
+         // var amount = Math.abs(parseInt(element.fraction * income));
+         var fraction = element.fraction;
 
           if (index != data.length - 1) {
-            sum += parseFloat(amount);
+          //  sum += parseFloat(amount);
+            taxman_fraction += fraction;
           }
           
-          if (amount > 1) {
+          if (fraction > 0) {
             
-            items.push(amount);
+            items.push(fraction);
             labels.push(name);
             ids.push(id);
             
           }
       });
+      
 
-      parsePayment(sum);
+      parsePayment(taxman_fraction);
         
       if (init) {
         pie.draw(items, labels, ids);
@@ -238,8 +243,10 @@ function analyzeData(data, income){
        pie.update(items, labels, ids);        
       }
       
-      var daily = Math.round((sum / 20));
-      var aday = daily / hourly;
+      //var daily = Math.round((sum / 20));
+      //var aday = daily / hourly;
+     // var daily = Math.round(taxman_fraction * 20 * 8);
+      var aday = taxman_fraction * 8;
 
       clocked.writeto("Kenya Government",formatHoursFlat(aday));
       
@@ -312,15 +319,16 @@ function getInfo(id, place, label, val){
   
 }
 
-function parsePayment(sum){
-    $("#iSum").html(formatDollar(sum));
+function parsePayment(taxman_fraction){
+	var personalTax = parseInt(taxman_fraction * salary);
+    $("#iSum").html(formatDollar(personalTax));
     
-    daily = Math.round((sum / 20));
+    daily = Math.round((personalTax) / 20);
     $("#iDaily").html(daily);
     
-    aday = daily / hourly;
+    //aday = daily / hourly;
     
-    $("#iHours").html(formatHours(aday));
+    $("#iHours").html(formatHours(taxman_fraction*8));
 }
 
 function formatHours(val) {
@@ -331,6 +339,9 @@ function formatHours(val) {
   var hours = parseInt(num);
      num -= parseInt(num); num *= 60;
   var mins = parseInt(num);
+   	 num -= parseInt(num); num *= 60;
+  var secs = parseInt(num);
+  
   
   if(hours == 1){
     str = "<span class='num'>"+hours+"</span> hour ";
@@ -342,9 +353,15 @@ function formatHours(val) {
     str += '<span style="font-weight: normal;">and</span> ';
   }
   
-  if(mins < 1){
-    num -= parseInt(num); num *= 60;
-    var sec = parseInt(num);
+  //if(mins < 1){
+   // num -= parseInt(num); num *= 60;
+   // var sec = parseInt(num);
+  //}
+  if(mins > 0 && secs > 30){
+  	mins = mins + 1;
+  	secs = 0;
+  } else if (mins > 0) {
+	secs = 0;
   }
   
   if(mins == 1){
@@ -353,8 +370,8 @@ function formatHours(val) {
     str += "<span class='num'>"+mins+"</span> minutes ";
   }
   
-  if(sec){
-    str += "<span class='num'>"+sec+"</span> seconds";
+  if(secs){
+    str += "<span class='num'>"+secs+"</span> seconds";
   }  
   return str
 }
@@ -369,6 +386,8 @@ function formatHoursFlat(val) {
     var hours = parseInt(num);
        num -= parseInt(num); num *= 60;
     var mins = parseInt(num);
+    num -= parseInt(num); num *= 60;
+    var secs = parseInt(num);
   }else{
     
     var days = parseInt(num/24);
@@ -376,12 +395,14 @@ function formatHoursFlat(val) {
     var hours = parseInt(num);
        num -= parseInt(num); num *= 60;
     var mins = parseInt(num);
+    num -= parseInt(num); num *= 60;
+    var secs = parseInt(num);
   }
   
-  if(mins < 1){
-    num -= parseInt(num); num *= 60;
-    var sec = parseInt(num);
-  }
+ // if(mins < 1){
+ //   num -= parseInt(num); num *= 60;
+ //   var sec = parseInt(num);
+  //}
 
   if(days){
     str += days+" days, ";
@@ -390,6 +411,13 @@ function formatHoursFlat(val) {
     str +=  hours+" hour ";
   }else if(hours > 1){
     str +=  hours+" hours ";
+  }
+  
+  if(mins > 0 && secs > 30){
+  	mins = mins + 1;
+  	secs = 0;
+  } else if (mins > 0) {
+  	secs = 0;
   }
   
   if(mins >= 1 && hours > 0){
@@ -402,8 +430,8 @@ function formatHoursFlat(val) {
     str += mins+" minutes";
   }
   
-  if(sec){
-    str += sec+" seconds";
+  if(secs){
+    str += secs+" seconds";
   }
      
   return str

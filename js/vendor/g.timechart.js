@@ -73,7 +73,8 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
           start = 180;
          
           for (i = 0; i < data.length; i++) {
-              var val = 270 / total * data[i].value;
+              //var val = 270 / total * data[i].value;
+              var val = 270 * data[i].value;
               (function (i, val) {
                 //var coloring = "rgb(" + (i+1) *23 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
                   
@@ -123,8 +124,9 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
                        this.stop();
                        this.animate({segment: [p.ccx, p.ccy, rad+10, p.ss, p.ss + p.vval]}, 500,  "bounce");
                        
-                       var daily = (data[i].value / 20);
-                       var aday = daily / hourly;
+                       var daily = (data[i].value * 20 * 8);
+                       //var aday = daily / hourly;
+                       var aday = (data[i].value * 8);
                         
                        clocked.writeto(p.attr("title"),formatHoursFlat(aday));
                       //$("#dept").html(p.attr("title"));
@@ -167,7 +169,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
             
         for (i = 0; i < data.length; i++) {
           if(i < paths.length){
-            val = 270 / total * data[i].value;
+            val = 270 * data[i].value;
             if( i == data.length -1 ){
               var func = backto;
             }
