@@ -76,7 +76,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
                       console.log(title);
                       if (title == "Money") {
                         
-                        var daily = (salary / 20);
+                        var daily = (salary / 21);
                       
                         subfuncText.attr('text', "You took home "+(Math.round(amount/salary * 100))+" %");
                         subRev.attr('text',  "of the Ksh."+Math.round(daily)+" you earned today.");
@@ -86,7 +86,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
 
                         subfuncText.attr('text', title);
 
-                        var daily = (data[i].value / 20);
+                        var daily = (data[i].value / 21);
                         var aday = daily / hourly;
 
                         subRev.attr('text', "took around Ksh."+formatDollar(data[i].value)+" or about 10%");
@@ -96,7 +96,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
                           
                           subfuncText.attr('text', title);
 
-                          var daily = (data[i].value / 20);
+                          var daily = (data[i].value / 21);
                           var aday = daily / hourly;
                           //var ayear = amount / hourly;
 
@@ -137,7 +137,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
             fontSizer = 10;
           }
  
-        var daily = ((amount / 20));
+        var daily = ((amount / 21));
         var aday = daily / hourly;
         var ayear = amount / hourly;
 
@@ -187,7 +187,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
             fontSizer = 10;
           }
  
-        var daily = Math.round((amount / 20));
+        var daily = Math.round((amount / 21));
         var aday = daily / hourly;
         var ayear = amount / hourly;
         

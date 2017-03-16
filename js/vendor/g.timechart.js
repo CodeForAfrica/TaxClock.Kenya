@@ -124,7 +124,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
                        this.stop();
                        this.animate({segment: [p.ccx, p.ccy, rad+10, p.ss, p.ss + p.vval]}, 500,  "bounce");
                        
-                       var daily = (data[i].value * 20 * 8);
+                       var daily = (data[i].value * 21 * 8);
                        //var aday = daily / hourly;
                        var aday = (data[i].value * 8);
                         

@@ -65,7 +65,8 @@ var IncomeCalculator = function() {
 
   this.WORKDAY_HOURS = 8;
   this.WORKDAY_MINS = this.WORKDAY_HOURS * 60;
-  this.END_OF_DAY = this.START_OF_DAY.clone().add(this.WORKDAY_MINS, 'minutes');
+  //let's make sure the day ends at 5pm by adding 60 minutes to the 480 WORKDAY_MINS.
+  this.END_OF_DAY = this.START_OF_DAY.clone().add(this.WORKDAY_MINS + 60, 'minutes');
 
   this.calculateIncomeBreakdown = function(income) {
     var info = {};
@@ -161,14 +162,27 @@ var IncomeCalculator = function() {
   };
 
   this.addTimesOfDay = function(cats) {
+  	//let us have an hour long lunch from 13:00
+  	var startlunch = this.START_OF_DAY.clone().add(5, 'hours');
+  	
+  	var endlunch = startlunch.clone().add(1, 'hours');
+  	
     var time = this.START_OF_DAY;
 
     _.each(cats, function(cat) {
       // time of day when you FINISH working for this category
-      time = time.clone().add(cat.minutes, 'm');
-
-      cat.finish_time = time.clone();
-      cat.finish_time_s = time.format('h:mm a');
+      	time = time.clone().add(cat.minutes, 'm');
+      
+      
+      if (time.isAfter(endlunch)){
+      	//if activity comes up after lunch hour, let's account for the one hour lunch break. 
+      	time = time.clone().add(1, 'hours');
+     	cat.finish_time = time.clone();
+      	cat.finish_time_s = time.format('h:mm a');
+      }else{
+      	cat.finish_time = time.clone();
+      	cat.finish_time_s = time.format('h:mm a');
+      }
     });
   };
 };
