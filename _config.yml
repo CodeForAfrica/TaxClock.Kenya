@@ -1,7 +1,7 @@
-title: TaxClock Kenya
+title: TaxClock South Africa
 description: It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent.
 
-url: https://taxclock.codeforkenya.org
-enforce_ssl: taxclock.codeforkenya.org
+url: https://taxclock-za.codeforafrica.org
+enforce_ssl: taxclock-za.codeforafrica.org
 
-google_analytics: UA-33350783-6
+google_analytics: UA-44795600-34

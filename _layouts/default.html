@@ -46,16 +46,14 @@
 
   {% if page.footer == "non" %}
 
-  <div style="background-color: #fff; margin-bottom: 0px">
-    <article class="text-center">
-      <small ><a href="https://codeforkenya.org/" target="_blank" style="color: #0D68A8;">TaxClock by Code for Kenya</a></small>
-    </article>
+  <div class="container-fluid text-center" style="background-color: #fff; padding-bottom: 10px">
+    <small ><a href="{{ site.url }}" target="_blank" rel="noopener noreferrer" style="color: #0D68A8;">TaxClock by Code for Africa</a></small>
   </div>
 
   {% else %}
 
   <footer>
-    <div class="container">
+    <div class="footer-main container">
       <div class="row">
         <div class="col-sm-5">
           <p>
@@ -63,10 +61,10 @@
           </p>
 
           <p>
-            <small>The project has been inspired by <strong><a href="http://fchasen.com/taxday/" target="_blank">Tax Day</a></strong> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a> and by <strong><a href="http://code4sa.org/taxclock" target="_blank">Tax Schedule</a></strong> by <a href="http://code4sa.org/" target="_blank">Code for South Africa</a></small>
+            <small>The project has been inspired by <strong><a href="http://fchasen.com/taxday/" target="_blank" rel="noopener noreferrer">Tax Day</a></strong> by <a href="http://fchasen.com/" target="_blank">Fred Chasen</a> and by <strong><a href="http://code4sa.org/taxclock" target="_blank" rel="noopener noreferrer">Tax Schedule</a></strong> by <a href="http://code4sa.org/" target="_blank" rel="noopener noreferrer">Code for South Africa</a></small>
           </p>
           <p>
-            <small>This site is an <strong>africanSPENDING</strong> project of <strong><a href="https://codeforkenya.org/" target="_blank">Code for Kenya</a></strong> as part of the wider ​<strong><a href="https://codeforafrica.org/" target="_blank">Code for Africa</a></strong> federation. All content is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on <strong><a href="https://github.com/CodeForAfrica/TaxClock.Kenya/" target="_blank">GitHub</a></strong> and data is available on ​<strong><a href="http://openafrica.net/" target="_blank">openAFRICA</a></strong>​.</small>
+            <small>This site is an <strong>africanSPENDING</strong> project of <strong><a href="https://codeforafrica.org/" target="_blank">Code for Africa</a></strong>. All content is released under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons 4 Attribution license</a>. Reuse it to help empower your own community. The code is available on <strong><a href="https://github.com/CodeForAfrica/TaxClock/" target="_blank" rel="noopener noreferrer">GitHub</a></strong> and data is available on ​<strong><a href="http://openafrica.net/" target="_blank" rel="noopener noreferrer">openAFRICA</a></strong>​.</small>
           </p>
         </div>
         <div class="col-sm-3">
@@ -92,10 +90,16 @@
           </ul>
         </div>
         <div class="col-sm-4 logos text-center">
-          <a href="https://codeforkenya.org/" target="_blank"><img src="img/cfkenya_white.png" /></a>
-          <a href="http://hivos.org/" target="_blank"><img src="img/hivos_white.png" /></a>
+          <a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer"><img src="img/cfafrica-white.png" /></a>
+          <a href="http://hivos.org/" target="_blank" rel="noopener noreferrer"><img src="img/hivos_white.png" /></a>
         </div>
       </div>
+    </div> <!-- /.container -->
+
+    <div class="footer-inverse container-fluid text-center">
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <img src="/img/fin-24.png">
+      </a>
     </div>
 
   </footer>

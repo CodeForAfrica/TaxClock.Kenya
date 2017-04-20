@@ -1,7 +1,9 @@
+// TODO: Delete this file..
+
 if (document.location.hostname == "localhost") {
     var baseurl = "";
 } else {
-    var baseurl = "https://static.code4sa.org/taxclock/";
+    var baseurl = "https://taxclock-za.codeforafrica.org/";
 }
 document.write('<div id="code4sa-embed-taxclock"></div>');
 document.write('<script type="text/javascript" src="' + baseurl + 'pym.js"></script>');
