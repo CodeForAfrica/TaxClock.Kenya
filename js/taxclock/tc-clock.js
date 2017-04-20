@@ -198,7 +198,7 @@ var getSubData = function(agency,year,income, label, val) {
     });
     
 
-}
+};
 
 function analyzeData(data, income){
 	salary = income;
@@ -248,7 +248,7 @@ function analyzeData(data, income){
      // var daily = Math.round(taxman_fraction * 21 * 8);
       var aday = taxman_fraction * 8;
 
-      clocked.writeto("Kenya Government",formatHoursFlat(aday));
+      clocked.writeto("South African Government",formatHoursFlat(aday));
       
 }
 
@@ -373,7 +373,7 @@ function formatHours(val) {
   if(secs){
     str += "<span class='num'>"+secs+"</span> seconds";
   }  
-  return str
+  return str;
 }
 
 function formatHoursFlat(val) {
@@ -382,13 +382,13 @@ function formatHoursFlat(val) {
   
   //http://www.springfrog.com/converter/decimal-time.htm
   
-  if(num < 24){
+  if (num < 24) {
     var hours = parseInt(num);
        num -= parseInt(num); num *= 60;
     var mins = parseInt(num);
     num -= parseInt(num); num *= 60;
     var secs = parseInt(num);
-  }else{
+  } else {
     
     var days = parseInt(num/24);
     num -= parseInt(days*24); 

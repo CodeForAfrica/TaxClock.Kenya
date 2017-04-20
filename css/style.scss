@@ -191,6 +191,13 @@ footer {
   background-color: $lightblue;
   color: #fff;
 }
+.tc-bg-white {
+  background-color: #fff;
+  color: $blue;
+  a {
+    color: $blue;
+  }
+}
 
 .tc-text-blue {
   color: $blue;

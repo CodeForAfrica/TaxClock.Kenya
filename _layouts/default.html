@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <meta property="og:title" content="The Kenya 2016 Tax Clock" />
+  <meta property="og:title" content="{{ site.title }}" />
   <meta property="og:description" content="{{ site.description }}" />
   <meta property="og:image" content="{{ site.url }}/preview.png" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
@@ -46,8 +46,11 @@
 
   {% if page.footer == "non" %}
 
-  <div class="container-fluid text-center" style="background-color: #fff; padding-bottom: 10px">
-    <small ><a href="{{ site.url }}" target="_blank" rel="noopener noreferrer" style="color: #0D68A8;">TaxClock by Code for Africa</a></small>
+  <div class="container-fluid text-center tc-bg-white" style="padding-bottom: 10px">
+    <p>
+      <a href="{{ site.url }}" target="_blank" rel="noopener noreferrer">TaxClock</a>
+      by <a href="https://codeforafrica.org/" target="_blank" rel="noopener noreferrer">Code for Africa</a>
+    </p>
   </div>
 
   {% else %}
@@ -110,32 +113,32 @@
   <script>
     window.jQuery || document.write('<script src="https://code.jquery.com/jquery-1.12.4.min.js"><\/script>')
   </script>
-  <script src="js/plugins.js"></script>
+  <script src="/js/plugins.js"></script>
 
-  <script src="js/vendor/jquery-ui-1.8.11.custom.min.js"></script>
+  <script src="/js/vendor/jquery-ui-1.8.11.custom.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pym/1.2.0/pym.v1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 
-  <script src="js/taxclock/tc-base.js"></script>
-  <script src="js/taxclock/tc-colors.js"></script>
+  <script src="/js/taxclock/tc-base.js"></script>
+  <script src="/js/taxclock/tc-colors.js"></script>
 
-  <script src="js/taxclock/tc-incomecalculator.js"></script>
-  <script src="js/taxclock/tc-icsformatter.js"></script>
+  <script src="/js/taxclock/tc-incomecalculator.js"></script>
+  <script src="/js/taxclock/tc-icsformatter.js"></script>
 
-  <script src="js/taxclock/tc-schedule.js"></script>
+  <script src="/js/taxclock/tc-schedule.js"></script>
 
-  <script src="js/vendor/raphael-min.js"></script>
+  <script src="/js/vendor/raphael-min.js"></script>
 
-  <script src="js/vendor/g.raphael.js"></script>
-  <script src="js/vendor/g.timechart.js"></script>
-  <script src="js/vendor/g.piechart.js"></script>
-  <script src="js/clock.js"></script>
-  <script src="js/vendor/dvc.ajax.js"></script>
-  <script src="js/taxclock/tc-clock.js"></script>
+  <script src="/js/vendor/g.raphael.js"></script>
+  <script src="/js/vendor/g.timechart.js"></script>
+  <script src="/js/vendor/g.piechart.js"></script>
+  <script src="/js/clock.js"></script>
+  <script src="/js/vendor/dvc.ajax.js"></script>
+  <script src="/js/taxclock/tc-clock.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>

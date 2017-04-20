@@ -1,3 +1,6 @@
+---
+---
+
 // Explanations for items
 var itemExplanations = {
   'national-debt': 'This is the tax revenue allocated to servicing South Africa\'s national debt. It is also the fastest growing item of expenditure in the 2017 budget.',
@@ -99,10 +102,7 @@ function downloadICS() {
   cal.download();
 }
 
-var pymChild;
-pymChild = new pym.Child({
-  id : 'codeforkenya-embed-taxclock'
-});
+var pymChild = new pym.Child();
 checkEmbedLink();
 
 var engaged = false;
@@ -302,13 +302,15 @@ function incomeChange() {
     engaged = true;
 
     // tell pym to resize
-    // pymChild.sendHeight();
+    pymChild.sendHeight();
   } else {
-    var footer = $('.footer');
-    pymChild.sendMessage("childShrank", footer.offset().top + footer.height());
+    // TODO: We don't have a footer
+    // var footer = $('footer');
+    // pymChild.sendMessage("childShrank", footer.offset().top + footer.height());
   }
 }
 
+// Check if embedded
 if (window != window.top) {
   $('body').addClass('embedded');
 } else {
@@ -320,17 +322,18 @@ var pat = new RegExp("embed.html$");
 $(function() {
 
   $('input[name="income"]').on('change keyup', function() {
-    
       incomeChange();
       TC.clock.update();
-    
   });
   
-  $('input[name="embed-income"]').on('change', function() {
+  // If embedded, check change to redirect to website
+  $('input[name="income"]').on('change', function() {
+    // Check if embedded
     if (pat.test(window.location) || $('body').hasClass("embedded")) {
-      var updated_income = $('input[name="embed-income"]').val();
-      window.location = "https://taxclock.codeforkenya.org/?income=" + updated_income;
-    };});
+      var income = $('input[name="income"]').val();
+      window.location = "{{ site.url }}/?income=" + income;
+    };
+  });
   
   
   /* Stupid hack to probably fix size once probably rendered initially */
