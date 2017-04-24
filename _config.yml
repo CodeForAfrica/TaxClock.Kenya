@@ -5,3 +5,5 @@ url: https://taxclock-za.codeforafrica.org
 enforce_ssl: taxclock-za.codeforafrica.org
 
 google_analytics: UA-44795600-34
+
+exclude: ['s3_website.example.yml']
