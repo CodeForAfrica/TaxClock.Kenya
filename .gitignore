@@ -1,3 +1,5 @@
 \.*.swp
 _site
 .project
+
+s3_website.yml
