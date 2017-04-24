@@ -32,7 +32,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
    
     this.draw = function (values, labels) {
           data = values;
-          parent = this;
+          var self = this;
           
           //data = data.sort(function (a, b) { return b - a;});
           
@@ -116,7 +116,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
           }
           
           //bg.animate({r: 151}, 1000, "easeout");
-          parent.animate(1000, "easeout");
+          self.animate(1000, "easeout");
     }
     
     

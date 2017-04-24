@@ -53,7 +53,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
     
     this.draw = function (values, labels, ids) {
           data = values;
-          parent = this;
+          var self = this;
           
           //data = data.sort(function (a, b) { return b - a;});
           
@@ -140,7 +140,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
           }
           
           //bg.animate({r: 151}, 1000, "easeout");
-          parent.animateAll(1000, "bounce");
+          self.animateAll(1000, "bounce");
     }
     
     this.redraw = function () {
@@ -195,7 +195,7 @@ Array.prototype.diff = function(a) {
 };
 
 // //this.draw(values);
-//        parent = this;
+//        var self = this;
 //        old_data = data;
 //        //data = values;
 //        differO = data.diff(values);
@@ -211,4 +211,4 @@ Array.prototype.diff = function(a) {
 //             
 //             
 //         }
-//        parent.animate();
+//        self.animate();

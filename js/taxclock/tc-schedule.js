@@ -331,11 +331,9 @@ $(function() {
     // Check if embedded
     if (pat.test(window.location) || $('body').hasClass("embedded")) {
       var income = $('input[name="income"]').val();
-      window.location = "{{ site.url }}/?income=" + income;
+      url = "{{ site.url }}/?income=" + income;
+      window.open(url,'_blank');
     };
   });
   
-  
-  /* Stupid hack to probably fix size once probably rendered initially */
-  // setInterval(function() { pymChild.sendHeight(); }, 1000);
 });
