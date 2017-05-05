@@ -101,14 +101,14 @@ Raphael.fn.clock = function (cx, cy, rad) {
     }else{
       spacerS = "";
     }
-      thesalary.attr('text', "Ksh."+formatDollar(salary));
+      thesalary.attr('text', "Ksh. "+formatDollar(salary));
     }
       
     
     chart.push( 
       paper.circle(cx, cy, rad).attr({fill:"none", stroke:"#fff",'stroke-width':6}),
       //paper.image("images/usa.png", cx-81,(cy-(rad-65)), 162, 86),
-      thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "Ksh."+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
+      thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "Ksh. "+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
       // paper.text(cx, (cy-(rad-(fontSizer*10.35))), "IN").attr({"font-family": "Poppins", 'font-size':  (fontSizer-4)+"px", fill:"#fff"}),
 

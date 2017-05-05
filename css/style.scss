@@ -78,7 +78,10 @@ hr {
 
 footer {
   padding-top: 40px;
-  padding-bottom: 30px;
+
+  .footer-main {
+    padding-bottom: 30px;
+  }
 
   .logos {
     padding-top: 30px;
@@ -93,6 +96,15 @@ footer {
     list-style-type: square;
     li {
       margin-bottom: 10px;
+    }
+  }
+
+  .footer-inverse {
+    background-color: #fff;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    img {
+      max-height: 29px;
     }
   }
   
@@ -178,6 +190,13 @@ footer {
 .tc-bg-lightblue {
   background-color: $lightblue;
   color: #fff;
+}
+.tc-bg-white {
+  background-color: #fff;
+  color: $blue;
+  a {
+    color: $blue;
+  }
 }
 
 .tc-text-blue {

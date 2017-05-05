@@ -23,13 +23,13 @@ layout: home
       <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>If your salary is<br/><strong>Ksh.<span id="salary"></span></strong> a month<br/>it means you earn<br/><strong>Ksh.<span id="hourly"></span> per</strong> hour<span id="year" style="display:none;">2016</span>.</p>
+            <p>If your salary is<br/><strong>Ksh. <span id="salary"></span></strong> a month<br/>it means you earn<br/><strong>Ksh. <span id="hourly"></span> per</strong> hour<span id="year" style="display:none;">2016</span>.</p>
           </div>
         </div>
         <div class="visible-xs" style="min-height: 20px;"></div>
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>You would pay <br/><strong>Ksh.<span id="iSum"></span></strong> a month<br/>in taxes, which is<br/><strong>Ksh.<span id="iDaily"></span></strong> a day<sup>*</sup>.</p>
+            <p>You would pay <br/><strong>Ksh. <span id="iSum"></span></strong> a month<br/>in taxes, which is<br/><strong>Ksh. <span id="iDaily"></span></strong> a day<sup>*</sup>.</p>
           </div>
         </div>
       </div>
@@ -116,13 +116,20 @@ layout: home
         </div>
 	
       </div> <!-- /.col-md-6 #schedule-area -->
+
       <div class="col-md-6" id="stories-area">
         <div class="hidden-xs hidden-sm visible-safari" style="height:110px; display: none;"></div>
         <h1 class="text-center">. . .</h1>
+        <h3>Latest headlines:</h3>
+        <div id="stories-news">
+          <div class="alert alert-info text-center">
+            <p class="lead"><i class="fa fa-spinner fa-pulse"></i> Loading...</p>
+          </div>
+        </div>
+      </div> <!-- /.col-md-6 #stories-area -->
 
-        {% include stories.html %}
-      </div>
     </div>  <!-- /.row -->
+
   </div> <!-- /.container -->
 </div>
 

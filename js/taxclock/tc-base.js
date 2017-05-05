@@ -3,6 +3,10 @@ var TC = {
     update: function () {
       
     }
+  },
+
+  stories: {
+    
   }
   
 };

@@ -1,6 +1,6 @@
 TC.colors = {};
 
-TC.colors.all = {
+TC.colors = {
   lightblue: '#5394C1',
   red: '#ED1C24',
 
@@ -50,8 +50,8 @@ TC.colors.all = {
 };
 
 TC.colors.setSchedule = function () {
-  var colors_count = _.size(TC.colors.all);
-  var colors = _.values(TC.colors.all);
+  var colors_count = _.size(TC.colors);
+  var colors = _.values(TC.colors);
 
   $.each($('.planner-item'), function (key, value) {
     var color_id = key % colors_count;

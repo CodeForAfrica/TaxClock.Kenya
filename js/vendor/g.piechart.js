@@ -32,7 +32,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
    
     this.draw = function (values, labels) {
           data = values;
-          parent = this;
+          var self = this;
           
           //data = data.sort(function (a, b) { return b - a;});
           
@@ -79,7 +79,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
                         var daily = (salary / 21);
                       
                         subfuncText.attr('text', "You took home "+(Math.round(amount/salary * 100))+" %");
-                        subRev.attr('text',  "of the Ksh."+Math.round(daily)+" you earned today.");
+                        subRev.attr('text',  "of the ZAR "+Math.round(daily)+" you earned today.");
                         subTime.attr('text', "");
                        
                       } else if (title == "State & Local Governments") {
@@ -89,7 +89,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
                         var daily = (data[i].value / 21);
                         var aday = daily / hourly;
 
-                        subRev.attr('text', "took around Ksh."+formatDollar(data[i].value)+" or about 10%");
+                        subRev.attr('text', "took around ZAR "+formatDollar(data[i].value)+" or about 10%");
                         subTime.attr('text', "of that as income tax, depending on your state.");
 
                       } else {
@@ -100,7 +100,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
                           var aday = daily / hourly;
                           //var ayear = amount / hourly;
 
-                          subRev.attr('text', "received Ksh."+formatDollar(data[i].value)+" of that Ksh."+formatDollar(amount));
+                          subRev.attr('text', "received ZAR "+formatDollar(data[i].value)+" of that ZAR "+formatDollar(amount));
                           subTime.attr('text', "or "+formatHoursFlat(aday)+" of your time today");
                       }
                       
@@ -116,7 +116,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
           }
           
           //bg.animate({r: 151}, 1000, "easeout");
-          parent.animate(1000, "easeout");
+          self.animate(1000, "easeout");
     }
     
     
@@ -147,7 +147,7 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
           
           paper.text(cx, (cy-(rad-(fontSizer*6))), "This month you worked a total of").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),           
           paper.text(cx, (cy-(rad-(fontSizer*7.5))), formatHoursFlat(ayear)).attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px", "font-style":"italic"}),
-          paper.text(cx, (cy-(rad-(fontSizer*9))), "for a contribution of Ksh."+formatDollar(amount)).attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          paper.text(cx, (cy-(rad-(fontSizer*9))), "for a contribution of ZAR "+formatDollar(amount)).attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
           
           paper.text(cx, cy-(fontSizer*2), "You worked").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
           paper.text(cx, cy, formatHoursFlat(aday)+" today").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
@@ -196,8 +196,8 @@ Raphael.fn.g.piechart = function (cx, cy, rad, amount, opts) {
           
           
           paper.text(cx, (cy-(rad-(fontSizer*6))), "This month you took home").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),           
-          paper.text(cx, (cy-(rad-(fontSizer*7.5))), "Ksh."+formatDollar(amount)+" and paid "+(100-Math.round(amount/salary * 100))+" %").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
-          paper.text(cx, (cy-(rad-(fontSizer*9))), "of your salary of Ksh."+formatDollar(salary)+" towards taxes.").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
+          paper.text(cx, (cy-(rad-(fontSizer*7.5))), "ZAR "+formatDollar(amount)+" and paid "+(100-Math.round(amount/salary * 100))+" %").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),
+          paper.text(cx, (cy-(rad-(fontSizer*9))), "of your salary of ZAR "+formatDollar(salary)+" towards taxes.").attr({"font-family": "Crimson Text", 'font-size': (fontSizer)+"px"}),
           
           paper.text(cx, cy-(fontSizer*2), "You worked").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+4)+"px"}),
           paper.text(cx, cy, formatHoursFlat(aday)+" today").attr({"font-family": "Crimson Text", 'font-size': (fontSizer+6)+"px", "font-style":"italic"}),

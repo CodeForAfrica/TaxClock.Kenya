@@ -17,14 +17,14 @@ var IncomeCalculator = function() {
     new TaxBand(0.20, 19742, 29317),
     new TaxBand(0.25, 29318, 38893),
     new TaxBand(0.30, 38895, 701300),
+ ];
 
-  ];
-
-  this.PRIMARY_REBATE = 1162;  //tax relief to be confirmed
+    this.PRIMARY_REBATE = 1162;
 
   // Budget revenue streams from individuals (billions)
-  this.PERSONAL_INCOME_TAX_REVENUE = 15.1;
-  this.VAT_REVENUE = 19.4;
+  // http://www.treasury.gov.za/documents/national%20budget/2017/review/FullBR.pdf (page 4)
+    this.PERSONAL_INCOME_TAX_REVENUE = 15.1;
+    this.VAT_REVENUE = 19.4;
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
