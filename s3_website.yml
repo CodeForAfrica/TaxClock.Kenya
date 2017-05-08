@@ -1,6 +1,6 @@
 s3_id: <%= ENV['AWS_ACCESS_ID'] %>
 s3_secret: <%= ENV['AWS_SECRET_KEY'] %>
-s3_bucket: taxclock-za.codeforafrica.org
+s3_bucket: taxclock.codeforkenya.org
 
 # set s3_token if using temporary credentials with a session token (eg: when assuming a role)
 # s3_token: YOUR_AWS_S3_SESSION_TOKEN

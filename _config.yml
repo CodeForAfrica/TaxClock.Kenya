@@ -1,22 +1,23 @@
-title: TaxClock South Africa
+title: TaxClock Kenya
 description: It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent.
 
-government: South African Government
-currency: ZAR
-default_amount: 6500
+government: Kenyan Government
+currency: KES
+default_amount: 50000
 
-vat: 0.14
+vat: 0.16
 # Primary rebate or personal relief per month
-primary_rebate: 13635/12
+primary_rebate: 1162
 
-income_tax_revenue: 482.1
-vat_revenue: 312.8
+# Budget revenue streams in billions
+income_tax_revenue: 15.1
+vat_revenue: 19.4
 
-url: https://taxclock-za.codeforafrica.org
-enforce_ssl: taxclock-za.codeforafrica.org
+url: https://taxclock.codeforkenya.org
+enforce_ssl: taxclock.codeforkenya.org
 
-embed_id: taxclock-za
+embed_id: taxclock-ke
 
-google_analytics: UA-44795600-34
+google_analytics: UA-33350783-6
 
 exclude: ['s3_website.yml', '.env']
