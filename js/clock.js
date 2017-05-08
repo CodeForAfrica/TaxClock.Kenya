@@ -1,3 +1,6 @@
+---
+---
+
 Raphael.fn.clock = function (cx, cy, rad) {
     var paper = this,
         chart = this.set(),
@@ -101,14 +104,14 @@ Raphael.fn.clock = function (cx, cy, rad) {
     }else{
       spacerS = "";
     }
-      thesalary.attr('text', "Ksh. "+formatDollar(salary));
+      thesalary.attr('text', "{{ site.currency }} "+formatDollar(salary));
     }
       
     
     chart.push( 
       paper.circle(cx, cy, rad).attr({fill:"none", stroke:"#fff",'stroke-width':6}),
       //paper.image("images/usa.png", cx-81,(cy-(rad-65)), 162, 86),
-      thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "ZAR "+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
+      thesalary = paper.text(cx, (cy-(rad-(fontSizer*9))), "{{ site.currency }} "+formatDollar(salary)).attr({"font-family": "Poppins", 'font-size':  (fontSizer+6)+"px", fill:"#fff"}),
 
       // paper.text(cx, (cy-(rad-(fontSizer*10.35))), "IN").attr({"font-family": "Poppins", 'font-size':  (fontSizer-4)+"px", fill:"#fff"}),
 
@@ -120,7 +123,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
       //paper.image("images/hourly.png", cx+80,(cy-(rad-189)), 39, 19),
 
       chart.spent = paper.text(cx, (cy+(rad-(fontSizer*11.5))), "Time spent working for").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"}),
-      workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), "South African Government").attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
+      workingFor = paper.text(cx, (cy+(rad-(fontSizer*9.8))), "{{ site.government }}").attr({"font-family": "Poppins", 'font-size': (fontSizer+6)+"px", "font-style":"italic", fill:"#fff"}),
       clickHere = paper.text(cx, (cy+(rad-(fontSizer*8))), "Hover Over Any Color Slice For More Info").attr({"font-family": "Poppins", 'font-size': fontSizer+"px", "text-align":"center", fill:"#fff"})
 
     );
