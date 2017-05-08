@@ -19,4 +19,4 @@ embed_id: taxclock-za
 
 google_analytics: UA-44795600-34
 
-exclude: ['s3_website.example.yml']
+exclude: ['s3_website.yml', '.env']

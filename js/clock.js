@@ -104,7 +104,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
     }else{
       spacerS = "";
     }
-      thesalary.attr('text', "Ksh. "+formatDollar(salary));
+      thesalary.attr('text', "{{ site.currency }} "+formatDollar(salary));
     }
       
     
