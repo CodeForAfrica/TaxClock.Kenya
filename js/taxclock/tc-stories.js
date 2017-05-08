@@ -8,8 +8,12 @@ TC.stories = {
   data: [],
 
   load: function () {
+    var base_url = '';
+    if (document.location.hostname == 'localhost') {
+      base_url = 'http://{{ site.enforce_ssl }}';
+    };
     $.get(
-      '{{ site.url }}/data/fin24-news.json',
+      base_url + '/data/fin24-news.json',
       function( data ) {
         TC.stories.data = JSON.parse(data);
         TC.stories.show();
@@ -44,5 +48,3 @@ $(function() {
   TC.stories.load();
 
 });
-
-

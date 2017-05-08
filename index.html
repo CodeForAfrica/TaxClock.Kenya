@@ -23,20 +23,20 @@ layout: home
       <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>If your salary is<br/><strong>ZAR <span id="salary"></span></strong> a month<br/>it means you earn<br/><strong>ZAR <span id="hourly"></span> per</strong> hour<span id="year" style="display:none;">2016</span>.</p>
+            <p>If your salary is<br/><strong>{{ site.currency }} <span id="salary"></span></strong> a month<br/>it means you earn<br/><strong>{{ site.currency }} <span id="hourly"></span> per</strong> hour<span id="year" style="display:none;">2016</span>.</p>
           </div>
         </div>
         <div class="visible-xs" style="min-height: 20px;"></div>
         <div class="col-sm-6">
           <div class="tc-box-clear">
-            <p>You would pay <br/><strong>ZAR <span id="iSum"></span></strong> a month<br/>in taxes, which is<br/><strong>ZAR <span id="iDaily"></span></strong> a day<sup>*</sup>.</p>
+            <p>You would pay <br/><strong>{{ site.currency }} <span id="iSum"></span></strong> a month<br/>in taxes, which is<br/><strong>{{ site.currency }} <span id="iDaily"></span></strong> a day<sup>*</sup>.</p>
           </div>
         </div>
       </div>
 
       <div style="padding: 0 35px;">
         <p class="tc-text-time">
-          That's <strong><span id="iHours"> <span style="font-weight: normal;">and</span> </span></strong> per day<br/>that you spend working for the South African Governement.
+          That's <strong><span id="iHours"> <span style="font-weight: normal;">and</span> </span></strong> per day<br/>that you spend working for the {{ site.government }}.
           <!-- <br/> -->
           <!-- Compared to <strong>x hours and xx minutes</strong> in South Africa and <strong>x hours and xx minutes</strong> in Nigeria. -->
         </p>
@@ -45,7 +45,7 @@ layout: home
 
         <div class="tc-box tc-box-red">
           <h3>DID YOU KNOW?</h3>
-          <p>Time is money.<br/>So, paying your tax means that you are actually giving government your time, or labour.<br/>This project helps you calculate exactly how much time you spend working for  the government.</p>
+          <p>Time is money.<br/>So, paying your tax means that you are actually giving government your time, or labour.<br/>This project helps you calculate exactly how much time you spend working for the government.</p>
         </div>
 
         <div class="tc-box tc-box-blue">
@@ -72,7 +72,7 @@ layout: home
         <div class="tc-box tc-box-blue text-center">
           <h4>What is your monthly income<sup>*</sup> (before tax)?</h4>
           <div class="input-group input-group-lg">
-            <span class="input-group-addon">ZAR</span>
+            <span class="input-group-addon">{{ site.currency }}</span>
             <input id="income-input" class="income form-control" type="text" name="income"  aria-label="Monthly income before tax">
           </div>
           <p><small><sup>*</sup> This should be your income before tax but after deductions such as pension and health insurance.</small></p>

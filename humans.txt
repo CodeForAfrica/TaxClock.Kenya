@@ -2,12 +2,14 @@
 # The humans responsible & technology colophon
 
 # TEAM
-
-    <name> -- <role> -- <twitter>
+    
+    David Lemayian -- Lead Technologist, Code for Africa -- @DavidLemayian
+    James Chege -- Developer, Code for Africa -- <twitter>
+    Open Up -- Dev -- @OpenUpZA
 
 # THANKS
 
-    <name>
+    Open Up ZA
 
 # TECHNOLOGY COLOPHON
 
