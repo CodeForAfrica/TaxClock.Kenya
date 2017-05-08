@@ -19,6 +19,7 @@ To run locally, ensure that you are in the parent dir and run the commands below
 gem install jekyll bundler
 jekyll s
 ```
+
 #### Deploy to Github Pages
 
 Simply have it on Github and follow instruction [here](https://pages.github.com/).

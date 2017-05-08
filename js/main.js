@@ -1,3 +1,6 @@
+---
+---
+
 $(window).on('load', function() {
   var host = window.location;
   var search = host.search;
@@ -6,12 +9,12 @@ $(window).on('load', function() {
     var new_url = host.href.substr(0, index);
 
     new_salary = parseInt(search.split("=")[1]);
-    window.history.replaceState({}, "TaxClock Kenya", new_url);
+    window.history.replaceState({}, "{{ site.title }}", new_url);
 
     $('input[name="income"]').val(new_salary);
 
   } else {
-    $('input[name="income"]').val(50000);
+    $('input[name="income"]').val({{ site.default_amount }});
   }
 
   incomeChange();

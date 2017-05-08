@@ -1,14 +1,16 @@
+---
+---
 // File that embeds the clock automatically
 
 if (document.location.hostname == "localhost") {
-    var baseurl = "/";
+    var baseurl = "";
 } else {
-    var baseurl = "https://taxclock.codeforkenya.org/";
+    var baseurl = "{{ site.url }}";
 }
-document.write('<div id="taxclock-ke"></div>');
-document.write('<script type="text/javascript" src="' + baseurl + 'js/vendor/pym.js"></script>');
+document.write('<div id="{{ site.embed_id }}"></div>');
+document.write('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pym/1.2.0/pym.v1.min.js"></script>');
 document.write("<script>\n" +
-"var pymParent = new pym.Parent('taxclock-ke', '" + baseurl + "embed.html', {});\n" +
+"var pymParent = new pym.Parent('{{ site.embed_id }}', '" + baseurl + "/embed.html', {});\n" +
 "pymParent.onMessage('childShrank', function(height) {\n" +
 "  pymParent.iframe.setAttribute('style', 'height: ' + height + 'px');\n" +
 "});" +

@@ -1,7 +1,9 @@
+---
+---
 var IncomeCalculator = function() {
   var self = this;
 
-  this.VAT = 0.16;
+  this.VAT = {{ site.vat }};
 
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
@@ -10,41 +12,49 @@ var IncomeCalculator = function() {
     this.limit = (arguments.length > 3) ? this.limit = limit : this.limit = Number.POSITIVE_INFINITY;
   }
 
+  // TODO: Move to _data
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.10, 0, 10165),
-    new TaxBand(0.15, 10166, 19741),
-    new TaxBand(0.20, 19742, 29317),
-    new TaxBand(0.25, 29318, 38893),
-    new TaxBand(0.30, 38895, 701300),
- ];
+    new TaxBand(0.18, 0, 0, 189880/12),
+    new TaxBand(0.26, 34178/12, 189881/12, 296540/12),
+    new TaxBand(0.31, 61910/12, 296541/12, 410460/12),
+    new TaxBand(0.36, 97225/12, 410461/12, 555600/12),
+    new TaxBand(0.39, 149475/12, 555601/12, 708310/12),
+    new TaxBand(0.41, 209032/12, 708311/12, 1500000/12),
+    new TaxBand(0.45, 533625/12, 1500001/12)
+  ];
 
-    this.PRIMARY_REBATE = 1162;
+  this.PRIMARY_REBATE = {{ site.primary_rebate }};
 
   // Budget revenue streams from individuals (billions)
   // http://www.treasury.gov.za/documents/national%20budget/2017/review/FullBR.pdf (page 4)
-    this.PERSONAL_INCOME_TAX_REVENUE = 15.1;
-    this.VAT_REVENUE = 19.4;
+  this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }};
+  this.VAT_REVENUE = {{ site.vat_revenue }};
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
+  // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Education': (339 * Math.pow(10,9)),
-    'Public Healthcare': (60.3 * Math.pow(10,9)),
-    'Law and Order': (188 * Math.pow(10,9)),
-    'Debt Repayment': (466.5 * Math.pow(10,9)),
-    'Agriculture and Rural Development': (69.6 * Math.pow(10,9)),
-    'Lights and Power': (122.3 * Math.pow(10,9)),
-    'Public Infrastructure': (202 * Math.pow(10,9)),
-    'Transport Infrastructure': (181.6 * Math.pow(10,9)),
-    'Trade and Commerce': (20.9 * Math.pow(10,9)),
-    'Running Government': (232 * Math.pow(10,9)),
-    'Social Protection': (33.7 * Math.pow(10,9)),
-    'Environmental Protection': (92.9  * Math.pow(10,9)),
-    'Military and Intelligence Services': (124  * Math.pow(10,9)),
-    'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
+    'Basic education': 232600,
+    'Higher education & training': 77500,
+    'Health': 187500,
+    'Social grants': 180000,
+    'Employment & labour affairs': 75900,
+    'Trade & industry': 28900,
+    'Economic infrastructure': 89500,
+    'Defence & state security': 54000,
+    'Law courts & prisons': 43800,
+    'Police services': 93800,
+    'Home affairs': 7200,
+    'Local government and housing': 195800,
+    'Agriculture, rural development & land reform': 26500,
+    'Science & Technology and environment': 20600,
+    'Arts, sports, recreation and culture': 10400,
+    'General public services': 70700,
+    'National debt': 162400,
+    'Unallocated reserves': 6000,
   };
 
   // override ordering

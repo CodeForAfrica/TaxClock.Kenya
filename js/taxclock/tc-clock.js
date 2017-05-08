@@ -1,3 +1,5 @@
+---
+---
 var canvas;
 var clocked;
 var pie;
@@ -247,8 +249,8 @@ function analyzeData(data, income){
       //var aday = daily / hourly;
      // var daily = Math.round(taxman_fraction * 21 * 8);
       var aday = taxman_fraction * 8;
-
-      clocked.writeto("Kenyan Government",formatHoursFlat(aday));
+  
+      clocked.writeto("{{ site.government }}",formatHoursFlat(aday));
       
 }
 

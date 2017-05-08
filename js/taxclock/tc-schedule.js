@@ -1,22 +1,27 @@
 ---
 ---
 
+// TODO: move to _data
 // Explanations for items
 var itemExplanations = {
-    'education' : 'Teachers Service Commission, State Department for Science and Technology, and State Department for Education',
-    'public-healthcare' : 'Ministry of Health',
-    'law-and-order' : 'Judiciary, State Department for Interior, IEBC, Attorney General & Dept of Justice, Ethics & Anti-Corruption Commission, Director of Public Prosecutions, Office of the Registrar of Political Parties, KNCHR, National Gender & Equality Commission, National Police Service Commission, Independent Policing Oversight Authority, and Witness Protection Agency',
-    'debt-repayment' : 'Public Debt Repayment that consists of internal debt and external debt borrowed from foreign lenders including commercial banks, governments or international financial institutions',
-    'agriculture-and-rural-development' : 'Ministry of Land Housing and Urban Development, State Department for Agriculture, State Department for Livestock, State Department for Fisheries, and National Land Commission',
-    'lights-and-power' : 'Ministry of Energy and Petroleum',
-    'public-infrastructure' : 'State Department of Infrastructure and Ministry Information Communication and Technology',
-    'transport-infrastructure' : 'State Department of Transport',
-    'trade-and-commerce' : 'Ministry of Industrialization and Enterprise Development, State Department for Commerce and Tourism, and State Department for East African Affairs',
-    'running-government' : 'The National Treasury, State Department for Planning, Ministry of Foreign Affairs and International Trade, State Department for Devolution, The Presidency, Auditor General, Public Service Commission, Controller of Budget, Salaries and Remuneration Commission, The Commission on Administrative of Justice, The Commission on Revenue Allocation, Parliament, CDF, Contingencies',
-    'social-protection' : 'Ministry of Labour Social Security and Services, and Ministry of Sports Culture and Arts',
-    'environmental-protection' : 'Ministry of Water and Irrigation, Ministry of Environment, Natural Resources & RDAs, and Ministry of Mining',
-    'military-and-intelligence-services' : 'National Security matters + agencies. Spies and what not.',
-    'pensions-and-constitutional-office-holder-s-salaries' : 'Civil Servant\'s Pensions, and Salaries for Constitutational Office Holders in Government Departments'
+  'national-debt': 'This is the tax revenue allocated to servicing South Africa\'s national debt. It is also the fastest growing item of expenditure in the 2017 budget.',
+  'basic-education': 'This department develops, maintains and supports the South African school education system.',
+  'local-government-and-housing': 'This department works to facilitate the creation of sustainable human settlements and the improvement to household quality of life.',
+  'health': 'This department provides leadership and coordination of health services to promote the health of all people in South Africa.',
+  'social-grants': 'This department aims to reduce poverty by providing income support to those in need.',
+  'police-services': 'The Police Department works to prevent, combat and investigate crime, maintain public order, and uphold and enforce the law.',
+  'economic-infrastructure': 'This department\'s goal is to create income generating opportunities through improved physical infrastructure.',
+  'general-public-services': 'This includes expenditure on the Presidency, Parliament, Dept of Home Affairs, Communications, International Relations, Public Service and Administration, and National Treasury.',
+  'employment-labour-affairs': 'This department works for you to reduce unemployment, poverty and inequality through pursuing the objectives of productive employment and decent work for all.',
+  'higher-education-training': 'This department develops and supports a quality higher education and vocational education sector.',
+  'defence-state-security': 'This department defends and protects the Republic of South Africa, its territorial integrity and its people.',
+  'law-courts-prisons': 'The focus of this department is to contribute to a just, peaceful and safer South Africa',
+  'trade-industry': 'This department works to facilitate access to sustainable economic activity and employment.',
+  'agriculture-rural-development-land-reform': 'This category involves the promotion of agricultural, forestry and fisheries resource management, and the creation of equitable and sustainable land dispensation.',
+  'science-technology-and-environment': 'This category focuses on realising the full potential of science and technology in social and economic development, and leads South Africa\'s environmental sector to achieve sustainable development.',
+  'home-affairs': 'Birth certificates, marriage certificates, ID books, passports, etc',
+  'arts-sports-recreation-and-culture': 'This category is for creating an enabling environment in which the arts, culture and sport can play a significant role in nation building and socio-economic development',
+  'unallocated-reserves': 'This is the contingency reserve - an amount set aside to accommodate changes in the economic environment as well as unforeseeable expenditure'
 }
 
 var cal = null;
