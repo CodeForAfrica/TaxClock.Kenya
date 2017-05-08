@@ -1,7 +1,9 @@
+---
+---
 var IncomeCalculator = function() {
   var self = this;
 
-  this.VAT = 0.16;
+  this.VAT = {{ site.vat }};
 
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
@@ -10,6 +12,7 @@ var IncomeCalculator = function() {
     this.limit = (arguments.length > 3) ? this.limit = limit : this.limit = Number.POSITIVE_INFINITY;
   }
 
+  // TODO: Move to _data
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
     new TaxBand(0.18, 0, 0, 189880/12),
@@ -21,16 +24,17 @@ var IncomeCalculator = function() {
     new TaxBand(0.45, 533625/12, 1500001/12)
   ];
 
-  this.PRIMARY_REBATE = 13635/12;
+  this.PRIMARY_REBATE = {{ site.primary_rebate }};
 
   // Budget revenue streams from individuals (billions)
   // http://www.treasury.gov.za/documents/national%20budget/2017/review/FullBR.pdf (page 4)
-  this.PERSONAL_INCOME_TAX_REVENUE = 482.1;
-  this.VAT_REVENUE = 312.8;
+  this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }};
+  this.VAT_REVENUE = {{ site.vat_revenue }};
 
   // Budget expenditure by category, in millions
   // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
 
+  // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
     'Basic education': 232600,

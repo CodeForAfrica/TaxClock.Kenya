@@ -6,14 +6,14 @@
   </head>
   
   <body>
-    <div id="taxclock-za"></div>
+    <div id="{{ site.embed_id }}"></div>
   </body>
   
   <footer>    
   </footer>
-  <script src="/js/vendor/pym.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pym/1.2.0/pym.v1.min.js"></script>
   <script>
-    var pymParent = new pym.Parent("taxclock-za", "{{ site.url }}/embed.html", {});
+    var pymParent = new pym.Parent("{{ site.embed_id }}", "/embed.html", {});
     pymParent.iframe.setAttribute('style', 'height: 1024px');  
   </script>
 </html>

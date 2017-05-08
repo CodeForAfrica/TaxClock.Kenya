@@ -1,7 +1,7 @@
 ---
 ---
 
-// Stories load
+// Load stories
 
 TC.stories = {
 
@@ -9,7 +9,7 @@ TC.stories = {
 
   load: function () {
     $.get(
-      'https://taxclock-za.codeforafrica.org/data/fin24-news.json',
+      '{{ site.url }}/data/fin24-news.json',
       function( data ) {
         TC.stories.data = JSON.parse(data);
         TC.stories.show();

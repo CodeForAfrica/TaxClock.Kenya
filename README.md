@@ -13,13 +13,20 @@ Original website is accessible at [https://taxclock.codeforkenya.org/](https://t
 
 TaxClock uses [Jekyll](http://jekyllrb.com/).
 
+#### Deploy locally
+To run locally, ensure that you are in the parent dir and run the commands below
+```
+gem install jekyll bundler
+jekyll s
+```
+
 #### Deploy to Github Pages
 
 Simply have it on Github and follow instruction [here](https://pages.github.com/).
 
 #### Deploy to S3
 
-To deploy to S3, we are usin the very cool [s3_website gem](https://github.com/laurilehmijoki/s3_website).
+To deploy to S3, we are using the very cool [s3_website gem](https://github.com/laurilehmijoki/s3_website).
 
 Make sure to copy and edit `s3_website.example.yml` as `s3_website.yml` and then;
 

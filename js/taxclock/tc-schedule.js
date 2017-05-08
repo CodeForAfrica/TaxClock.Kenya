@@ -1,6 +1,7 @@
 ---
 ---
 
+// TODO: move to _data
 // Explanations for items
 var itemExplanations = {
   'national-debt': 'This is the tax revenue allocated to servicing South Africa\'s national debt. It is also the fastest growing item of expenditure in the 2017 budget.',

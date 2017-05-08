@@ -1,8 +1,21 @@
 title: TaxClock South Africa
 description: It’s easy to see how much of your salary is taken for taxes, but do you know how many hours are allocated to those deductions? Enter your salary to see how your tax money is being spent.
 
+government: South African Government
+currency: ZAR
+default_amount: 6500
+
+vat: 0.14
+# Primary rebate or personal relief per month
+primary_rebate: 13635/12
+
+income_tax_revenue: 482.1
+vat_revenue: 312.8
+
 url: https://taxclock-za.codeforafrica.org
 enforce_ssl: taxclock-za.codeforafrica.org
+
+embed_id: taxclock-za
 
 google_analytics: UA-44795600-34
 
