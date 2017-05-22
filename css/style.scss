@@ -211,9 +211,12 @@ footer {
 
 .tc-bg-white {
   background-color: #fff;
-  color: $blue;
+  color: $primary-color;
   a {
-    color: $blue;
+    color: $primary-color;
+    u {
+      color: $blue;
+    }
   }
 }
 
@@ -226,9 +229,19 @@ footer {
 
 .tc-text-grey {
   color: $grey-news24;
+  a {
+    color: $grey-news24;
+    u {
+      color: $blue;
+    }
+  }
 }
 .tc-text-lightgrey {
   color: $grey-news24-light;
+}
+
+.tc-text-red {
+  color: $red;
 }
 
 .tc-text-time {
