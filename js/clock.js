@@ -71,7 +71,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
     
     chart.push(
   
-      c = paper.circle(cx, cy, rad).attr({fill:"#0D68A8", stroke:"#fff",'stroke-width':8}),
+      c = paper.circle(cx, cy, rad).attr({fill:"#777", stroke:"#fff",'stroke-width':8}),
       n12 = paper.text(cx, cy-(rad-60),'12').attr({"font-size":"36px", "font-family":"Poppins", "fill":"#fff"}),
       n3 = paper.text(cx+(rad-50),cy,'3').attr({"font-size":"26px", "font-family":"Poppins", "fill":"#fff"}),
       n6 = paper.text(cx,cy+(rad-50),'6').attr({"font-size":"26px", "font-family":"Poppins", "fill":"#fff"}),
@@ -137,7 +137,7 @@ Raphael.fn.clock = function (cx, cy, rad) {
       handHour = paper.path(pa+(sec + 100)).attr({'stroke-width':stroker+5,stroke:"#fff", 'stroke-opacity': 0.5}),
       handMin = paper.path(pa+(sec + 20)).attr({'stroke-width':stroker+5,stroke:"#fff", 'stroke-opacity': 0.5}),
       midSec = paper.circle(cx, cy, 12).attr({stroke: "none", fill:"#ED1C24"}),
-      handSec = paper.path(("M"+(cx)+" "+(cy+40)+"L"+(cx)+" ")+sec).attr({'stroke-width':stroker,stroke:"#5394C1"}),
+      handSec = paper.path(("M"+(cx)+" "+(cy+40)+"L"+(cx)+" ")+sec).attr({'stroke-width':stroker,stroke:"#a6a6a6"}),
 
       midSec = paper.circle(cx, cy, 20).attr({stroke: "none", fill:"#ED1C24"})
 

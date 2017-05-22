@@ -55,9 +55,14 @@ $grey-two: #444444;
 $colors-list: $blue $lightblue $red $darkblue $green-one $teal $green-two $green-three $lightblue-two $grey-four $darkred $orange-one $lightorange $red-two $lightpink $pink $brightpink $darkpink $dullpink $black $grey $purple $maroon $purple-two $lightpurple $darkpurple $dullpurple $lightpurple-two $royalty $dullpurple-two $dullpurple-three $darkpurple-two $dullgreen $darkblue-two $darkgreen $yellow $dullorange $lightgreen $grey-two;
 
 
+$grey-news24: #90918e;
+$grey-news24-light: #a6a6a6;
+$primary-color: $grey-news24;
+$primary-color-light: $grey-news24-light;
+
 
 html, body {
-  background-color: $blue;
+  background-color: $primary-color;
   color: #fff;
   font-family: 'Poppins', sans-serif;
 
@@ -73,7 +78,7 @@ html, body {
 hr {
   margin-top: 40px;
   margin-bottom: 40px;
-  border-top: 1px solid $blue;
+  border-top: 1px solid $primary-color;
 }
 
 footer {
@@ -132,25 +137,25 @@ footer {
 }
 
 .tc-box-blue {
-  background-color: $blue;
+  background-color: $primary-color;
   color: #fff;
 
   .tc-box-arrow-right {
-    height: 46px;
-    width: 51px;
-    background-image: url('../img/tc_box_arrow_right_blue.png');
+    height: 36px;
+    width: 44px;
+    background-image: url('../img/salary-arrow.png');
     background-size: cover;
     position: absolute;
     bottom: 15px;
-    right: 0px;
+    right: 7px;
   }
   .tc-box-arrow-bottom {
-    height: 51px;
-    width: 46px;
-    background-image: url('../img/tc_box_arrow_bottom_blue.png');
+    height: 44px;
+    width: 36px;
+    background-image: url('../img/salary-arrow-down.png');
     background-size: cover;
     position: absolute;
-    bottom: -50px;
+    bottom: -43px;
     left: 47%;
   }
 
@@ -162,19 +167,22 @@ footer {
       border: 0;
     }
     .input-group-addon {
-      background-color: $lightblue;
+      background-color: $red;
       color: #fff;
     }
   }
 }
 
 .tc-box-white {
-  border: 5px solid $blue;
+  border: 5px solid $primary-color;
   background-color: #fff;
-  color: $blue;
+  color: $primary-color;
   padding-top: 20px; padding-bottom: 20px;
   a {
-    color: $blue;
+    color: $primary-color;
+    u {
+      color: $blue;
+    }
   }
 }
 
@@ -191,6 +199,16 @@ footer {
   background-color: $lightblue;
   color: #fff;
 }
+
+.tc-bg-grey {
+  background-color: $grey-news24;
+  color: #fff;
+}
+.tc-bg-lightgrey {
+  background-color: $grey-news24-light;
+  color: #fff;
+}
+
 .tc-bg-white {
   background-color: #fff;
   color: $blue;
@@ -204,6 +222,13 @@ footer {
 }
 .tc-text-lightblue {
   color: $lightblue;
+}
+
+.tc-text-grey {
+  color: $grey-news24;
+}
+.tc-text-lightgrey {
+  color: $grey-news24-light;
 }
 
 .tc-text-time {
