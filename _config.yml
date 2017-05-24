@@ -15,6 +15,10 @@ vat_revenue: 312.8
 url: https://taxclock-za.codeforafrica.org
 enforce_ssl: taxclock-za.codeforafrica.org
 
+media_name: fin24.com
+media_url: http://www.fin24.com
+media_logo: /img/fin-24.png
+
 embed_id: taxclock-za
 
 google_analytics: UA-44795600-34
