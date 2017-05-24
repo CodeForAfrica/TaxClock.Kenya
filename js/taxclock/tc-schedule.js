@@ -332,7 +332,7 @@ $(function() {
     // Check if embedded
     if (pat.test(window.location) || $('body').hasClass("embedded")) {
       var income = $('input[name="income"]').val();
-      url = "https://{{ site.enforce_ssl }}/?income=" + income;
+      url = "/?income=" + income;
       window.open(url,'_blank');
     } else {
       $('html, body').animate({
