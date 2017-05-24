@@ -332,8 +332,12 @@ $(function() {
     // Check if embedded
     if (pat.test(window.location) || $('body').hasClass("embedded")) {
       var income = $('input[name="income"]').val();
-      url = "{{ site.url }}/?income=" + income;
+      url = "https://{{ site.enforce_ssl }}/?income=" + income;
       window.open(url,'_blank');
+    } else {
+      $('html, body').animate({
+        scrollTop: $("#schedule-area").offset().top
+      }, 2000);
     };
   });
   
