@@ -38,6 +38,10 @@ s3_website push
 
 For detailed instructions, check out [s3_website gem](https://github.com/laurilehmijoki/s3_website).
 
-### License
+---
 
-[GNU GPL v3](./LICENSE.txt)
+## License
+
+We have licensed the code here under an [MIT License](./LICENSE.txt). While all content is released under a [Creative Commons 4 Attribution license](https://creativecommons.org/licenses/by/4.0/). You are free to reuse it to help empower your own community.
+
+All the code written by Code4SA is licensed under a Creative Commons Attribution 4.0 International License. 
