@@ -312,11 +312,11 @@ function incomeChange() {
 }
 
 // Check if embedded
-if (window != window.top) {
-  $('body').addClass('embedded');
-} else {
-  $('body').addClass('standalone');
-}
+// if (window != window.top) {
+//   $('body').addClass('embedded');
+// } else {
+//   $('body').addClass('standalone');
+// }
 
 var pat = new RegExp("embed.html$");
 
