@@ -9,6 +9,12 @@ Original website is accessible at [https://taxclock.codeforkenya.org/](https://t
 - Kenya: [https://taxclock.codeforkenya.org/](https://taxclock.codeforkenya.org/)
 - South Africa: [https://taxclock-za.codeforafrica.org/](https://taxclock-za.codeforafrica.org/)
 
+### Embedding
+
+To embed the TaxClock on your site, place the html code onto your page
+
+<script src="https://taxclock.codeforkenya.org/embed.js"/>
+
 ### Installation:
 
 TaxClock uses [Jekyll](http://jekyllrb.com/).
