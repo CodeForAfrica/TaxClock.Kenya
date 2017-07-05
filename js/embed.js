@@ -2,9 +2,9 @@
 ---
 
 if (document.location.hostname == 'localhost') {
-    var baseurl = '';
-} else {
     var baseurl = '{{ site.url }}';
+} else {
+    var baseurl = 'https://{{ site.enforce_ssl }}';
 }
 document.write('<div id="{{ site.embed_id }}"></div>');
 document.write('<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pym/1.2.0/pym.v1.min.js"></script>');

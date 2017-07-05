@@ -325,5 +325,17 @@ footer {
   #clock-area, #schedule-area {
     float: right;
   }
-
 }
+
+
+.page {
+  .tc-bg-white {
+    padding: 40px 0;
+
+    .container {
+      max-width: 700px;
+    }
+  }
+}
+
+
