@@ -4,7 +4,8 @@
  * Copyright (c) 2009 Dmitry Baranovskiy (http://g.raphaeljs.com)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
-Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
+Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
+    if (typeof opts === 'undefined') { opts = {sorted:true}}
     var data = [];
     var paper = this;
     var data = 0, //[24, 92, 24, 52, 78, 99, 82, 27]
@@ -41,8 +42,8 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts={sorted:true}) {
            data[i] = {value: data[i], label: labels[i], order: i};
            //console.log("data: "+data[i].value+" - "+"labels: "+labels[i]);
        }
-       if (opts.sorted) {
-       values.sort(function (a, b) {
+	if (opts.sorted) {
+	   values.sort(function (a, b) {
            return b.value - a.value;
        });
        };
