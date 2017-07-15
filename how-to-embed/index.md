@@ -17,25 +17,15 @@ To embed the TaxClock in your article, place the code below anywhere in the page
 
 1.) Using a simple wordpress website, we go into the editor
 
-![Step one](tc_1.gif)
-
-<br/>
-
-2.) We copy the code snippet from TaxClock website
-
-![Step two](tc_2.gif)
-
-<br/>
+2.) We copy the code snippet from TaxClock website (above)
 
 3.) We paste the code anywhere in our story
 
-![Step three](tc_3.gif)
+4.) It works!
 
 <br/>
 
-4.) It works!
-
-![Step four](tc_4.gif)
+![Steps](tc.gif)
 
 <br/>
 
