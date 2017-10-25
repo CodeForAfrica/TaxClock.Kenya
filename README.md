@@ -1,6 +1,6 @@
 ## TaxClock
 
-Time is money. So, paying your tax means that you are actually giving government your time, or labour. This project helps you calculate exactly how much time you spend working for the government.
+Time is money. So, paying your taxes means that you are actually giving the government your time, or labour. This project helps you calculate exactly how much time you spend working for the government.
 
 Original website is accessible at [https://taxclock.codeforkenya.org/](https://taxclock.codeforkenya.org/)
 
@@ -32,7 +32,7 @@ jekyll s
 
 #### Deploy to Github Pages
 
-Simply have it on Github and follow instructions [here](https://pages.github.com/).
+Simply have it on Github and follow the instructions [here](https://pages.github.com/).
 
 #### Deploy to S3
 
