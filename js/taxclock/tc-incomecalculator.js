@@ -15,13 +15,13 @@ var IncomeCalculator = function() {
   // TODO: Move to _data
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.18, 0, 0, 189880/12),
-    new TaxBand(0.26, 34178/12, 189881/12, 296540/12),
-    new TaxBand(0.31, 61910/12, 296541/12, 410460/12),
-    new TaxBand(0.36, 97225/12, 410461/12, 555600/12),
-    new TaxBand(0.39, 149475/12, 555601/12, 708310/12),
-    new TaxBand(0.41, 209032/12, 708311/12, 1500000/12),
-    new TaxBand(0.45, 533625/12, 1500001/12)
+    new TaxBand(0.18, 0, 0, 195850/12),
+    new TaxBand(0.26, 35253/12, 195851/12, 305850/12),
+    new TaxBand(0.31, 63853/12, 305851/12, 423300/12),
+    new TaxBand(0.36, 100263/12, 423301/12, 555600/12),
+    new TaxBand(0.39, 147891/12, 555601/12, 708310/12),
+    new TaxBand(0.41, 207448/12, 708311/12, 1500000/12),
+    new TaxBand(0.45, 532041/12, 1500000/12)
   ];
 
   this.PRIMARY_REBATE = {{ site.primary_rebate }};
@@ -37,24 +37,27 @@ var IncomeCalculator = function() {
   // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Basic education': 232600,
-    'Higher education & training': 77500,
-    'Health': 187500,
-    'Social grants': 180000,
-    'Employment & labour affairs': 75900,
-    'Trade & industry': 28900,
-    'Economic infrastructure': 89500,
-    'Defence & state security': 54000,
-    'Law courts & prisons': 43800,
-    'Police services': 93800,
-    'Home affairs': 7200,
-    'Local government and housing': 195800,
-    'Agriculture, rural development & land reform': 26500,
-    'Science & Technology and environment': 20600,
-    'Arts, sports, recreation and culture': 10400,
-    'General public services': 70700,
-    'National debt': 162400,
-    'Unallocated reserves': 6000,
+    'Basic education': 246800,
+    'Post-school education and training': 93700,
+    'Arts, sports, recreation and culture': 10700,
+    'Health': 205400,
+    'Social protection': 193400,
+    'Social security funds': 66000,
+    'Community Development': 196300,
+    'Industrialisation and exports': 32900,
+    'Agriculture and rural development': 30200,
+    'Job creation and labour affairs': 23300,
+    'Economic regulation and infrastructure': 97900,
+    'Defence & state security': 48400,
+    'Police services': 99100,
+    'Law courts & prisons': 45400,
+    'Home affairs': 7900,
+    'Executive and legislative organs': 16000,
+    'Public administration and fiscal affairs': 40400,
+    'External affairs': 7600,
+    'Payments for financial assets': 6000,
+    'Debt-service costs': 180000,
+    'Contingency reserve': 8000,
   };
 
   // override ordering

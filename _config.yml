@@ -5,12 +5,12 @@ government: South African Government
 currency: ZAR
 default_amount: 6500
 
-vat: 0.14
+vat: 0.15
 # Primary rebate or personal relief per month
-primary_rebate: 13635/12
+primary_rebate: 14067/12
 
-income_tax_revenue: 482.1
-vat_revenue: 312.8
+income_tax_revenue: 505.8
+vat_revenue: 348.1
 
 url: https://taxclock-za.codeforafrica.org
 enforce_ssl: taxclock-za.codeforafrica.org
