@@ -8,16 +8,14 @@ var itemExplanations = {
   'public-healthcare' : 'Ministry of Health',
   'law-and-order' : 'Judiciary, State Department for Interior, IEBC, Attorney General & Dept of Justice, Ethics & Anti-Corruption Commission, Director of Public Prosecutions, Office of the Registrar of Political Parties, KNCHR, National Gender & Equality Commission, National Police Service Commission, Independent Policing Oversight Authority, and Witness Protection Agency',
   'debt-repayment' : 'Public Debt Repayment that consists of internal debt and external debt borrowed from foreign lenders including commercial banks, governments or international financial institutions',
-  'agriculture-and-rural-development' : 'Ministry of Land Housing and Urban Development, State Department for Agriculture, State Department for Livestock, State Department for Fisheries, and National Land Commission',
-  'lights-and-power' : 'Ministry of Energy and Petroleum',
-  'public-infrastructure' : 'State Department of Infrastructure and Ministry Information Communication and Technology',
-  'transport-infrastructure' : 'State Department of Transport',
+  'county-shareable-revenue': 'County Governments',
+  'agriculture-rural-urban-development' : 'Ministry of Land Housing and Urban Development, State Department for Agriculture, State Department for Livestock, State Department for Fisheries, and National Land Commission',
+  'energy-infrastructure-ict' : 'Ministry of Energy and Petroleum, State Department of Infrastructure, Ministry Information Communication and Technology, State Department of Transport',
   'trade-and-commerce' : 'Ministry of Industrialization and Enterprise Development, State Department for Commerce and Tourism, and State Department for East African Affairs',
   'running-government' : 'The National Treasury, State Department for Planning, Ministry of Foreign Affairs and International Trade, State Department for Devolution, The Presidency, Auditor General, Public Service Commission, Controller of Budget, Salaries and Remuneration Commission, The Commission on Administrative of Justice, The Commission on Revenue Allocation, Parliament, CDF, Contingencies',
   'social-protection' : 'Ministry of Labour Social Security and Services, and Ministry of Sports Culture and Arts',
-  'environmental-protection' : 'Ministry of Water and Irrigation, Ministry of Environment, Natural Resources & RDAs, and Ministry of Mining',
+  'environment-protection-water-natural-resources' : 'Ministry of Water and Irrigation, Ministry of Environment, Natural Resources & RDAs, and Ministry of Mining',
   'military-and-intelligence-services' : 'National Security matters + agencies. Spies and what not.',
-  'pensions-and-constitutional-office-holder-s-salaries' : 'Civil Servant\'s Pensions, and Salaries for Constitutational Office Holders in Government Departments'
 }
 
 var cal = null;

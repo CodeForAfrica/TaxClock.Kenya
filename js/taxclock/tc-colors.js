@@ -49,6 +49,10 @@ TC.colors = {
   blue: '#0D68A8',
 };
 
+// Colorbrewer - http://colorbrewer2.org/?type=qualitative&scheme=Paired&n=12
+TC.colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928', '#a9a6a6'];
+TC.colors = ["#ED1C24", "#1B4969", "#1DA087", "#A6DDD3", "#547770", "#A9A6A6", "#97B4B7", "#636263", "#AF1E29", "#EA971F", "#EDBE6C", "#D46137", "#414C8C"];
+
 TC.colors.setSchedule = function () {
   var colors_count = _.size(TC.colors);
   var colors = _.values(TC.colors);

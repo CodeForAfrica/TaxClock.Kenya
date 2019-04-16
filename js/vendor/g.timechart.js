@@ -20,6 +20,8 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
     var coloring = ["#5394C1", "#ED1C24", "#1B4969", "#1DA087", "#A6DDD3", "#547770", "#A9A6A6", "#97B4B7", "#636263", "#824D58", "#532F37", "#371A13", "#9A9B78", "#102B3A", "#1B564B", "#D3D35B", "#D1AD5D", "#A2E28A", "#444444", "#000", "#48494B", "#81549D", "#5E1517", "#414C8C", "#808AB2", "#172872", "#4C5472", "#DDC7D4", "#823464", "#AF1E29", "#EA971F", "#EDBE6C", "#D46137", "#E28A79", "#E281A0", "#E0446D", "#89343E", "#99618C", "#0D68A8"];
     //var coloring = ["#ED1C24", "#1B4969", "#1DA087", "#A6DDD3", "#547770", "#A9A6A6", "#97B4B7", "#636263", "#AF1E29", "#EA971F", "#EDBE6C", "#D46137", "#E28A79", "#E281A0", "#E0446D", "#89343E", "#99618C", "#000", "#48494B", "#81549D", "#5E1517", "#414C8C", "#808AB2", "#172872", "#4C5472", "#DDC7D4", "#823464", "#824D58", "#532F37", "#371A13", "#9A9B78", "#102B3A", "#1B564B", "#D3D35B", "#D1AD5D", "#A2E28A", "#444444"];
     //var coloring = ["#60744f", "#495031",  "#87936f", "#576a4e", "#6a7854", "#969a7f", "#a2a47f", "#a1735b", "#7b5252", "#b9a868",  "#c4b880", "#736a2f", "#73572f", "#d84f13",  "#ffe010", "#7c94ec","#9d110a","#7c0986", "#d3d9b7","#bdc6a9", "#d8d4b1"];
+
+    var coloring = TC.colors;
              
     paper.customAttributes.segment = function (x, y, r, a1, a2) {
         var flag = (a2 - a1) > 180,
@@ -79,7 +81,7 @@ Raphael.fn.g.timechart = function (cx, cy, rad, opts) {
               (function (i, val) {
                 //var coloring = "rgb(" + (i+1) *23 + ", " + (i+1)*53 + ", " + (i+1)*13 + ")";
                   
-                  var p = paper.path().attr({segment: [cx, cy, rad-20, 180, 180 + val], title: data[i].label || "", stroke: "none", fill: coloring[i]});
+                  var p = paper.path().attr({segment: [cx, cy, rad-20, 180, 180 + val], title: data[i].label || "", stroke: "none", fill: coloring[i%coloring.length]});
                   var od = false;
                   
                   p.ss = start;

@@ -15,11 +15,11 @@ var IncomeCalculator = function() {
   // TODO: Move to _data
   // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
   this.TAX_TABLE = [
-    new TaxBand(0.10, 0, 10165),
-    new TaxBand(0.15, 10166, 19741),
-    new TaxBand(0.20, 19742, 29317),
-    new TaxBand(0.25, 29318, 38893),
-    new TaxBand(0.30, 38895, 701300),
+    new TaxBand(0.10, 0, 12298),
+    new TaxBand(0.15, 12299, 23885),
+    new TaxBand(0.20, 23886, 35472),
+    new TaxBand(0.25, 29318, 47059),
+    new TaxBand(0.30, 47060, 999999999),
   ];
 
   this.PRIMARY_REBATE = {{ site.primary_rebate }};
@@ -35,20 +35,18 @@ var IncomeCalculator = function() {
   // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Education': (339 * Math.pow(10,9)),
-    'Public Healthcare': (60.3 * Math.pow(10,9)),
-    'Law and Order': (188 * Math.pow(10,9)),
-    'Debt Repayment': (466.5 * Math.pow(10,9)),
-    'Agriculture and Rural Development': (69.6 * Math.pow(10,9)),
-    'Lights and Power': (122.3 * Math.pow(10,9)),
-    'Public Infrastructure': (202 * Math.pow(10,9)),
-    'Transport Infrastructure': (181.6 * Math.pow(10,9)),
-    'Trade and Commerce': (20.9 * Math.pow(10,9)),
-    'Running Government': (232 * Math.pow(10,9)),
-    'Social Protection': (33.7 * Math.pow(10,9)),
-    'Environmental Protection': (92.9  * Math.pow(10,9)),
-    'Military and Intelligence Services': (124  * Math.pow(10,9)),
-    'Pensions and Constitutional Office Holder\'s Salaries': (60.8  * Math.pow(10,9)),
+    'Education': (444.1 * Math.pow(10,9)),
+    'Public Healthcare': (90.0 * Math.pow(10,9)),
+    'Law and Order': (190.4 * Math.pow(10,9)),
+    'Debt Repayment': (493.0 * Math.pow(10,9)),
+    'Agriculture, Rural & Urban Development': (47.1 * Math.pow(10,9)),
+    'Energy, Infrastructure & ICT': (418.8 * Math.pow(10,9)),
+    'Environment Protection, Water & Natural Resources': (77.0 * Math.pow(10,9)),
+    'County Shareable Revenue': (314.0 * Math.pow(10,9)),
+    'Trade and Commerce': (25.4 * Math.pow(10,9)),
+    'Running Government': (270.1 * Math.pow(10,9)),
+    'Social Protection': (44.4 * Math.pow(10,9)),
+    'Military and Intelligence Services': (142.3  * Math.pow(10,9)),
   };
 
   // override ordering

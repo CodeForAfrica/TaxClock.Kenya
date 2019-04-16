@@ -6,7 +6,7 @@ var pie;
 var init = true;
 var salary = 50000;
 var hourly = 313;
-var year = 2015;
+var year = 2018;
 var oldYear;
 var offset = 0;
 var sum = 0;
