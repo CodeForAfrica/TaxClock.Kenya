@@ -13,8 +13,8 @@ primary_rebate: 1162
 income_tax_revenue: 15.1
 vat_revenue: 19.4
 
-url: https://taxclock.codeforkenya.org
-enforce_ssl: taxclock.codeforkenya.org
+url: https://taxclock.pesacheck.org
+enforce_ssl: taxclock.pesacheck.org
 
 embed_id: taxclock-ke
 

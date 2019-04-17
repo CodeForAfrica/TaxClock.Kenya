@@ -8,7 +8,7 @@ body_class: page
 To embed the TaxClock in your article, place the code below anywhere in the page.
 
 ```
-<script src="https://taxclock.codeforkenya.org/js/embed.js"/></script>
+<script src="{{ site.url }}/js/embed.js"/></script>
 ```
 
 <br/>
