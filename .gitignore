@@ -1,5 +1,6 @@
 \.*.swp
 _site
 .project
+.env
 
 .DS_Store
