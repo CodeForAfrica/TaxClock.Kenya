@@ -2,4 +2,4 @@
 _site
 .project
 
-.env
+.DS_Store
