@@ -13,7 +13,7 @@ var IncomeCalculator = function() {
   }
 
   // TODO: Move to _data
-  // tax bands -- with thanks to http://www.oldmutual.co.za/markets/south-african-budget/income-tax-calculator
+  // tax bands -- with thanks to https://apps.wingubox.com/best-paye-tax-calculator-for-kenya
   this.TAX_TABLE = [
     new TaxBand(0.10, 0, 12298),
     new TaxBand(0.15, 12299, 23885),
@@ -25,12 +25,11 @@ var IncomeCalculator = function() {
   this.PRIMARY_REBATE = {{ site.primary_rebate }};
 
   // Budget revenue streams from individuals (billions)
-  // http://www.treasury.gov.za/documents/national%20budget/2017/review/FullBR.pdf (page 4)
-  this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }};
-  this.VAT_REVENUE = {{ site.vat_revenue }};
+  this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }} * Math.pow(10,9);
+  this.VAT_REVENUE = {{ site.vat_revenue }} * Math.pow(10,9);
 
   // Budget expenditure by category, in millions
-  // see https://docs.google.com/spreadsheets/d/18pS6-GXmV2AE6TqKtYYzL6Ag-ZuwiE4jb53U9heWF1M/edit#gid=0
+  // see http://www.treasury.go.ke/component/jdownloads/send/198-2018-2019/890-budget-highlights-2018-19.html
 
   // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
@@ -52,7 +51,7 @@ var IncomeCalculator = function() {
   // override ordering
   this.ORDERING = {
     'Working for yourself': 9999,
-    'National debt': -1,
+    'Debt Repayment': -1,
   };
 
   // Total budget expenditure

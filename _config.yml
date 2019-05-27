@@ -5,13 +5,14 @@ government: Kenyan Government
 currency: KES
 default_amount: 50000
 
-vat: 0.16
+vat: 0.16 + 0.015
 # Primary rebate or personal relief per month
 primary_rebate: 1162
 
 # Budget revenue streams in billions
-income_tax_revenue: 15.1
-vat_revenue: 19.4
+# https://dc.sourceafrica.net/documents/119141-KRA-7th-Corporate-Plan.html#document/p30/a562
+income_tax_revenue: 659.021
+vat_revenue: 356.777
 
 url: https://taxclock.pesacheck.org
 enforce_ssl: taxclock.pesacheck.org
