@@ -14,7 +14,7 @@ $(window).on('load', function() {
     $('input[name="income"]').val(new_salary);
 
   } else {
-    $('input[name="income"]').val({{ site.default_amount }});
+    $('input[name="income"]').val({{ site.default_income }});
   }
 
   incomeChange();

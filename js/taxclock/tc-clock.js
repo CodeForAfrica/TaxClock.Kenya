@@ -146,9 +146,9 @@ jQuery(document).ready(function($) {
 var getData = function(group,year,income) {
   var calc = new IncomeCalculator();
   var output = calc.calculateIncomeBreakdown(income);
-  var items = output.breakdown;
+  var breakdown = output.breakdown;
 
-  analyzeData(items, income);
+  analyzeData(breakdown, income);
 
   // var base = "http://www.whatwepayfor.com/api/";
    
@@ -204,32 +204,32 @@ var getSubData = function(agency,year,income, label, val) {
 
 function analyzeData(data, income){
 	salary = income;
- var  items = [],
+  var items = [],
       labels = [],
       ids = [],
-      leftover = income;
-      sum = 0;
+      leftover = income,
+      sum = 0,
       taxman_fraction = 0;
 
-      $(data).each(function (index, element) {
-          var id     = index;
-          var name   = element.name;
-         // var amount = Math.abs(parseInt(element.fraction * income));
-         var fraction = element.fraction;
+    $(data).each(function (index, element) {
+      var id     = index;
+      var name   = element.name;
+      // var amount = Math.abs(parseInt(element.fraction * income));
+      var fraction = element.fraction;
 
-          if (index != data.length - 1) {
-          //  sum += parseFloat(amount);
-            taxman_fraction += fraction;
-          }
-          
-          if (fraction > 0) {
-            
-            items.push(fraction);
-            labels.push(name);
-            ids.push(id);
-            
-          }
-      });
+      if (index != data.length - 1) {
+      //  sum += parseFloat(amount);
+        taxman_fraction += fraction;
+      }
+      
+      if (fraction > 0) {
+        
+        items.push(fraction);
+        labels.push(name);
+        ids.push(id);
+        
+      }
+    });
       
 
       parsePayment(taxman_fraction);

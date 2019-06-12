@@ -15,11 +15,11 @@ var IncomeCalculator = function() {
   // TODO: Move to _data
   // tax bands -- with thanks to https://apps.wingubox.com/best-paye-tax-calculator-for-kenya
   this.TAX_TABLE = [
-    new TaxBand(0.10, 0, 12298),
-    new TaxBand(0.15, 12299, 23885),
-    new TaxBand(0.20, 23886, 35472),
-    new TaxBand(0.25, 29318, 47059),
-    new TaxBand(0.30, 47060, 999999999),
+    new TaxBand(0.10, 0, 0, 12298),
+    new TaxBand(0.15, 1229.8, 12299, 23885),
+    new TaxBand(0.20, 2967.5, 23886, 35472),
+    new TaxBand(0.25, 5285.25, 29318, 47059),
+    new TaxBand(0.30, 8182, 47060),
   ];
 
   this.PRIMARY_REBATE = {{ site.primary_rebate }};
@@ -57,6 +57,9 @@ var IncomeCalculator = function() {
   // Total budget expenditure
   this.CONSOLIDATED_EXPENDITURE = _.reduce(_.values(this.EXPENDITURE), function(t, n) { return t + n; }, 0);
 
+  // Gross savings (% of GDP)
+  this.GROSS_SAVINGS = {{ site.gross_savings }};
+
   // fraction of budget line items that are funded through
   // personal tax and VAT
   this.TAXPAYER_RATIO = (this.PERSONAL_INCOME_TAX_REVENUE + this.VAT_REVENUE) / this.CONSOLIDATED_EXPENDITURE;
@@ -79,7 +82,7 @@ var IncomeCalculator = function() {
     // after tax income
     info.netIncome = income - info.incomeTax;
 
-    // VAT calculated on net income
+    // VAT calculated on net income (less gross savings)
     info.vatTax = self.vatTax(info);
 
     // total personal tax
@@ -129,7 +132,8 @@ var IncomeCalculator = function() {
   };
 
   this.vatTax = function(info) {
-    return info.netIncome * this.VAT / (1 + this.VAT);
+    let netIncomeLessSavings = info.netIncome * (1 - (this.GROSS_SAVINGS/100));
+    return netIncomeLessSavings * this.VAT / (1 + this.VAT);
   };
 
   this.workingForSelf = function(info) {

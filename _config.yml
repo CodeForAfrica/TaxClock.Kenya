@@ -3,9 +3,13 @@ description: It’s easy to see how much of your salary is taken for taxes, but 
 
 government: Kenyan Government
 currency: KES
-default_amount: 50000
+default_income: 50000
 
+budget_year: "2018/19"
+
+# VAT + Housing Levy
 vat: 0.16 + 0.015
+
 # Primary rebate or personal relief per month
 primary_rebate: 1162
 
@@ -13,6 +17,10 @@ primary_rebate: 1162
 # https://dc.sourceafrica.net/documents/119141-KRA-7th-Corporate-Plan.html#document/p30/a562
 income_tax_revenue: 659.021
 vat_revenue: 356.777
+
+# Gross Savings (% of GDP) - 2017
+# https://data.worldbank.org/indicator/NY.GNS.ICTR.ZS?locations=KE
+gross_savings: 9.427
 
 url: https://taxclock.pesacheck.org
 enforce_ssl: taxclock.pesacheck.org

@@ -70,12 +70,12 @@ layout: home
     <div class="row">
       <div class="col-md-6" id="schedule-area">
         <div class="tc-box tc-box-blue text-center">
-          <h4>What is your monthly income<sup>*</sup> (before tax)?</h4>
+          <h4>What is your monthly income<sup>**</sup> (before tax)?</h4>
           <div class="input-group input-group-lg">
             <span class="input-group-addon">{{ site.currency }}</span>
             <input id="income-input" class="income form-control" type="text" name="income"  aria-label="Monthly income before tax">
           </div>
-          <p><small><sup>*</sup> This should be your income before tax but after deductions such as pension and health insurance.</small></p>
+          <p><small><sup>**</sup> This should be your income before tax but after deductions such as pension and health insurance.</small></p>
         </div>
         <div class="tc-box tc-box-white" id="clock-digital">
           <div class="container-fluid row">
@@ -119,6 +119,8 @@ layout: home
 
       <div class="col-md-6" id="stories-area">
         <div class="hidden-xs hidden-sm visible-safari" style="height:110px; display: none;"></div>
+        <br/>
+        <p class="small" style="padding: 0 35px;"><sup>*</sup> This calculator only provides approximations and makes simplifying assumptions. These calculations are based on VAT and personal income tax as per the {{ site.budget_year }} budget. The VAT calculation assumes all disposable income (less gross savings as % of GDP) is spent on standard rated (16%) items. Secondary and tertiary rebates are not included, nor are other indirect taxes such as customs, sin taxes, fuel levy, etc.</p>
         <br/>
         <p class="text-center"><a class="btn btn-default btn-primary" href="/how-to-embed" role="button">Embed TaxClock</a></p>
         <h1 class="text-center">. . .</h1>
