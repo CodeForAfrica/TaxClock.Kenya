@@ -9,7 +9,7 @@ TC.stories = {
 
   load: function () {
     $.get(
-      "https://cors.io?https://pesacheck.org/feed/tagged/budget",
+      "https://corsio.devops.codeforafrica.org?https://pesacheck.org/feed/tagged/budget",
       function( response ) {
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(response,"text/xml");
