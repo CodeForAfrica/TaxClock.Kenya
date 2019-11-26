@@ -1,12 +1,14 @@
-## TaxClock
+## TaxClock.Kenya
+
+![Preview Image](./preview.png)
 
 Time is money. So, paying your taxes means that you are actually giving the government your time, or labour. This project helps you calculate exactly how much time you spend working for the government.
 
-Original website is accessible at [https://taxclock.codeforkenya.org/](https://taxclock.codeforkenya.org/)
+Accessible at https://taxclock.pesacheck.org/
 
 ### Instances:
 
-- Kenya: [https://taxclock.codeforkenya.org/](https://taxclock.codeforkenya.org/)
+- Kenya: [https://taxclock.pesacheck.org/](https://taxclock.pesacheck.org/)
 - South Africa: [https://taxclock-za.codeforafrica.org/](https://taxclock-za.codeforafrica.org/)
 
 ### Embedding
@@ -50,4 +52,18 @@ For detailed instructions, check out [s3_website gem](https://github.com/laurile
 
 ### License
 
-[GNU GPL v3](./LICENSE.txt)
+This project helps you calculate exactly how much time you spend working for the government.  
+Copyright (C) 2017 Code for Africa
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
