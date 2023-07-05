@@ -27,6 +27,6 @@ enforce_ssl: taxclock.pesacheck.org
 
 embed_id: taxclock-ke
 
-google_analytics: UA-33350783-6
+google_analytics: G-K7WN2V0KR6
 
 exclude: ['s3_website.yml', '.env']
