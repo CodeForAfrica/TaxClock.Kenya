@@ -29,23 +29,23 @@ var IncomeCalculator = function() {
   this.VAT_REVENUE = {{ site.vat_revenue }} * Math.pow(10,9);
 
   // Budget expenditure by category, in millions
-  // see http://www.treasury.go.ke/component/jdownloads/send/198-2018-2019/890-budget-highlights-2018-19.html
+  // see https://www.treasury.go.ke/wp-content/uploads/2024/06/Budget-Highlights-The-Mwananchi-Guide-for-the-FY-2024-25-Budget.pdf#page=15.06
 
   // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Education': (444.1 * Math.pow(10,9)),
-    'Public Healthcare': (90.0 * Math.pow(10,9)),
-    'Law and Order': (190.4 * Math.pow(10,9)),
-    'Debt Repayment': (493.0 * Math.pow(10,9)),
-    'Agriculture, Rural & Urban Development': (47.1 * Math.pow(10,9)),
-    'Energy, Infrastructure & ICT': (418.8 * Math.pow(10,9)),
-    'Environment Protection, Water & Natural Resources': (77.0 * Math.pow(10,9)),
-    'County Shareable Revenue': (314.0 * Math.pow(10,9)),
-    'Trade and Commerce': (25.4 * Math.pow(10,9)),
-    'Running Government': (270.1 * Math.pow(10,9)),
-    'Social Protection': (44.4 * Math.pow(10,9)),
-    'Military and Intelligence Services': (142.3  * Math.pow(10,9)),
+    'Education': (656.6 * Math.pow(10,9)),
+    'Public Healthcare': (127.0 * Math.pow(10,9)),
+    'Law and Order': (247.8 * Math.pow(10,9)),
+    'Debt Repayment': (1213.4 * Math.pow(10,9)),
+    'Agriculture and Food Security': (84.9 * Math.pow(10,9)),
+    'Energy, Infrastructure & ICT': (477.2 * Math.pow(10,9)),
+    'Environment Protection, Water & Natural Resources': (110.1 * Math.pow(10,9)),
+    'County Shareable Revenue': (400.1 * Math.pow(10,9)),
+    'Economic and Commercial Affairs': (43.1 * Math.pow(10,9)),
+    'Public Admin and Internal Relations': (344.4 * Math.pow(10,9)),
+    'Social Protection': (68.0 * Math.pow(10,9)),
+    'Military and Intelligence Services': (219.4  * Math.pow(10,9)),
   };
 
   // override ordering
