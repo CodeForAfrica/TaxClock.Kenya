@@ -5,22 +5,28 @@ government: Kenyan Government
 currency: KES
 default_income: 50000
 
-budget_year: "2018/19"
+budget_year: "2024/25"
 
-# VAT + Housing Levy
-vat: 0.16 + 0.015
+# VAT: https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax#:~:text=VAT%20RATES&text=16%25%20(General%20rate)%20%E2%80%93,to%20the%20VAT%20Act%2C%202013.
+vat: 0.16
+
+# Housing Levy: https://kra.go.ke/images/publications/The-Finance-Act--2023.pdf#page=55
+housing_levy: 1.5
+
+# SHIF: https://apps.wingubox.com/blog/category/updates/new-shif-rates-for-your-kenyan-payroll
+shif: 2.75
 
 # Primary rebate or personal relief per month
-primary_rebate: 1162
+primary_rebate: 2400.00
 
-# Budget revenue streams in billions
-# https://dc.sourceafrica.net/documents/119141-KRA-7th-Corporate-Plan.html#document/p30/a562
-income_tax_revenue: 659.021
-vat_revenue: 356.777
+# Budget revenue streams in billions FY 2023/2024
+# https://www.kra.go.ke/images/publications/ANNUAL-REVENUE-PERFORMANCE-FY-2023-2024.-080724.pdf
+income_tax_revenue: 543.186
+vat_revenue: 314.157
 
-# Gross Savings (% of GDP) - 2017
+# Gross Savings (% of GDP) - 2023
 # https://data.worldbank.org/indicator/NY.GNS.ICTR.ZS?locations=KE
-gross_savings: 9.427
+gross_savings: 16
 
 url: https://taxclock.pesacheck.org
 enforce_ssl: taxclock.pesacheck.org
