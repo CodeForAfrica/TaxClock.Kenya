@@ -28,6 +28,12 @@ var IncomeCalculator = function() {
   this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }} * Math.pow(10,9);
   this.VAT_REVENUE = {{ site.vat_revenue }} * Math.pow(10,9);
 
+  // Housing Levy: https://kra.go.ke/images/publications/The-Finance-Act--2023.pdf#page=55
+  this.HOUSING_LEVY = {{ site.housing_levy }} * Math.pow(10,9);
+
+  // https://apps.wingubox.com/blog/category/updates/new-shif-rates-for-your-kenyan-payroll
+  this.SHIF = {{ site.shif }} * Math.pow(10,9);
+
   // Budget expenditure by category, in millions
   // see http://www.treasury.go.ke/component/jdownloads/send/198-2018-2019/890-budget-highlights-2018-19.html
 
@@ -123,6 +129,7 @@ var IncomeCalculator = function() {
 
     if (band) {
       gross_income_tax = band.baseAmount + (band.marginalRate * (info.income - band.threshold));
+      gross_income_tax = gross_income_tax - this.HOUSING_LEVY + this.SHIF;
       gross_income_tax = gross_income_tax - this.PRIMARY_REBATE;
     }
 
