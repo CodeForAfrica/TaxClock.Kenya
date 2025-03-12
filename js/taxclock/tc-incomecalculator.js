@@ -14,12 +14,23 @@ var IncomeCalculator = function() {
 
   // TODO: Move to _data
   // tax bands -- with thanks to https://apps.wingubox.com/best-paye-tax-calculator-for-kenya
+
+  // PAYE tax bands (Finance Act 2023)
   this.TAX_TABLE = [
-    new TaxBand(0.10, 0, 0, 12298),
-    new TaxBand(0.15, 1229.8, 12299, 23885),
-    new TaxBand(0.20, 2967.5, 23886, 35472),
-    new TaxBand(0.25, 5285.25, 29318, 47059),
-    new TaxBand(0.30, 8182, 47060),
+    // 1st bracket: 0 - 24,000
+    new TaxBand(0.10, 0, 0, 24000),
+  
+    // 2nd bracket: 24,001 - 32,333 (= 8,333)
+    new TaxBand(0.25, 2400, 24001, 32333),
+  
+    // 3rd bracket: 32,334 - 500,000 (467,667)
+    new TaxBand(0.30, 4483.25, 32334, 500000),
+  
+    // 4th bracket: 500,001 - 800,000 (300,000)
+    new TaxBand(0.325, 144783.35, 500001, 800000),
+  
+    // 5th bracket: Above 800,000
+    new TaxBand(0.35, 242283.35, 800001)
   ];
 
   this.PRIMARY_REBATE = {{ site.primary_rebate }};
