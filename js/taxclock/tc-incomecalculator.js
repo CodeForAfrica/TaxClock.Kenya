@@ -5,6 +5,16 @@ var IncomeCalculator = function() {
 
   this.VAT = {{ site.vat }};
 
+  // Statutory rates and personal relief
+  this.VAT = {{ site.vat }};
+  this.PRIMARY_REBATE = {{ site.primary_rebate }};
+
+  // Affordable Housing Levy (1.5%): https://kra.go.ke/images/publications/The-Finance-Act--2023.pdf#page=55
+  this.HOUSING_LEVY = {{ site.housing_levy }};
+
+  // Social Health Insurance Fund (SHIF) 2.75%: https://apps.wingubox.com/blog/category/updates/new-shif-rates-for-your-kenyan-payroll
+  this.SHIF = {{ site.shif }};
+
   function TaxBand(marginalRate, baseAmount, threshold, limit) {
     this.marginalRate = marginalRate;
     this.baseAmount = baseAmount;
@@ -13,14 +23,13 @@ var IncomeCalculator = function() {
   }
 
   // TODO: Move to _data
-  // tax bands -- with thanks to https://apps.wingubox.com/best-paye-tax-calculator-for-kenya
-
-  // PAYE tax bands (Finance Act 2023)
+  // PAYE tax bands (Finance Act 2023) based on taxable income (after allowable deductions: SHIF and Housing Levy)
+  // with thanks to https://apps.wingubox.com/best-paye-tax-calculator-for-kenya
   this.TAX_TABLE = [
     // 1st bracket: 0 - 24,000
     new TaxBand(0.10, 0, 0, 24000),
   
-    // 2nd bracket: 24,001 - 32,333 (= 8,333)
+    // 2nd bracket: 24,001 - 32,333 (8,333)
     new TaxBand(0.25, 2400, 24001, 32333),
   
     // 3rd bracket: 32,334 - 500,000 (467,667)
@@ -33,36 +42,27 @@ var IncomeCalculator = function() {
     new TaxBand(0.35, 242283.35, 800001)
   ];
 
-  this.PRIMARY_REBATE = {{ site.primary_rebate }};
-
   // Budget revenue streams from individuals (billions)
   this.PERSONAL_INCOME_TAX_REVENUE = {{ site.income_tax_revenue }} * Math.pow(10,9);
   this.VAT_REVENUE = {{ site.vat_revenue }} * Math.pow(10,9);
 
-  // Housing Levy: https://kra.go.ke/images/publications/The-Finance-Act--2023.pdf#page=55
-  this.HOUSING_LEVY = {{ site.housing_levy }} * Math.pow(10,9);
-
-  // https://apps.wingubox.com/blog/category/updates/new-shif-rates-for-your-kenyan-payroll
-  this.SHIF = {{ site.shif }} * Math.pow(10,9);
-
   // Budget expenditure by category, in millions
-  // see http://www.treasury.go.ke/component/jdownloads/send/198-2018-2019/890-budget-highlights-2018-19.html
-
+  // see https://www.treasury.go.ke/wp-content/uploads/2024/06/Budget-Highlights-The-Mwananchi-Guide-for-the-FY-2024-25-Budget.pdf#page=15.06
   // TODO: Move to _data
   // Categorised expenditure (should, but doesn't have to, total to CONSOLIDATED_EXPENDITURE)
   this.EXPENDITURE = {
-    'Education': (444.1 * Math.pow(10,9)),
-    'Public Healthcare': (90.0 * Math.pow(10,9)),
-    'Law and Order': (190.4 * Math.pow(10,9)),
-    'Debt Repayment': (493.0 * Math.pow(10,9)),
-    'Agriculture, Rural & Urban Development': (47.1 * Math.pow(10,9)),
-    'Energy, Infrastructure & ICT': (418.8 * Math.pow(10,9)),
-    'Environment Protection, Water & Natural Resources': (77.0 * Math.pow(10,9)),
-    'County Shareable Revenue': (314.0 * Math.pow(10,9)),
-    'Trade and Commerce': (25.4 * Math.pow(10,9)),
-    'Running Government': (270.1 * Math.pow(10,9)),
-    'Social Protection': (44.4 * Math.pow(10,9)),
-    'Military and Intelligence Services': (142.3  * Math.pow(10,9)),
+    'Education': (656.6 * Math.pow(10,9)),
+    'Public Healthcare': (127.0 * Math.pow(10,9)),
+    'Law and Order': (247.8 * Math.pow(10,9)),
+    'Debt Repayment': (1213.4 * Math.pow(10,9)),
+    'Agriculture and Food Security': (84.9 * Math.pow(10,9)),
+    'Energy, Infrastructure & ICT': (477.2 * Math.pow(10,9)),
+    'Environment Protection, Water & Natural Resources': (110.1 * Math.pow(10,9)),
+    'County Shareable Revenue': (400.1 * Math.pow(10,9)),
+    'Trade and Commerce': (43.1 * Math.pow(10,9)),
+    'Running Government': (344.4 * Math.pow(10,9)),
+    'Social Protection': (68.0 * Math.pow(10,9)),
+    'Military and Intelligence Services': (219.4  * Math.pow(10,9)),
   };
 
   // override ordering
@@ -89,15 +89,38 @@ var IncomeCalculator = function() {
   //let's make sure the day ends at 5pm by adding 60 minutes to the 480 WORKDAY_MINS.
   this.END_OF_DAY = this.START_OF_DAY.clone().add(this.WORKDAY_MINS + 60, 'minutes');
 
+  // Calculate NSSF contribution based on new rates (effective Feb 2025)
+  // https://assets.kpmg.com/content/dam/kpmg/ke/pdf/tax/2025/Enhanced%20NSSF%20rates%20effective%20February%202025%20-%20Tax%20Alert.pdf
+  this.calculateNSSF = function(income) {
+    // Tier I: Applies to the first Ksh 8,000 at 6%
+    var tier1 = Math.min(income, 8000);
+    // Tier II: Applies to income between Ksh 8,001 and Ksh 72,000 (max Ksh 64,000) at 6%
+    var tier2 = Math.min(Math.max(income - 8000, 0), 64000);
+    var nssfTier1 = tier1 * 0.06;
+    var nssfTier2 = tier2 * 0.06;
+    return nssfTier1 + nssfTier2;
+  };
+
   this.calculateIncomeBreakdown = function(income) {
     var info = {};
 
     info.income = income;
 
-    // income tax
-    info.incomeTax = self.incomeTax(info);
-    // after tax income
-    info.netIncome = income - info.incomeTax;
+    // Calculate statutory contributions/deductions
+    info.nssf = self.calculateNSSF(income);
+    info.shif = (income * this.SHIF) / 100;                  // 2.75% Social Health Insurance Fund (SHIF)
+    info.housingLevy = (income * this.HOUSING_LEVY) / 100;   // 1.5% Affordable Housing Levy
+
+    info.statutory_deductions = info.nssf + info.shif + info.housingLevy;
+
+    // Compute taxable income for PAYE (gross income minus allowable deductions: NSSF + SHIF + Housing Levy)
+    info.taxableIncome = income - info.statutory_deductions;
+
+    // Calculate PAYE based on the taxable income
+    info.incomeTax = self.incomeTax(info.taxableIncome);
+
+    // Calculate net income after deducting PAYE, NSSF, SHIF, and Housing Levy
+    info.netIncome = income - (info.incomeTax + info.statutory_deductions);
 
     // VAT calculated on net income (less gross savings)
     info.vatTax = self.vatTax(info);
@@ -132,20 +155,20 @@ var IncomeCalculator = function() {
     return info;
   };
 
-  this.incomeTax = function(info) {
+  this.incomeTax = function(taxableIncome) {
     var gross_income_tax = 0;
-    var band = _.find(this.TAX_TABLE, function(b) {
-      return (info.income >= b.threshold) && (info.income <= b.limit);
+    // Find the applicable tax band for the given taxable income
+    var band = _.find(self.TAX_TABLE, function(b) {
+      return (taxableIncome >= b.threshold) && (taxableIncome <= b.limit);
     });
 
     if (band) {
-      gross_income_tax = band.baseAmount + (band.marginalRate * (info.income - band.threshold));
-      gross_income_tax = gross_income_tax - this.HOUSING_LEVY + this.SHIF;
-      gross_income_tax = gross_income_tax - this.PRIMARY_REBATE;
+      gross_income_tax = band.baseAmount + (band.marginalRate * (taxableIncome - band.threshold));
+      gross_income_tax = gross_income_tax - self.PRIMARY_REBATE;
     }
 
     if (gross_income_tax < 0) gross_income_tax = 0;
-
+  
     return gross_income_tax;
   };
 
